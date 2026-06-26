@@ -1,0 +1,12 @@
+{
+  "stage": "40_residualize",
+  "target_col": "target__Surprise",
+  "score_source_dir": "/home/eduardo/Projects/poemforge-paper/results/scores/phase_a_eval_scores",
+  "outputs": {
+    "runlevel_long": "/home/eduardo/Projects/poemforge-paper/results/analyses/runlevel_readout_correlations_long.csv",
+    "runlevel_summary": "/home/eduardo/Projects/poemforge-paper/results/analyses/runlevel_readout_summary.csv",
+    "readout_convergence_summary": "/home/eduardo/Projects/poemforge-paper/results/analyses/readout_convergence_summary.csv",
+    "generic_d_correlation_summaries": "/home/eduardo/Projects/poemforge-paper/results/analyses/generic_d_correlation_summaries.csv"
+  },
+  "important_note": "This stage recomputes run-level residualized Spearman summaries from frozen score artifacts. It currently includes none, other-human, and other-human-plus-surface controls. Full stacked NLL-controlled analyses and poem-level bootstrap are handled in later stages."
+}
