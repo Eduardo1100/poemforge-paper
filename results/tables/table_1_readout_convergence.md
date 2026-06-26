@@ -1,0 +1,5 @@
+| Controls                      | Compression | Embedding | TF-IDF | Compression - Embedding | Compression - TF-IDF |
+| ----------------------------- | ----------- | --------- | ------ | ----------------------- | -------------------- |
+| No residual controls          | 0.409       | 0.211     | 0.115  | +0.198                  | +0.294               |
+| Other human targets           | 0.267       | 0.138     | 0.096  | +0.128                  | +0.170               |
+| Other human targets + surface | 0.209       | 0.189     | 0.140  | +0.020                  | +0.069               |

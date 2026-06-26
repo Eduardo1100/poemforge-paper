@@ -1,0 +1,18 @@
+{
+  "stage": "90_make_tables",
+  "outputs": [
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_1_readout_convergence.csv",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_1_readout_convergence.md",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_1_readout_convergence.tex",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_2_bootstrap_uncertainty.csv",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_2_bootstrap_uncertainty.md",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_2_bootstrap_uncertainty.tex",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_3_generic_d_summary.csv",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_3_generic_d_summary.md",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_3_generic_d_summary.tex",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_4_item_nll_correlations.csv",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_4_item_nll_correlations.md",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_4_item_nll_correlations.tex"
+  ],
+  "important_note": "This stage formats existing analysis outputs into paper-facing tables. It does not change or recompute empirical values."
+}

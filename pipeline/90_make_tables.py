@@ -1,10 +1,315 @@
 from __future__ import annotations
 
+import csv
+import hashlib
+import json
+from pathlib import Path
+
+import pandas as pd
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+ANALYSES_DIR = ROOT / "results" / "analyses"
+PHASE_A_RESULTS = ROOT / "results" / "phase_a_eval_results"
+TABLE_DIR = ROOT / "results" / "tables"
+HASH_DIR = ROOT / "results" / "hashes"
+
+READOUT_CONVERGENCE = ANALYSES_DIR / "readout_convergence_summary.csv"
+BOOTSTRAP_TABLE = ANALYSES_DIR / "bootstrap_manuscript_table.csv"
+GENERIC_D = ANALYSES_DIR / "generic_d_correlation_summaries.csv"
+ITEM_NLL = PHASE_A_RESULTS / "item_nll_target_correlations.csv"
+
+
+FEATURE_SET_LABELS = {
+    "none": "No residual controls",
+    "other_human_targets": "Other human targets",
+    "other_human_plus_surface": "Other human targets + surface",
+    "stacked": "Other human + surface + NLL",
+}
+
+
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def csv_shape(path: Path) -> tuple[int | None, int | None]:
+    if path.suffix.lower() != ".csv":
+        return None, None
+    with path.open("r", encoding="utf-8", newline="") as f:
+        reader = csv.reader(f)
+        try:
+            header = next(reader)
+        except StopIteration:
+            return 0, 0
+        return sum(1 for _ in reader), len(header)
+
+
+def require(path: Path) -> None:
+    if not path.exists():
+        raise FileNotFoundError(f"Missing {path}")
+
+
+def fmt_float(x, digits: int = 3) -> str:
+    if pd.isna(x):
+        return ""
+    return f"{float(x):.{digits}f}"
+
+
+def fmt_signed(x, digits: int = 3) -> str:
+    if pd.isna(x):
+        return ""
+    return f"{float(x):+.{digits}f}"
+
+
+def dataframe_to_markdown(df: pd.DataFrame) -> str:
+    """Render a simple GitHub-style markdown table without tabulate."""
+    cols = [str(c) for c in df.columns]
+
+    def cell(x) -> str:
+        if pd.isna(x):
+            return ""
+        text = str(x)
+        text = text.replace("\n", " ")
+        text = text.replace("|", "\\|")
+        return text
+
+    rows = [[cell(v) for v in row] for row in df.to_numpy()]
+    widths = []
+    for i, col in enumerate(cols):
+        values = [r[i] for r in rows]
+        widths.append(max([len(col), *(len(v) for v in values)]))
+
+    def fmt_row(values: list[str]) -> str:
+        padded = [v.ljust(widths[i]) for i, v in enumerate(values)]
+        return "| " + " | ".join(padded) + " |"
+
+    header = fmt_row(cols)
+    sep = "| " + " | ".join("-" * w for w in widths) + " |"
+    body = [fmt_row(r) for r in rows]
+    return "\n".join([header, sep, *body])
+
+
+def write_table_bundle(df: pd.DataFrame, stem: str, caption: str) -> list[Path]:
+    TABLE_DIR.mkdir(parents=True, exist_ok=True)
+
+    csv_path = TABLE_DIR / f"{stem}.csv"
+    md_path = TABLE_DIR / f"{stem}.md"
+    tex_path = TABLE_DIR / f"{stem}.tex"
+
+    df.to_csv(csv_path, index=False)
+
+    md = dataframe_to_markdown(df)
+    md_path.write_text(md + "\n", encoding="utf-8")
+
+    tex = df.to_latex(
+        index=False,
+        escape=True,
+        caption=caption,
+        label=f"tab:{stem}",
+    )
+    tex_path.write_text(tex, encoding="utf-8")
+
+    return [csv_path, md_path, tex_path]
+
+
+def make_table_1_readout_convergence() -> list[Path]:
+    require(READOUT_CONVERGENCE)
+    df = pd.read_csv(READOUT_CONVERGENCE)
+
+    # Prefer the manuscript-relevant order.
+    order = ["none", "other_human_targets", "other_human_plus_surface"]
+    df["feature_order"] = df["feature_set"].map({v: i for i, v in enumerate(order)}).fillna(99)
+    df = df.sort_values("feature_order")
+
+    out = pd.DataFrame(
+        {
+            "Controls": df["feature_set"].map(FEATURE_SET_LABELS).fillna(df["feature_set"]),
+            "Compression": df["compression"].map(fmt_float),
+            "Embedding": df["embedding"].map(fmt_float),
+            "TF-IDF": df["tfidf"].map(fmt_float),
+            "Compression - Embedding": df["compression_minus_embedding"].map(fmt_signed),
+            "Compression - TF-IDF": df["compression_minus_tfidf"].map(fmt_signed),
+        }
+    )
+
+    return write_table_bundle(
+        out,
+        "table_1_readout_convergence",
+        "Mean run-level Spearman correlations for structural preference readouts across controls.",
+    )
+
+
+def make_table_2_bootstrap_uncertainty() -> list[Path]:
+    require(BOOTSTRAP_TABLE)
+    df = pd.read_csv(BOOTSTRAP_TABLE)
+
+    out = pd.DataFrame(
+        {
+            "Claim": df["claim_id"],
+            "Comparison": df["comparison"],
+            "Observed Δ": df["observed_diff"].map(fmt_signed),
+            "95% CI": df["ci95"],
+            "Bootstrap n": df["n_boot"],
+            "Interpretation": df["paper_interpretation"],
+        }
+    )
+
+    return write_table_bundle(
+        out,
+        "table_2_bootstrap_uncertainty",
+        "Poem-level bootstrap uncertainty for compression and matched-other comparisons.",
+    )
+
+
+def make_table_3_generic_d_summary() -> list[Path]:
+    require(GENERIC_D)
+    df = pd.read_csv(GENERIC_D)
+
+    # The generic-D file uses Phase A correlation summaries.
+    # Expected columns: metric,spearman_rho,p_value,source_file,domain_variant,control_variant,seed
+    needed = {"metric", "spearman_rho", "domain_variant", "control_variant"}
+    missing = needed - set(df.columns)
+    if missing:
+        raise ValueError(f"generic_d table missing columns: {sorted(missing)}")
+
+    sub = df[df["metric"].isin(["v_raw", "v_ctrl", "v_struct"])].copy()
+
+    grouped = (
+        sub.groupby(["domain_variant", "control_variant", "metric"], dropna=False)
+        .agg(
+            mean_rho=("spearman_rho", "mean"),
+            min_rho=("spearman_rho", "min"),
+            max_rho=("spearman_rho", "max"),
+            n=("spearman_rho", "count"),
+        )
+        .reset_index()
+        .sort_values(["domain_variant", "control_variant", "metric"])
+    )
+
+    out = pd.DataFrame(
+        {
+            "Domain": grouped["domain_variant"],
+            "Control": grouped["control_variant"],
+            "Metric": grouped["metric"],
+            "Mean ρ": grouped["mean_rho"].map(fmt_signed),
+            "Range ρ": [
+                f"[{fmt_signed(lo)}, {fmt_signed(hi)}]"
+                for lo, hi in zip(grouped["min_rho"], grouped["max_rho"])
+            ],
+            "n": grouped["n"],
+        }
+    )
+
+    return write_table_bundle(
+        out,
+        "table_3_generic_d_summary",
+        "Generic Gutenberg-domain compression correlations with human Surprise ratings.",
+    )
+
+
+def make_table_4_item_nll_correlations() -> list[Path]:
+    require(ITEM_NLL)
+    df = pd.read_csv(ITEM_NLL)
+
+    # Keep this flexible because Phase A column names may vary slightly.
+    model_col = next((c for c in df.columns if c.lower() in {"model", "lm", "model_name"}), None)
+    target_col = next((c for c in df.columns if "target" in c.lower()), None)
+    rho_col = next((c for c in df.columns if "rho" in c.lower() or "spearman" in c.lower()), None)
+    p_col = next((c for c in df.columns if c.lower() in {"p", "p_value", "pvalue"}), None)
+
+    if not model_col or not target_col or not rho_col:
+        # If inference fails, still emit the original table in bundled form.
+        out = df.copy()
+    else:
+        out = pd.DataFrame(
+            {
+                "Model": df[model_col],
+                "Target": df[target_col],
+                "NLL correlation ρ": df[rho_col].map(fmt_signed),
+            }
+        )
+        if p_col:
+            out["p"] = df[p_col].map(lambda x: "" if pd.isna(x) else f"{float(x):.4f}")
+
+    return write_table_bundle(
+        out,
+        "table_4_item_nll_correlations",
+        "Item-level unconditional language-model predictability correlations with human target ratings.",
+    )
+
+
+def hash_entry(path: Path, note: str) -> dict:
+    rows, cols = csv_shape(path)
+    return {
+        "status": "generated",
+        "destination": str(path),
+        "sha256": sha256_file(path),
+        "n_rows": rows,
+        "n_cols": cols,
+        "note": note,
+    }
+
+
+def write_hash_csv(entries: list[dict]) -> None:
+    HASH_DIR.mkdir(parents=True, exist_ok=True)
+    out = HASH_DIR / "table_hashes.csv"
+
+    fieldnames = [
+        "status",
+        "destination",
+        "sha256",
+        "n_rows",
+        "n_cols",
+        "note",
+    ]
+
+    with out.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for e in entries:
+            writer.writerow({k: e.get(k, "") for k in fieldnames})
+
 
 def main() -> None:
-    print("[TODO] 90_make_tables.py: Generate paper tables from analysis outputs.")
-    # Implement this stage by porting final canonical logic from the Phase A repo.
-    # This placeholder exists so pipeline order is explicit and auditable.
+    TABLE_DIR.mkdir(parents=True, exist_ok=True)
+    HASH_DIR.mkdir(parents=True, exist_ok=True)
+
+    generated: list[Path] = []
+    generated.extend(make_table_1_readout_convergence())
+    generated.extend(make_table_2_bootstrap_uncertainty())
+    generated.extend(make_table_3_generic_d_summary())
+    generated.extend(make_table_4_item_nll_correlations())
+
+    manifest = {
+        "stage": "90_make_tables",
+        "outputs": [str(p) for p in generated],
+        "important_note": (
+            "This stage formats existing analysis outputs into paper-facing tables. "
+            "It does not change or recompute empirical values."
+        ),
+    }
+
+    manifest_path = TABLE_DIR / "manifest.json"
+    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+
+    entries = [
+        hash_entry(p, "Generated paper table artifact.")
+        for p in generated
+    ]
+    write_hash_csv(entries)
+
+    print("Generated paper tables:")
+    for p in generated:
+        rows, cols = csv_shape(p)
+        shape = f" rows={rows} cols={cols}" if p.suffix == ".csv" else ""
+        print(f"  {p}{shape}")
+    print(f"Wrote {manifest_path}")
+    print(f"Wrote {HASH_DIR / 'table_hashes.csv'}")
 
 
 if __name__ == "__main__":

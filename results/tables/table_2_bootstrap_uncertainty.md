@@ -1,0 +1,8 @@
+| Claim | Comparison                                                        | Observed Δ | 95% CI                 | Bootstrap n | Interpretation                                                           |
+| ----- | ----------------------------------------------------------------- | ---------- | ---------------------- | ----------- | ------------------------------------------------------------------------ |
+| B1    | Compression vs embedding, partially controlled structural target. | +0.128     | [-0.229072, +0.433379] | 5000        | Point estimate positive, but CI includes zero; unresolved at item level. |
+| B2    | Compression vs TF-IDF, partially controlled structural target.    | +0.170     | [-0.228590, +0.526922] | 5000        | Point estimate positive, but CI includes zero; unresolved at item level. |
+| B3    | Compression vs embedding, fully stacked structural target.        | +0.013     | [-0.407415, +0.454175] | 5000        | Point estimate positive, but CI includes zero; unresolved at item level. |
+| B4    | Compression vs TF-IDF, fully stacked structural target.           | +0.039     | [-0.342098, +0.451003] | 5000        | Point estimate positive, but CI includes zero; unresolved at item level. |
+| B5    | Matched-other vs explicit normalization, partially controlled.    | +0.074     | [-0.102145, +0.316872] | 5000        | Point estimate positive, but CI includes zero; unresolved at item level. |
+| B6    | Matched-other vs explicit normalization, fully stacked.           | +0.054     | [-0.071149, +0.187830] | 5000        | Point estimate positive, but CI includes zero; unresolved at item level. |
