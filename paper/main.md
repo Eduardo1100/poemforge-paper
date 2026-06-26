@@ -29,9 +29,9 @@ L(D \mid O_i \oplus H \oplus a)
 
 The key invariant is that the score is not the likelihood of the candidate itself. The score is the candidate’s effect on a held-out domain $D$. This distinction matters. If $D$ is generic literary text, the system asks whether the candidate improves compression of a broad literary distribution. If $D$ is constructed from high-rated versus low-rated poems, the system asks whether the candidate is closer to the human preference contrast encoded in that domain.
 
-Phase A shows that this distinction is decisive. The original label-free version of the hypothesis fails. Generic Gutenberg-derived domains do not recover human poetic preference. But preference-shaped domains recover appraisal structure across compression, TF-IDF, and embedding readouts. The value signal lives less in compression as such than in the construction of $D$.
+Phase A shows that this distinction is decisive. The original label-free version of the hypothesis fails. Generic Gutenberg-derived domains do not recover human poetic preference. But preference-shaped domains recover held-out Surprise structure across compression, TF-IDF, and embedding readouts. The value signal lives less in compression as such than in the construction of $D$.
 
-This reframes PoemForge. The project is not evidence for an unsupervised aesthetic evaluator. It is evidence for a domain-relative probing framework in which human-labeled contrastive domains induce measurable value landscapes.
+This reframes PoemForge. The project is not evidence for an unsupervised aesthetic evaluator. It is evidence for a domain-relative probing framework in which human-labeled contrastive domains induce measurable label-contrast landscapes.
 
 ## 2. Experimental Setup
 
@@ -89,6 +89,12 @@ We report three levels of control in the regenerated run-level summaries:
 
 The frozen Phase A artifacts also include stacked controls using other human targets, surface features, and item-level language-model predictability. These are promoted into the bootstrap uncertainty table, because the item-level bootstrap was run over the canonical Phase A fully controlled outputs.
 
+### 2.5 Statistical interpretation
+
+Because the K-fold and seed runs reuse the same small item set, run-level statistics are not treated as independent inferential evidence. We report run-level means and permutation summaries as internal stability diagnostics: they show whether an effect is stable under fold and seed variation, but they do not replace item-level uncertainty over poems. For claims comparing readout families, the primary uncertainty standard is the poem-level bootstrap.
+
+The stacked control setting should also be interpreted cautiously. Item-level language-model predictability is mechanistically closer to compression readouts than to TF-IDF or embedding cosine readouts, because compression scores are themselves derived from likelihood changes. Thus stacked controls are useful as a conservative stress test, but they are not a neutral adjustment across metrics. Apparent convergence under these controls may reflect suppressor effects and metric-asymmetric residualization in a small \(n=36\) sample.
+
 ## 3. Results
 
 ### 3.1 Generic domains do not recover human preference
@@ -99,7 +105,7 @@ This result is important because it blocks the strongest interpretation of the o
 
 See Table 3, generated as `results/tables/table_3_generic_d_summary.*`, for the generic-domain summary.
 
-### 3.2 Preference-shaped domains recover appraisal structure
+### 3.2 Preference-shaped domains recover held-out Surprise structure
 
 Preference-shaped domains behave differently. In held-out Surprise K-fold runs, all three readout families recover positive structural signal. Compression has the largest mean run-level structural correlation without residual controls and after residualization against other human targets.
 
@@ -109,7 +115,7 @@ The main readout convergence table shows:
 * after controlling for other human targets, compression remains ahead by mean;
 * after adding surface controls, the gap narrows substantially.
 
-This pattern supports the domain-relative interpretation. Human-shaped domains induce a preference landscape that multiple metrics can read. Compression is competitive and often strongest by point estimate, but the signal is not compression-exclusive.
+This pattern supports the domain-relative interpretation. Human-shaped domains induce a preference landscape that multiple metrics can read. Compression is competitive and often strongest by point estimate, but the signal is not compression-exclusive and should be interpreted as supervised contrastive probing rather than label-free value discovery.
 
 See Table 1, generated as `results/tables/table_1_readout_convergence.*`, and Figure 1, generated as `results/figures/figure_1_readout_convergence.*`.
 
@@ -143,13 +149,13 @@ A compression score can only be interpreted relative to the domain being compres
 
 The domain-relative probing framework survived. When $D$ is built from human preference structure, multiple readouts recover appraisal signal. This includes compression, TF-IDF, and embeddings.
 
-The convergence across readout families is a positive result. It suggests that the preference-shaped domain contains robust structure rather than a metric-specific artifact. The system is therefore better interpreted as reading out structure induced by a supervised domain, rather than discovering aesthetic value without preference-shaped evidence.
+The convergence across readout families is a useful diagnostic, but not a strong independent contribution. It suggests that the preference-shaped domain contains robust structure rather than a metric-specific artifact. The system is therefore better interpreted as reading out structure induced by a supervised domain, rather than discovering aesthetic value without preference-shaped evidence.
 
 ### 4.3 Compression’s remaining role
 
 Compression remains interesting, but the claim must be narrower. Compression has strong point estimates in several settings, and structural compression readouts outperform baselines by mean under no controls and under other-human-target residualization. However, the poem-level bootstrap does not resolve a unique compression advantage at the item level.
 
-The most promising compression-specific thread is the matched-other diagnostic: comparing structural matched-other scoring against explicit normalization variants. The observed differences are positive, but unresolved under bootstrap. This should be treated as a future mechanism question rather than a present conclusion.
+The matched-other diagnostic should first be interpreted as possible variance normalization: compression-gain estimates are noisy, so matched-control subtraction may help them more than it helps cosine-style similarities. The observed differences are positive, but unresolved under bootstrap. A compression-specific mechanism remains possible, but unresolved.
 
 ### 4.4 Implications for PoemForge
 
@@ -176,7 +182,7 @@ A third limitation is that the current pipeline freezes and promotes several Pha
 
 PoemForge Phase A began with a strong hypothesis: compression-progress over a held-out literary domain might provide a label-free proxy for poetic value. The evidence does not support that claim. Generic domains fail.
 
-The surviving result is sharper. Human-labeled domains induce value landscapes. When $D$ is constructed from human preference structure, compression, TF-IDF, and embedding readouts all recover appraisal signal. Compression is competitive and often strongest by point estimate, but item-level bootstrap uncertainty does not establish a unique compression advantage at \(n=36\).
+The surviving result is sharper. Human-labeled domains induce label-contrast landscapes. When $D$ is constructed from human preference structure, compression, TF-IDF, and embedding readouts all recover appraisal signal. Compression is competitive and often strongest by point estimate, but item-level bootstrap uncertainty does not establish a unique compression advantage at \(n=36\).
 
 The final claim is therefore domain-relative supervised probing, not label-free compression aesthetics. The decisive object is not the readout metric alone, but the held-out domain $D$.
 
