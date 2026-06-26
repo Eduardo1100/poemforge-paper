@@ -1,0 +1,9 @@
+{
+  "stage": "99_diff_against_scaffold",
+  "tolerance": 1e-09,
+  "outputs": {
+    "numeric_diff": "/home/eduardo/Projects/poemforge-paper/results/diffs/scaffold_numeric_diff.csv",
+    "report": "/home/eduardo/Projects/poemforge-paper/results/diffs/scaffold_diff_report.md"
+  },
+  "important_note": "This stage checks selected regenerated manuscript numbers against canonical scaffold values. It is a drift detector, not a statistical test."
+}
