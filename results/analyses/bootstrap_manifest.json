@@ -1,0 +1,14 @@
+{
+  "stage": "60_bootstrap",
+  "source_files": {
+    "summary": "/home/eduardo/Projects/poemforge-paper/results/phase_a_eval_results/poem_level_bootstrap_summary.csv",
+    "observed": "/home/eduardo/Projects/poemforge-paper/results/phase_a_eval_results/poem_level_bootstrap_observed.csv",
+    "samples": "/home/eduardo/Projects/poemforge-paper/results/phase_a_eval_results/poem_level_bootstrap_samples.csv"
+  },
+  "outputs": {
+    "key_claims": "/home/eduardo/Projects/poemforge-paper/results/analyses/bootstrap_key_claims.csv",
+    "manuscript_table": "/home/eduardo/Projects/poemforge-paper/results/analyses/bootstrap_manuscript_table.csv",
+    "file_summary": "/home/eduardo/Projects/poemforge-paper/results/analyses/bootstrap_file_summary.csv"
+  },
+  "important_note": "This stage promotes frozen Phase A poem-level bootstrap outputs into paper-facing tables. It does not recompute bootstrap samples yet."
+}

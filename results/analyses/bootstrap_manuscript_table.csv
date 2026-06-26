@@ -1,0 +1,7 @@
+claim_id,comparison,observed_diff,ci95,n_boot,paper_interpretation
+B1,"Compression vs embedding, partially controlled structural target.",0.128371,"[-0.229072, +0.433379]",5000,"Point estimate positive, but CI includes zero; unresolved at item level."
+B2,"Compression vs TF-IDF, partially controlled structural target.",0.170172,"[-0.228590, +0.526922]",5000,"Point estimate positive, but CI includes zero; unresolved at item level."
+B3,"Compression vs embedding, fully stacked structural target.",0.012571,"[-0.407415, +0.454175]",5000,"Point estimate positive, but CI includes zero; unresolved at item level."
+B4,"Compression vs TF-IDF, fully stacked structural target.",0.038713,"[-0.342098, +0.451003]",5000,"Point estimate positive, but CI includes zero; unresolved at item level."
+B5,"Matched-other vs explicit normalization, partially controlled.",0.07374,"[-0.102145, +0.316872]",5000,"Point estimate positive, but CI includes zero; unresolved at item level."
+B6,"Matched-other vs explicit normalization, fully stacked.",0.054332,"[-0.071149, +0.187830]",5000,"Point estimate positive, but CI includes zero; unresolved at item level."
