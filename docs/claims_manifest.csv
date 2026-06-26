@@ -1,0 +1,6 @@
+claim_id,paper_section,claim,status,pipeline_stage,output_file,output_hash,primary_metric,expected_value,tolerance,notes
+C1,Results 4.1,Generic external D fails to recover human appraisal,strong,pipeline/50_permutation.py,results/analyses/generic_d_summary.csv,,spearman_rho,,,
+C2,Results 4.2,Preference-shaped D recovers appraisal structure,strong,pipeline/50_permutation.py,results/analyses/preference_d_summary.csv,,v_pref_struct,,,
+C3,Results 4.3,Compression TF-IDF and embeddings converge under full controls,strong,pipeline/90_make_tables.py,results/tables/readout_convergence.csv,,mean_partial_rho,,,
+C4,Results 4.4,Compression does not have a resolved item-level advantage over baselines,not_established,pipeline/60_bootstrap.py,results/analyses/poem_level_bootstrap_summary.csv,,bootstrap_ci,,,
+C5,Discussion,Matched-other interaction remains unresolved,open,pipeline/60_bootstrap.py,results/analyses/matched_other_bootstrap.csv,,bootstrap_ci,,,
