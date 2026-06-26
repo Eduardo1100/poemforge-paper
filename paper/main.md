@@ -4,33 +4,31 @@
 
 We test whether compression-progress signals can recover human poetic preference from text alone. The original hypothesis was that a compression-based value signal might act as a label-free aesthetic proxy: if a candidate poem improves a model’s ability to compress a held-out poetic domain, that improvement might correspond to human-perceived poetic value. Phase A does not support that strong claim. Generic literary domains fail to recover human preference and sometimes anti-align with it.
 
-However, the experiment reveals a more precise and useful result. When the held-out domain is constructed from human preference structure, compression, TF-IDF similarity, and embedding similarity all recover meaningful preference signal. The robust finding is therefore not that compression uniquely discovers aesthetic value, but that the domain (D) induces the value landscape. Human-shaped contrastive domains make appraisal structure legible to multiple readout metrics; generic world-grounded domains do not.
+However, the experiment reveals a more precise and useful result. When the held-out domain is constructed from human preference structure, compression, TF-IDF similarity, and embedding similarity all recover meaningful preference signal. The robust finding is therefore not that compression uniquely discovers aesthetic value, but that the domain \(D\) induces the value landscape. Human-shaped contrastive domains make appraisal structure legible to multiple readout metrics; generic world-grounded domains do not.
 
-Across 25 held-out Surprise K-fold runs, compression structural readouts have the strongest run-level mean correlation under no residual controls and under residualization against other human targets. Under stronger surface controls, the gap narrows substantially. Poem-level bootstrap intervals over item resampling include zero for compression-vs-baseline comparisons, so the data do not resolve a unique compression advantage at (n=36). The strongest defensible claim is domain-relative supervised probing: human-labeled domains recover human appraisal structure across several readout families, while generic compression does not provide a label-free aesthetic oracle.
+Across 25 held-out Surprise K-fold runs, compression structural readouts have the strongest run-level mean correlation under no residual controls and under residualization against other human targets. Under stronger surface controls, the gap narrows substantially. Poem-level bootstrap intervals over item resampling include zero for compression-vs-baseline comparisons, so the data do not resolve a unique compression advantage at \(n=36\). The strongest defensible claim is domain-relative supervised probing: human-labeled domains recover human appraisal structure across several readout families, while generic compression does not provide a label-free aesthetic oracle.
 
 ## 1. Introduction
 
 A natural way to formalize value is as expected improvement in a model’s ability to predict or compress future observations. In a creative setting, this suggests a seductive hypothesis: a poem may be valuable if it helps compress a relevant poetic world. This project began from that hypothesis.
 
-Let a candidate artifact be (a), a history be (H), possible future observations be (O_i), and a held-out domain be (D). The value functional can be written as:
+Let a candidate artifact be \(a\), a history be \(H\), possible future observations be \(O_i\), and a held-out domain be \(D\). The value functional can be written as:
 
-[
+$$
 V(a \mid H) =
 \sum_i q_i
 \left[
 L(D \mid O_i \oplus H)
-----------------------
-
+-
 L(D \mid O_i \oplus H \oplus a)
 \right]
--------
+-
+\mathrm{cost}\(a\).
+$$
 
-\mathrm{cost}(a).
-]
+The key invariant is that the score is not the likelihood of the candidate itself. The score is the candidate’s effect on a held-out domain \(D\). This distinction matters. If \(D\) is generic literary text, the system asks whether the candidate improves compression of a broad literary distribution. If \(D\) is constructed from high-rated versus low-rated poems, the system asks whether the candidate is closer to the human preference contrast encoded in that domain.
 
-The key invariant is that the score is not the likelihood of the candidate itself. The score is the candidate’s effect on a held-out domain (D). This distinction matters. If (D) is generic literary text, the system asks whether the candidate improves compression of a broad literary distribution. If (D) is constructed from high-rated versus low-rated poems, the system asks whether the candidate is closer to the human preference contrast encoded in that domain.
-
-Phase A shows that this distinction is decisive. The original label-free version of the hypothesis fails. Generic Gutenberg-derived domains do not recover human poetic preference. But preference-shaped domains recover appraisal structure across compression, TF-IDF, and embedding readouts. The value signal lives less in compression as such than in the construction of (D).
+Phase A shows that this distinction is decisive. The original label-free version of the hypothesis fails. Generic Gutenberg-derived domains do not recover human poetic preference. But preference-shaped domains recover appraisal structure across compression, TF-IDF, and embedding readouts. The value signal lives less in compression as such than in the construction of \(D\).
 
 This reframes PoemForge. The project is not evidence for an unsupervised aesthetic oracle. It is evidence for a domain-relative probing framework in which human-labeled contrastive domains induce measurable value landscapes.
 
@@ -46,7 +44,7 @@ The normalized data stage freezes item text, target ratings, surface features, a
 
 We compare two broad domain types.
 
-First, generic literary domains are sampled from Gutenberg-derived poetry-like text. These domains test the strong label-free hypothesis: if compression-progress over generic literary text is enough to recover human preference, then generic (D) should correlate positively with human ratings.
+First, generic literary domains are sampled from Gutenberg-derived poetry-like text. These domains test the strong label-free hypothesis: if compression-progress over generic literary text is enough to recover human preference, then generic \(D\) should correlate positively with human ratings.
 
 Second, preference-shaped domains are constructed from high-rated and low-rated poems under a held-out K-fold protocol. For a target such as Surprise, high and low preference pools are rebuilt inside each training fold, and test items are scored against the resulting contrast. This prevents direct leakage from test items into the domain construction.
 
@@ -60,20 +58,19 @@ We compare three readout families:
 
 For preference-shaped domains, each readout produces raw, control, and structural preference scores. The structural score subtracts a matched-control effect:
 
-[
+$$
 v_{\mathrm{struct}} = v_{\mathrm{raw}} - v_{\mathrm{ctrl}}.
-]
+$$
 
 For contrastive preference scoring, the main quantity is:
 
-[
-v_{\mathrm{pref_struct}}
-========================
-
-## (v_{\mathrm{high_raw}} - v_{\mathrm{low_raw}})
-
-(v_{\mathrm{high_ctrl}} - v_{\mathrm{low_ctrl}}).
-]
+$$
+v_{\mathrm{pref\_struct}}
+=
+(v_{\mathrm{high\_raw}} - v_{\mathrm{low\_raw}})
+-
+(v_{\mathrm{high\_ctrl}} - v_{\mathrm{low\_ctrl}}).
+$$
 
 The same conceptual structure is applied to TF-IDF and embedding baselines, producing comparable structural preference readouts.
 
@@ -115,7 +112,7 @@ See Table 1 and Figure 1.
 
 Run-level means lean toward compression in several partially controlled settings. But item-level bootstrap uncertainty is wide. For the key compression-vs-baseline comparisons, the observed differences are positive, but all 95% bootstrap intervals include zero.
 
-This means the correct interpretation is not “compression is equal to the baselines.” The correct interpretation is underresolution at the item level. With (n=36) poems, the data do not support a strong claim that compression uniquely outperforms TF-IDF or embedding similarity.
+This means the correct interpretation is not “compression is equal to the baselines.” The correct interpretation is underresolution at the item level. With \(n=36\) poems, the data do not support a strong claim that compression uniquely outperforms TF-IDF or embedding similarity.
 
 The same caution applies to the matched-other diagnostic. Point estimates are positive, but bootstrap intervals include zero. The matched-other mechanism remains a plausible compression-specific thread, not a resolved result.
 
@@ -133,13 +130,13 @@ See Table 4.
 
 ### 4.1 What failed
 
-The label-free compression oracle failed. Generic literary domains do not recover human preference. This failure is not a nuisance result; it defines the boundary of the framework. The held-out domain (D) is not an implementation detail. It is the source of the appraisal geometry.
+The label-free compression oracle failed. Generic literary domains do not recover human preference. This failure is not a nuisance result; it defines the boundary of the framework. The held-out domain \(D\) is not an implementation detail. It is the source of the appraisal geometry.
 
-A compression score can only be interpreted relative to the domain being compressed. If (D) is generic, the score reflects generic literary predictability. If (D) is preference-shaped, the score reflects the contrast encoded by that preference-shaped domain.
+A compression score can only be interpreted relative to the domain being compressed. If \(D\) is generic, the score reflects generic literary predictability. If \(D\) is preference-shaped, the score reflects the contrast encoded by that preference-shaped domain.
 
 ### 4.2 What survived
 
-The domain-relative probing framework survived. When (D) is built from human preference structure, multiple readouts recover appraisal signal. This includes compression, TF-IDF, and embeddings.
+The domain-relative probing framework survived. When \(D\) is built from human preference structure, multiple readouts recover appraisal signal. This includes compression, TF-IDF, and embeddings.
 
 The convergence across readout families is a positive result. It suggests that the preference-shaped domain contains robust structure rather than a metric-specific artifact. The system is not discovering aesthetic value from nowhere. It is reading out structure induced by a supervised domain.
 
@@ -164,7 +161,7 @@ Under this framing, the valuable object is not a universal compression score. Th
 
 ## 5. Limitations
 
-The primary limitation is sample size. The final item-level analysis has (n=36) poems, which is too small to resolve fine-grained differences between readout families. The bootstrap intervals make this limitation explicit.
+The primary limitation is sample size. The final item-level analysis has \(n=36\) poems, which is too small to resolve fine-grained differences between readout families. The bootstrap intervals make this limitation explicit.
 
 A second limitation is domain specificity. The positive results depend on human-shaped contrastive domains. This is appropriate for supervised probing, but it means the results should not be generalized to unsupervised aesthetic discovery.
 
@@ -174,12 +171,12 @@ A third limitation is that the current pipeline freezes and promotes several Pha
 
 PoemForge Phase A began with a strong hypothesis: compression-progress over a held-out literary domain might provide a label-free proxy for poetic value. The evidence does not support that claim. Generic domains fail.
 
-The surviving result is sharper. Human-labeled domains induce value landscapes. When (D) is constructed from human preference structure, compression, TF-IDF, and embedding readouts all recover appraisal signal. Compression is competitive and often strongest by point estimate, but item-level bootstrap uncertainty does not establish a unique compression advantage at (n=36).
+The surviving result is sharper. Human-labeled domains induce value landscapes. When \(D\) is constructed from human preference structure, compression, TF-IDF, and embedding readouts all recover appraisal signal. Compression is competitive and often strongest by point estimate, but item-level bootstrap uncertainty does not establish a unique compression advantage at \(n=36\).
 
-The final claim is therefore domain-relative supervised probing, not label-free compression aesthetics. The dragon was not in the metric. It was in (D).
+The final claim is therefore domain-relative supervised probing, not label-free compression aesthetics. The dragon was not in the metric. It was in \(D\).
 
 ## Reproducibility
 
 All reported manuscript tables and figures are generated by the reproducibility pipeline. The pipeline freezes normalized data, domain artifacts, score artifacts, control features, Phase A inferential results, bootstrap summaries, manuscript tables, manuscript figures, and scaffold numeric diffs.
 
-The final scaffold check verifies 39 canonical manuscript values against expected values with tolerance (10^{-9}). All checks pass.
+The final scaffold check verifies 39 canonical manuscript values against expected values with tolerance \(10^{-9}\). All checks pass.
