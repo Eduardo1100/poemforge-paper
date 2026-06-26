@@ -1,0 +1,47 @@
+item_id,dataset,authorship,poet,title,word_len,control_item_id,control_dataset,control_authorship,control_poet,control_title,control_word_len,len_dist
+porter_s2_1,porter_machery_2024,AI,Sylvia Plath,,114,porter_s2_6,porter_machery_2024,human,Shakespeare,,115,1
+porter_s2_2,porter_machery_2024,AI,Walt Whitman,,203,porter_s2_9,porter_machery_2024,human,Lasky,,152,51
+porter_s2_3,porter_machery_2024,AI,Lord Byron,,81,porter_s2_4,porter_machery_2024,AI,Samuel Butler,,88,7
+porter_s2_4,porter_machery_2024,AI,Samuel Butler,,88,porter_s2_3,porter_machery_2024,AI,Lord Byron,,81,7
+porter_s2_5,porter_machery_2024,AI,Allen Ginsberg,,151,porter_s2_9,porter_machery_2024,human,Lasky,,152,1
+porter_s2_6,porter_machery_2024,human,Shakespeare,,115,porter_s2_1,porter_machery_2024,AI,Sylvia Plath,,114,1
+porter_s2_7,porter_machery_2024,human,Emily Dickinson,,29,porter_s2_3,porter_machery_2024,AI,Lord Byron,,81,52
+porter_s2_8,porter_machery_2024,human,T.S. Eliot,,120,porter_s2_6,porter_machery_2024,human,Shakespeare,,115,5
+porter_s2_9,porter_machery_2024,human,Lasky,,152,porter_s2_5,porter_machery_2024,AI,Allen Ginsberg,,151,1
+porter_s2_10,porter_machery_2024,human,Chaucer,,112,porter_s2_1,porter_machery_2024,AI,Sylvia Plath,,114,2
+chaudhuri_2024_1,chaudhuri_2024,human,W. H. Auden,Funeral Blues,141,chaudhuri_2024_26,chaudhuri_2024,human,P. B. Shelley,Ozymandias,118,23
+chaudhuri_2024_2,chaudhuri_2024,human,W.S. Merwin,At the Same Time,46,chaudhuri_2024_33,chaudhuri_2024,human,Robert Frost,Nothing Gold Can Stay,47,1
+chaudhuri_2024_3,chaudhuri_2024,human,Charles Simic,The Supreme Moment,68,chaudhuri_2024_34,chaudhuri_2024,human,William Wordsworth,My Heart Leaps Up,68,0
+chaudhuri_2024_4,chaudhuri_2024,human,Langston Hughes,Peace,29,chaudhuri_2024_30,chaudhuri_2024,human,P. B. Shelley,Fragment: A Wanderer,32,3
+chaudhuri_2024_5,chaudhuri_2024,human,Robert Frost,A Peck of Gold,93,chaudhuri_2024_35,chaudhuri_2024,human,Emily Dickinson,I taste a liquor never brewed –,93,0
+chaudhuri_2024_6,chaudhuri_2024,human,Robert Frost,The Freedom of the Moon,99,chaudhuri_2024_24,chaudhuri_2024,human,Sara Teasdale,There Will Come Soft Rains,99,0
+chaudhuri_2024_7,chaudhuri_2024,human,Robert Frost,Stopping by Woods on a Snowy Evening,118,chaudhuri_2024_26,chaudhuri_2024,human,P. B. Shelley,Ozymandias,118,0
+chaudhuri_2024_8,chaudhuri_2024,human,Maya Angelou,When You Come,49,chaudhuri_2024_33,chaudhuri_2024,human,Robert Frost,Nothing Gold Can Stay,47,2
+chaudhuri_2024_9,chaudhuri_2024,human,William Shakespeare,Sonnet 116,114,chaudhuri_2024_19,chaudhuri_2024,human,Christina Rossetti,Remember,115,1
+chaudhuri_2024_10,chaudhuri_2024,human,Emily Dickinson,Apparently with no Surprise,43,chaudhuri_2024_2,chaudhuri_2024,human,W.S. Merwin,At the Same Time,46,3
+chaudhuri_2024_11,chaudhuri_2024,human,Emily Dickinson,"Will there really be a ""Morning""?",85,chaudhuri_2024_25,chaudhuri_2024,human,Sara Teasdale,Alone,84,1
+chaudhuri_2024_12,chaudhuri_2024,human,Emily Dickinson,Unable are the Loved to die,34,chaudhuri_2024_30,chaudhuri_2024,human,P. B. Shelley,Fragment: A Wanderer,32,2
+chaudhuri_2024_13,chaudhuri_2024,human,Emily Dickinson,How happy is the little Stone,55,chaudhuri_2024_14,chaudhuri_2024,human,William Blake,Ah! Sun-flower,55,0
+chaudhuri_2024_14,chaudhuri_2024,human,William Blake,Ah! Sun-flower,55,chaudhuri_2024_13,chaudhuri_2024,human,Emily Dickinson,How happy is the little Stone,55,0
+chaudhuri_2024_15,chaudhuri_2024,human,William Blake,The Smile,111,chaudhuri_2024_20,chaudhuri_2024,human,W. B. Yeats,When You Are Old,108,3
+chaudhuri_2024_16,chaudhuri_2024,human,Derek Walcott,Love after Love,104,chaudhuri_2024_20,chaudhuri_2024,human,W. B. Yeats,When You Are Old,108,4
+chaudhuri_2024_17,chaudhuri_2024,human,Wilfred Owen,The Last Laugh,94,chaudhuri_2024_35,chaudhuri_2024,human,Emily Dickinson,I taste a liquor never brewed –,93,1
+chaudhuri_2024_18,chaudhuri_2024,human,Dylan Thomas,Clown in the Moon,55,chaudhuri_2024_13,chaudhuri_2024,human,Emily Dickinson,How happy is the little Stone,55,0
+chaudhuri_2024_19,chaudhuri_2024,human,Christina Rossetti,Remember,115,chaudhuri_2024_9,chaudhuri_2024,human,William Shakespeare,Sonnet 116,114,1
+chaudhuri_2024_20,chaudhuri_2024,human,W. B. Yeats,When You Are Old,108,chaudhuri_2024_15,chaudhuri_2024,human,William Blake,The Smile,111,3
+chaudhuri_2024_21,chaudhuri_2024,human,W. B. Yeats,Aedh wishes for the Cloths of Heaven,71,chaudhuri_2024_28,chaudhuri_2024,human,P. B. Shelley,A Lament,70,1
+chaudhuri_2024_22,chaudhuri_2024,human,W.B. Yeats,Memory,38,chaudhuri_2024_12,chaudhuri_2024,human,Emily Dickinson,Unable are the Loved to die,34,4
+chaudhuri_2024_23,chaudhuri_2024,human,Henry Wadsworth Longfellow,The Arrow and the Song,97,chaudhuri_2024_32,chaudhuri_2024,human,John Donne,MEDITATION XVII,96,1
+chaudhuri_2024_24,chaudhuri_2024,human,Sara Teasdale,There Will Come Soft Rains,99,chaudhuri_2024_6,chaudhuri_2024,human,Robert Frost,The Freedom of the Moon,99,0
+chaudhuri_2024_25,chaudhuri_2024,human,Sara Teasdale,Alone,84,chaudhuri_2024_11,chaudhuri_2024,human,Emily Dickinson,"Will there really be a ""Morning""?",85,1
+chaudhuri_2024_26,chaudhuri_2024,human,P. B. Shelley,Ozymandias,118,chaudhuri_2024_7,chaudhuri_2024,human,Robert Frost,Stopping by Woods on a Snowy Evening,118,0
+chaudhuri_2024_27,chaudhuri_2024,human,P. B. Shelley,Good-Night,81,chaudhuri_2024_25,chaudhuri_2024,human,Sara Teasdale,Alone,84,3
+chaudhuri_2024_28,chaudhuri_2024,human,P. B. Shelley,A Lament,70,chaudhuri_2024_21,chaudhuri_2024,human,W. B. Yeats,Aedh wishes for the Cloths of Heaven,71,1
+chaudhuri_2024_29,chaudhuri_2024,human,P. B. Shelley,Alas! This Is Not What I Thought Life Was.,89,chaudhuri_2024_11,chaudhuri_2024,human,Emily Dickinson,"Will there really be a ""Morning""?",85,4
+chaudhuri_2024_30,chaudhuri_2024,human,P. B. Shelley,Fragment: A Wanderer,32,chaudhuri_2024_12,chaudhuri_2024,human,Emily Dickinson,Unable are the Loved to die,34,2
+chaudhuri_2024_31,chaudhuri_2024,human,P. B. Shelley,Fragment: Apostrophe to Silence,76,chaudhuri_2024_21,chaudhuri_2024,human,W. B. Yeats,Aedh wishes for the Cloths of Heaven,71,5
+chaudhuri_2024_32,chaudhuri_2024,human,John Donne,MEDITATION XVII,96,chaudhuri_2024_23,chaudhuri_2024,human,Henry Wadsworth Longfellow,The Arrow and the Song,97,1
+chaudhuri_2024_33,chaudhuri_2024,human,Robert Frost,Nothing Gold Can Stay,47,chaudhuri_2024_2,chaudhuri_2024,human,W.S. Merwin,At the Same Time,46,1
+chaudhuri_2024_34,chaudhuri_2024,human,William Wordsworth,My Heart Leaps Up,68,chaudhuri_2024_3,chaudhuri_2024,human,Charles Simic,The Supreme Moment,68,0
+chaudhuri_2024_35,chaudhuri_2024,human,Emily Dickinson,I taste a liquor never brewed –,93,chaudhuri_2024_5,chaudhuri_2024,human,Robert Frost,A Peck of Gold,93,0
+chaudhuri_2024_36,chaudhuri_2024,human,Countee Cullen,If You Should Go,51,chaudhuri_2024_8,chaudhuri_2024,human,Maya Angelou,When You Come,49,2

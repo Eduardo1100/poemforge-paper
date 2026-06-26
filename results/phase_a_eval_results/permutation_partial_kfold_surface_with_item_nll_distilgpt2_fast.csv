@@ -1,0 +1,16 @@
+observer,metric,feature_set,features,n_runs,n_items,observed_mean_partial_rho,perm_p_right,perm_p_two_sided,perm_p_max_abs_primary,null_mean,null_std
+distilgpt2,v_low_raw,item_nll,item_nll_bpb__distilgpt2,25,36,-0.3644066924066924,0.9931,0.0162,,0.003758364208658284,0.15405036636626127
+distilgpt2,v_low_struct,item_nll,item_nll_bpb__distilgpt2,25,36,-0.3493127413127413,0.9956,0.009,,0.0028245381665152882,0.1371048996482989
+distilgpt2,v_pref_ctrl,item_nll,item_nll_bpb__distilgpt2,25,36,-0.15136164736164737,0.9851,0.0306,,-0.000640956534757637,0.07126644274045607
+distilgpt2,v_pref_raw,item_nll,item_nll_bpb__distilgpt2,25,36,0.24225482625482628,0.0161,0.0344,0.0632,-0.0009881484293521958,0.11613836767358683
+distilgpt2,v_pref_struct,item_nll,item_nll_bpb__distilgpt2,25,36,0.3822084942084942,0.0009,0.0017,0.0018,-0.0005907053817053018,0.12323015299821315
+distilgpt2,v_low_raw,surface_plus_all_observer_nll,word_len_calc+char_len_calc+line_count+item_nll_bpb__distilgpt2+item_nll_bpb__gpt2+item_nll_bpb__gpt2-medium,25,36,-0.2945894465894466,0.9665,0.0649,,-0.001568332561132561,0.15847965643761813
+distilgpt2,v_low_struct,surface_plus_all_observer_nll,word_len_calc+char_len_calc+line_count+item_nll_bpb__distilgpt2+item_nll_bpb__gpt2+item_nll_bpb__gpt2-medium,25,36,-0.2961029601029601,0.9853,0.0291,,0.0003223135135135134,0.13750939442160853
+distilgpt2,v_pref_ctrl,surface_plus_all_observer_nll,word_len_calc+char_len_calc+line_count+item_nll_bpb__distilgpt2+item_nll_bpb__gpt2+item_nll_bpb__gpt2-medium,25,36,-0.12953410553410555,0.9629,0.0762,,0.0014820149292149292,0.0736680387717926
+distilgpt2,v_pref_raw,surface_plus_all_observer_nll,word_len_calc+char_len_calc+line_count+item_nll_bpb__distilgpt2+item_nll_bpb__gpt2+item_nll_bpb__gpt2-medium,25,36,0.27225740025740025,0.0067,0.0124,0.0312,0.001772134877734878,0.11138489383049147
+distilgpt2,v_pref_struct,surface_plus_all_observer_nll,word_len_calc+char_len_calc+line_count+item_nll_bpb__distilgpt2+item_nll_bpb__gpt2+item_nll_bpb__gpt2-medium,25,36,0.41173745173745174,0.0005,0.0008,0.0008,0.0003893096525096519,0.12469023658534471
+distilgpt2,v_low_raw,surface_plus_item_nll,word_len_calc+char_len_calc+line_count+item_nll_bpb__distilgpt2,25,36,-0.2613230373230373,0.9577,0.0882,,0.0003669992277992275,0.15404972782049578
+distilgpt2,v_low_struct,surface_plus_item_nll,word_len_calc+char_len_calc+line_count+item_nll_bpb__distilgpt2,25,36,-0.2759227799227799,0.9832,0.0341,,0.00038438095238095256,0.13328832914444394
+distilgpt2,v_pref_ctrl,surface_plus_item_nll,word_len_calc+char_len_calc+line_count+item_nll_bpb__distilgpt2,25,36,-0.13935649935649935,0.9775,0.0453,,0.0003946368082368082,0.07063030756779919
+distilgpt2,v_pref_raw,surface_plus_item_nll,word_len_calc+char_len_calc+line_count+item_nll_bpb__distilgpt2,25,36,0.2256267696267696,0.0231,0.048,0.0894,1.903114543114537e-05,0.11429436671819306
+distilgpt2,v_pref_struct,surface_plus_item_nll,word_len_calc+char_len_calc+line_count+item_nll_bpb__distilgpt2,25,36,0.38284684684684683,0.0002,0.0005,0.0006,-0.0008098594594594596,0.1221690637639276

@@ -1,0 +1,8 @@
+observer,metric,features,n_runs,n_items,observed_mean_partial_rho,perm_p_right,perm_p_two_sided,perm_p_max_abs_primary,null_mean,null_std
+distilgpt2,v_high_raw,word_len_calc+char_len_calc+line_count,25,36,-0.15243243243243243,0.8494,0.3143,,0.003066435006435007,0.15139527683700454
+distilgpt2,v_high_struct,word_len_calc+char_len_calc+line_count,25,36,-0.13954182754182753,0.8471,0.312,,0.002931924839124839,0.13634384237204578
+distilgpt2,v_low_raw,word_len_calc+char_len_calc+line_count,25,36,-0.2613539253539254,0.959,0.0879,,0.003849431145431146,0.1518919120997864
+distilgpt2,v_low_struct,word_len_calc+char_len_calc+line_count,25,36,-0.35178378378378383,0.997,0.0077,,0.0033726517374517376,0.13459420380192375
+distilgpt2,v_pref_ctrl,word_len_calc+char_len_calc+line_count,25,36,-0.17812097812097816,0.9959,0.0094,,-0.0007550249678249678,0.07109723485381332
+distilgpt2,v_pref_raw,word_len_calc+char_len_calc+line_count,25,36,0.20509652509652512,0.03,0.0666,0.1218,-0.0012659294723294727,0.11188417677448255
+distilgpt2,v_pref_struct,word_len_calc+char_len_calc+line_count,25,36,0.410882882882883,0.0,0.0001,0.0002,-0.0010260314028314032,0.120284240596313
