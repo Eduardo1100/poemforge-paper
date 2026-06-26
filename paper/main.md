@@ -29,7 +29,7 @@ L(D \mid O_i \oplus H \oplus a)
 
 The key invariant is that the score is not the likelihood of the candidate itself. The score is the candidate’s effect on a held-out domain $D$. This distinction matters. If $D$ is generic literary text, the system asks whether the candidate improves compression of a broad literary distribution. If $D$ is constructed from high-rated versus low-rated poems, the system asks whether the candidate is closer to the human preference contrast encoded in that domain.
 
-the frozen evaluation shows that this distinction is decisive. The original label-free version of the hypothesis fails. Generic Gutenberg-derived domains do not recover human poetic preference. But preference-shaped domains recover held-out Surprise structure across compression, TF-IDF, and embedding readouts. The value signal lives less in compression as such than in the construction of $D$.
+This evaluation shows that the distinction is decisive. The original label-free version of the hypothesis fails. Generic Gutenberg-derived domains do not recover human poetic preference. But preference-shaped domains recover held-out Surprise structure across compression, TF-IDF, and embedding readouts. The value signal lives less in compression as such than in the construction of $D$.
 
 This reframes PoemForge. The project is not evidence for an unsupervised aesthetic evaluator. It is evidence for a domain-relative probing framework in which human-labeled contrastive domains induce measurable label-contrast landscapes.
 
@@ -87,7 +87,7 @@ We report three levels of control in the regenerated run-level summaries:
 2. residualization against other human target dimensions;
 3. residualization against other human targets plus surface features.
 
-The frozen evaluation artifacts also include stacked controls using other human targets, surface features, and item-level language-model predictability. These are promoted into the bootstrap uncertainty table, because the item-level bootstrap was run over the canonical fully controlled outputs.
+The archived evaluation artifacts also include stacked controls using other human targets, surface features, and item-level language-model predictability. These are promoted into the bootstrap uncertainty table, because the item-level bootstrap was run over the canonical fully controlled outputs.
 
 ### 2.5 Statistical interpretation
 
@@ -178,11 +178,11 @@ The primary limitation is sample size. The final item-level analysis has $n=36$ 
 
 A second limitation is domain specificity. The positive results depend on human-shaped contrastive domains. This is appropriate for supervised probing, but it means the results should not be generalized to unsupervised aesthetic discovery.
 
-A third limitation is that the current pipeline freezes and promotes several the frozen evaluation inferential artifacts rather than fully recomputing every expensive analysis from scratch. This is acceptable for a reproducibility bridge, but a final archival version should progressively replace frozen-result promotion with direct regeneration.
+A third limitation is that the current pipeline freezes and promotes several archived inferential artifacts rather than fully recomputing every expensive analysis from scratch. This is acceptable for a reproducibility bridge, but a final archival version should progressively replace frozen-result promotion with direct regeneration.
 
 ## 6. Conclusion
 
-PoemForge the frozen evaluation began with a strong hypothesis: compression-progress over a held-out literary domain might provide a label-free proxy for poetic value. The evidence does not support that claim. Generic domains fail.
+PoemForge began with a strong hypothesis: compression-progress over a held-out literary domain might provide a label-free proxy for poetic value. The evidence does not support that claim. Generic domains fail.
 
 The surviving result is sharper but narrower. Human-labeled domains induce label-contrast landscapes. When $D$ is constructed from human preference structure, compression, TF-IDF, and embedding readouts show positive held-out label-structure point estimates. Compression is competitive and often strongest by point estimate, but item-level bootstrap uncertainty does not establish either a unique compression advantage or a fully resolved absolute supervised effect at $n=36$.
 
