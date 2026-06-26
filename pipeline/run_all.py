@@ -13,7 +13,7 @@ STAGES = [
     "40_residualize.py",
     "50_permutation.py",
     "60_bootstrap.py",
-    ("61_bootstrap_absolute_effects.py", ["--n-boot", "100", "--seed", "123"]),
+    ("61_bootstrap_absolute_effects.py", ["--n-boot", "5000", "--seed", "123"]),
     "90_make_tables.py",
     "91_make_figures.py",
     "99_diff_against_scaffold.py",

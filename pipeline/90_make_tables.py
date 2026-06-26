@@ -300,9 +300,9 @@ def make_table_5_absolute_effect_uncertainty() -> list[Path]:
             ],
             "Bootstrap n": sub["n_boot"],
             "Interpretation": [
-                "Positive point estimate; smoke CI excludes zero."
+                "Positive point estimate; CI excludes zero."
                 if bool(excludes)
-                else "Positive point estimate; smoke CI includes zero."
+                else "Positive point estimate; CI includes zero."
                 for excludes in sub["ci_excludes_zero"]
             ],
         }
@@ -311,7 +311,7 @@ def make_table_5_absolute_effect_uncertainty() -> list[Path]:
     return write_table_bundle(
         out,
         "table_5_absolute_effect_uncertainty",
-        "Smoke-test poem-level bootstrap uncertainty for absolute supervised Surprise effects.",
+        "Poem-level bootstrap uncertainty for absolute supervised Surprise effects.",
     )
 
 
