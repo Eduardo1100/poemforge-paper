@@ -26,3 +26,13 @@ The supervised preference-shaped-domain result should be framed as a diagnostic 
 3. Report convergence excluding item-NLL controls.
 4. Show Aesthetic_Appeal / preference-target results directly, even if weaker.
 5. If time allows, run Porter and Machery as an actual replication.
+
+## Next implemented analysis
+
+Add absolute poem-level bootstrap intervals for the main positive effects, not only pairwise compression-vs-baseline differences. Required rows:
+
+- compression, Surprise, score_pref_struct, other_human_targets;
+- compression, Surprise, score_pref_struct, stacked;
+- TF-IDF and embedding analogues for the same control regimes if available.
+
+These intervals determine whether the positive supervised probe claim itself is resolved at item level, rather than only whether compression beats baselines.
