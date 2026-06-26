@@ -93,7 +93,7 @@ The frozen Phase A artifacts also include stacked controls using other human tar
 
 Because the K-fold and seed runs reuse the same small item set, run-level statistics are not treated as independent inferential evidence. We report run-level means and permutation summaries as internal stability diagnostics: they show whether an effect is stable under fold and seed variation, but they do not replace item-level uncertainty over poems. For claims comparing readout families, the primary uncertainty standard is the poem-level bootstrap.
 
-The stacked control setting should also be interpreted cautiously. Item-level language-model predictability is mechanistically closer to compression readouts than to TF-IDF or embedding cosine readouts, because compression scores are themselves derived from likelihood changes. Thus stacked controls are useful as a conservative stress test, but they are not a neutral adjustment across metrics. Apparent convergence under these controls may reflect suppressor effects and metric-asymmetric residualization in a small \(n=36\) sample.
+The stacked control setting should also be interpreted cautiously. Item-level language-model predictability is mechanistically closer to compression readouts than to TF-IDF or embedding cosine readouts, because compression scores are themselves derived from likelihood changes. Thus stacked controls are useful as a conservative stress test, but they are not a neutral adjustment across metrics. Apparent convergence under these controls may reflect suppressor effects and metric-asymmetric residualization in a small $n=36$ sample.
 
 ## 3. Results
 
@@ -123,7 +123,7 @@ See Table 1, generated as `results/tables/table_1_readout_convergence.*`, and Fi
 
 Run-level means lean toward compression in several partially controlled settings. But item-level bootstrap uncertainty is wide. For the key compression-vs-baseline comparisons, the observed differences are positive, but all 95% bootstrap intervals include zero.
 
-This means the correct interpretation is not “compression is equal to the baselines.” The correct interpretation is underresolution at the item level. With \(n=36\) poems, the data do not support a strong claim that compression uniquely outperforms TF-IDF or embedding similarity.
+This means the correct interpretation is not “compression is equal to the baselines.” The correct interpretation is underresolution at the item level. With $n=36$ poems, the data do not support a strong claim that compression uniquely outperforms TF-IDF or embedding similarity.
 
 The same caution applies to the matched-other diagnostic. Point estimates are positive, but bootstrap intervals include zero. The leading interpretation is variance normalization, with any compression-specific mechanism unresolved.
 
@@ -172,7 +172,7 @@ Under this framing, the valuable object is not a universal compression score. Th
 
 ## 5. Limitations
 
-The primary limitation is sample size. The final item-level analysis has \(n=36\) poems, which is too small to resolve fine-grained differences between readout families. The bootstrap intervals make this limitation explicit.
+The primary limitation is sample size. The final item-level analysis has $n=36$ poems, which is too small to resolve fine-grained differences between readout families. The bootstrap intervals make this limitation explicit.
 
 A second limitation is domain specificity. The positive results depend on human-shaped contrastive domains. This is appropriate for supervised probing, but it means the results should not be generalized to unsupervised aesthetic discovery.
 
@@ -182,7 +182,7 @@ A third limitation is that the current pipeline freezes and promotes several Pha
 
 PoemForge Phase A began with a strong hypothesis: compression-progress over a held-out literary domain might provide a label-free proxy for poetic value. The evidence does not support that claim. Generic domains fail.
 
-The surviving result is sharper. Human-labeled domains induce label-contrast landscapes. When $D$ is constructed from human preference structure, compression, TF-IDF, and embedding readouts all recover held-out label structure. Compression is competitive and often strongest by point estimate, but item-level bootstrap uncertainty does not establish a unique compression advantage at \(n=36\).
+The surviving result is sharper. Human-labeled domains induce label-contrast landscapes. When $D$ is constructed from human preference structure, compression, TF-IDF, and embedding readouts all recover held-out label structure. Compression is competitive and often strongest by point estimate, but item-level bootstrap uncertainty does not establish a unique compression advantage at $n=36$.
 
 The final claim is therefore domain-relative supervised probing, not label-free compression aesthetics. The decisive object is not the readout metric alone, but the held-out domain $D$.
 
