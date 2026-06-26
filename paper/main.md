@@ -15,13 +15,14 @@ A natural way to formalize value is as expected improvement in a model’s abili
 Let a candidate artifact be \(a\), a history be \(H\), possible future observations be \(O_i\), and a held-out domain be \(D\). The value functional can be written as:
 
 $$
-V(a \mid H) =
+V(a \mid H)
+=
 \sum_i q_i
-\left[
+\Big[
 L(D \mid O_i \oplus H)
 -
 L(D \mid O_i \oplus H \oplus a)
-\right]
+\Big]
 -
 \mathrm{cost}(a).
 $$
@@ -67,9 +68,13 @@ For contrastive preference scoring, the main quantity is:
 $$
 v_{\mathrm{pref\_struct}}
 =
-(v_{\mathrm{high\_raw}} - v_{\mathrm{low\_raw}})
+\left(
+v_{\mathrm{high\_raw}} - v_{\mathrm{low\_raw}}
+\right)
 -
-(v_{\mathrm{high\_ctrl}} - v_{\mathrm{low\_ctrl}}).
+\left(
+v_{\mathrm{high\_ctrl}} - v_{\mathrm{low\_ctrl}}
+\right).
 $$
 
 The same conceptual structure is applied to TF-IDF and embedding baselines, producing comparable structural preference readouts.
