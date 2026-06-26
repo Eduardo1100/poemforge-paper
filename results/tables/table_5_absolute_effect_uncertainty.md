@@ -1,0 +1,11 @@
+| Readout     | Controls                      | Observed ρ | 95% CI           | Bootstrap n | Interpretation                                   |
+| ----------- | ----------------------------- | ---------- | ---------------- | ----------- | ------------------------------------------------ |
+| Compression | Other human targets           | +0.267     | [-0.023, +0.472] | 100         | Positive point estimate; smoke CI includes zero. |
+| Embedding   | Other human targets           | +0.138     | [-0.156, +0.376] | 100         | Positive point estimate; smoke CI includes zero. |
+| TF-IDF      | Other human targets           | +0.096     | [-0.145, +0.327] | 100         | Positive point estimate; smoke CI includes zero. |
+| Compression | Other human targets + surface | +0.209     | [-0.058, +0.447] | 100         | Positive point estimate; smoke CI includes zero. |
+| Embedding   | Other human targets + surface | +0.189     | [-0.141, +0.440] | 100         | Positive point estimate; smoke CI includes zero. |
+| TF-IDF      | Other human targets + surface | +0.140     | [-0.136, +0.389] | 100         | Positive point estimate; smoke CI includes zero. |
+| Compression | Other human + surface + NLL   | +0.286     | [-0.024, +0.520] | 100         | Positive point estimate; smoke CI includes zero. |
+| Embedding   | Other human + surface + NLL   | +0.273     | [-0.091, +0.574] | 100         | Positive point estimate; smoke CI includes zero. |
+| TF-IDF      | Other human + surface + NLL   | +0.247     | [-0.111, +0.506] | 100         | Positive point estimate; smoke CI includes zero. |

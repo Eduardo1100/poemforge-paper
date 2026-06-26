@@ -19,6 +19,7 @@ READOUT_CONVERGENCE = ANALYSES_DIR / "readout_convergence_summary.csv"
 BOOTSTRAP_TABLE = ANALYSES_DIR / "bootstrap_manuscript_table.csv"
 GENERIC_D = ANALYSES_DIR / "generic_d_correlation_summaries.csv"
 ITEM_NLL = PHASE_A_RESULTS / "item_nll_target_correlations.csv"
+ABSOLUTE_EFFECTS = ANALYSES_DIR / "bootstrap_absolute_effects_summary.csv"
 
 
 FEATURE_SET_LABELS = {
@@ -243,6 +244,77 @@ def make_table_4_item_nll_correlations() -> list[Path]:
     )
 
 
+
+def make_table_5_absolute_effect_uncertainty() -> list[Path]:
+    require(ABSOLUTE_EFFECTS)
+    df = pd.read_csv(ABSOLUTE_EFFECTS)
+
+    needed = {
+        "method",
+        "feature_set",
+        "metric",
+        "observed_mean_rho",
+        "ci95_low",
+        "ci95_high",
+        "n_boot",
+        "ci_excludes_zero",
+    }
+    missing = needed - set(df.columns)
+    if missing:
+        raise ValueError(f"absolute effect table missing columns: {sorted(missing)}")
+
+    feature_order = {
+        "other_human_targets": 0,
+        "other_human_plus_surface": 1,
+        "stacked": 2,
+    }
+    method_order = {
+        "compression_distilgpt2": 0,
+        "embedding_contrast": 1,
+        "tfidf_contrast": 2,
+    }
+    method_labels = {
+        "compression_distilgpt2": "Compression",
+        "embedding_contrast": "Embedding",
+        "tfidf_contrast": "TF-IDF",
+    }
+
+    sub = df[
+        (df["metric"] == "score_pref_struct")
+        & (df["feature_set"].isin(feature_order))
+        & (df["method"].isin(method_order))
+    ].copy()
+
+    sub["feature_order"] = sub["feature_set"].map(feature_order)
+    sub["method_order"] = sub["method"].map(method_order)
+    sub = sub.sort_values(["feature_order", "method_order"])
+
+    out = pd.DataFrame(
+        {
+            "Readout": sub["method"].map(method_labels).fillna(sub["method"]),
+            "Controls": sub["feature_set"].map(FEATURE_SET_LABELS).fillna(sub["feature_set"]),
+            "Observed ρ": sub["observed_mean_rho"].map(fmt_signed),
+            "95% CI": [
+                f"[{fmt_signed(lo)}, {fmt_signed(hi)}]"
+                for lo, hi in zip(sub["ci95_low"], sub["ci95_high"])
+            ],
+            "Bootstrap n": sub["n_boot"],
+            "Interpretation": [
+                "Positive point estimate; smoke CI excludes zero."
+                if bool(excludes)
+                else "Positive point estimate; smoke CI includes zero."
+                for excludes in sub["ci_excludes_zero"]
+            ],
+        }
+    )
+
+    return write_table_bundle(
+        out,
+        "table_5_absolute_effect_uncertainty",
+        "Smoke-test poem-level bootstrap uncertainty for absolute supervised Surprise effects.",
+    )
+
+
 def hash_entry(path: Path, note: str) -> dict:
     rows, cols = csv_shape(path)
     return {
@@ -284,6 +356,7 @@ def main() -> None:
     generated.extend(make_table_2_bootstrap_uncertainty())
     generated.extend(make_table_3_generic_d_summary())
     generated.extend(make_table_4_item_nll_correlations())
+    generated.extend(make_table_5_absolute_effect_uncertainty())
 
     manifest = {
         "stage": "90_make_tables",
