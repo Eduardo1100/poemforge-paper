@@ -1,0 +1,70 @@
+{
+  "stage": "00_prepare_data",
+  "phase_a_root": "/home/eduardo/Projects/poemforge",
+  "entries": [
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/poemset/eval_items_all_text.csv",
+      "destination": "/home/eduardo/Projects/poemforge-paper/data/processed/items.csv",
+      "sha256": "a152c3c1c080fd550035ab384043fba644ff29288ccf3e3f084603b3f3102af4",
+      "n_rows": 46,
+      "n_cols": 13,
+      "note": "Primary normalized item table used for current paper analyses."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/poemset/eval_targets_all_text_long.csv",
+      "destination": "/home/eduardo/Projects/poemforge-paper/data/processed/targets_long.csv",
+      "sha256": "4734cdd5a66a20a93a930e178a7e322129faf865732fd986fb3dc7bea3f30adc",
+      "n_rows": 366,
+      "n_cols": 7,
+      "note": "Long-form normalized target/rating table."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/poemset/eval_targets_per_dimension_wide.csv",
+      "destination": "/home/eduardo/Projects/poemforge-paper/data/processed/targets_wide.csv",
+      "sha256": "e832781fca5547f720dfe50d83a55db34614359b0dd57aa10685759f54dcbe96",
+      "n_rows": 46,
+      "n_cols": 30,
+      "note": "Wide-form normalized target/rating table."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/poemset/eval_items_porter_s2.csv",
+      "destination": "/home/eduardo/Projects/poemforge-paper/data/processed/porter_items_s2.csv",
+      "sha256": "e1970e8e6dd52e7020703c6c6b0c2e841e3a0e23a8cab6c62d0b341c5d0c7da1",
+      "n_rows": 10,
+      "n_cols": 14,
+      "note": "Porter Study 2 item table, supporting/contextual."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/poemset/eval_targets_porter_s2_long.csv",
+      "destination": "/home/eduardo/Projects/poemforge-paper/data/processed/porter_targets_s2_long.csv",
+      "sha256": "164eaab8c65818b1b424bce80fa62d73a8df967869405caa97f702feca6e2022",
+      "n_rows": 100,
+      "n_cols": 5,
+      "note": "Porter Study 2 target table, supporting/contextual."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/poemset/eval_targets_surface_matched_pools.csv",
+      "destination": "/home/eduardo/Projects/poemforge-paper/data/processed/surface_matched_pools.csv",
+      "sha256": "3ce4bb909bfd36434ec50b95d979e9c823a9fb0c74df514e51aea13144a92344",
+      "n_rows": 46,
+      "n_cols": 41,
+      "note": "Surface-matched pool metadata used by matched-control analyses."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/poemset/VERSION.txt",
+      "destination": "/home/eduardo/Projects/poemforge-paper/data/processed/phase_a_poemset_VERSION.txt",
+      "sha256": "bed6077945b6c646315e7cc7b10b980bf686b7565c90c9deed1624f4edd4cb41",
+      "n_rows": null,
+      "n_cols": null,
+      "note": "Phase A poemset version/provenance note."
+    }
+  ],
+  "important_note": "This first paper-pipeline stage copies frozen normalized Phase A files. A later pass should regenerate these from raw source data where feasible."
+}
