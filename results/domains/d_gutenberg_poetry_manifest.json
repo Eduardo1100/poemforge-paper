@@ -1,0 +1,18 @@
+{
+  "corpus_hash_sha256": "67a94a36bcf4254914d567c20da43a1787c203d21af603d3668891991aad84e8",
+  "max_chars": 1100,
+  "max_eval_5gram_overlap": 0.08,
+  "max_lines": 14,
+  "max_words": 180,
+  "min_lines": 6,
+  "min_words": 35,
+  "n_samples": 512,
+  "name": "d_gutenberg_poetry_samples",
+  "output_file": "eval/domain/d_gutenberg_poetry_samples.csv",
+  "random_seed": 17,
+  "rejected_dupe": 0,
+  "rejected_leakage": 0,
+  "source_file": "data/domain/raw/gutenberg-poetry-v001.ndjson.gz",
+  "target_samples": 512,
+  "version": "v0_seed"
+}

@@ -1,0 +1,80 @@
+{
+  "stage": "10_build_domains",
+  "phase_a_root": "/home/eduardo/Projects/poemforge",
+  "pool_frac": 0.33,
+  "entries": [
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/domain/d_gutenberg_accessible_v0.csv",
+      "destination": "/home/eduardo/Projects/poemforge-paper/results/domains/d_gutenberg_accessible_v0.csv",
+      "sha256": "deda5b70fb81e49bdabe2dbbed39d2332ac2555eecbabd0b777c1367fab6bd12",
+      "n_rows": 512,
+      "n_cols": 15,
+      "note": "Generic-D accessible Gutenberg contrast domain."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/domain/d_gutenberg_accessible_v0_manifest.json",
+      "destination": "/home/eduardo/Projects/poemforge-paper/results/domains/d_gutenberg_accessible_v0_manifest.json",
+      "sha256": "ae609a43fe42480bf5bc8d1971e3843790b2baa81aa4ae742c08d73c44bf4456",
+      "n_rows": null,
+      "n_cols": null,
+      "note": "Manifest for accessible Gutenberg contrast domain."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/domain/d_gutenberg_formal_v0.csv",
+      "destination": "/home/eduardo/Projects/poemforge-paper/results/domains/d_gutenberg_formal_v0.csv",
+      "sha256": "605f1b4010779fa1276cf75fda886c4ce00794e5dafd46e082f7d8110121bf21",
+      "n_rows": 512,
+      "n_cols": 15,
+      "note": "Generic-D formal Gutenberg contrast domain."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/domain/d_gutenberg_formal_v0_manifest.json",
+      "destination": "/home/eduardo/Projects/poemforge-paper/results/domains/d_gutenberg_formal_v0_manifest.json",
+      "sha256": "5ba8feea0eab25f2dbcb63c7517bc5b4996c2acd4b8dd0164ad4f38d1e5ab43b",
+      "n_rows": null,
+      "n_cols": null,
+      "note": "Manifest for formal Gutenberg contrast domain."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/domain/d_gutenberg_poetry_samples.csv",
+      "destination": "/home/eduardo/Projects/poemforge-paper/results/domains/d_gutenberg_poetry_samples.csv",
+      "sha256": "a5ad521ea912ad55c058c75d9101e8b2fee5798c1834211c444107017e5703be",
+      "n_rows": 512,
+      "n_cols": 8,
+      "note": "Generic Gutenberg poetry samples used by Phase A."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/domain/d_gutenberg_poetry_manifest.json",
+      "destination": "/home/eduardo/Projects/poemforge-paper/results/domains/d_gutenberg_poetry_manifest.json",
+      "sha256": "c2440f52a610727c1e273594c7ee1bc65408d64dbbb8c0555d806f50e4f82e96",
+      "n_rows": null,
+      "n_cols": null,
+      "note": "Manifest for generic Gutenberg poetry samples."
+    },
+    {
+      "status": "copied",
+      "source": "/home/eduardo/Projects/poemforge/eval/poemset/eval_targets_surface_matched_pools.csv",
+      "destination": "/home/eduardo/Projects/poemforge-paper/results/domains/matched_other_controls.csv",
+      "sha256": "3ce4bb909bfd36434ec50b95d979e9c823a9fb0c74df514e51aea13144a92344",
+      "n_rows": 46,
+      "n_cols": 41,
+      "note": "Surface-matched control metadata used by matched-other analyses."
+    },
+    {
+      "status": "generated",
+      "source": "/home/eduardo/Projects/poemforge-paper/data/processed/targets_wide.csv",
+      "destination": "/home/eduardo/Projects/poemforge-paper/results/domains/preference_domains_manifest.csv",
+      "sha256": "f9650b735d60ad0a2108f44727f8b2d982953015db49755ad619a5dcb780f6ff",
+      "n_rows": 6,
+      "n_cols": 13,
+      "note": "Human-labeled global high/low preference-domain pool manifest. Used for audit and paper documentation; K-fold scoring must rebuild train-fold domains."
+    }
+  ],
+  "important_note": "This stage records generic-D artifacts, matched-control metadata, and global preference-domain pool manifests. Final held-out scoring must rebuild preference pools inside each train fold."
+}
