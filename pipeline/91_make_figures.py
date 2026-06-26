@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+from datetime import datetime, timezone
 import hashlib
 import json
 import re
@@ -44,8 +45,18 @@ def save_both(fig, stem: str) -> list[Path]:
     FIG_DIR.mkdir(parents=True, exist_ok=True)
     png = FIG_DIR / f"{stem}.png"
     pdf = FIG_DIR / f"{stem}.pdf"
+
+    # Keep figure artifacts byte-stable across repeated `make reproduce` runs.
+    # Matplotlib PDFs otherwise may include timestamp-like metadata.
+    pdf_metadata = {
+        "Creator": "poemforge-paper pipeline/91_make_figures.py",
+        "Producer": "Matplotlib",
+        "CreationDate": datetime(2000, 1, 1, tzinfo=timezone.utc),
+        "ModDate": datetime(2000, 1, 1, tzinfo=timezone.utc),
+    }
+
     fig.savefig(png, bbox_inches="tight", dpi=200)
-    fig.savefig(pdf, bbox_inches="tight")
+    fig.savefig(pdf, bbox_inches="tight", metadata=pdf_metadata)
     plt.close(fig)
     return [png, pdf]
 
