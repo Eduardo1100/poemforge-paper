@@ -1,0 +1,574 @@
+item_id,dataset,subset,tier,authorship,poet,title,human_quality_composite,text,target__Aesthetic_Appeal,target__Clarity,target__Creativity,target__Felt_Arousal,target__Felt_Valence,target__Surprise,target__beautiful,target__imagery,target__inspiring,target__lyrical,target__meaningful,target__mood_emotion,target__moving,target__original,target__overall_quality,target__profound,target__rhyme,target__rhythm,target__sound,target__theme,target__witty,word_len_calc,char_len_calc,line_count,mean_line_words,max_line_words,short_line_rate,type_token_ratio,avg_word_chars,punct_per_char,archaic_per_word,v_high_raw,v_low_raw,v_pref_raw,v_high_ctrl,v_low_ctrl,v_pref_ctrl,v_high_struct,v_low_struct,v_pref_struct,high_base_nll,low_base_nll,high_raw_nll,low_raw_nll,high_ctrl_nll,low_ctrl_nll,target_value,pool_target_value,eval_target_col,pool_target_col,fold_id,seed,fold_seed,observer,control_mode,control_item_id,control_word_len_calc,train_n,test_n,high_pool_n,low_pool_n,high_pool_ids,low_pool_ids,pool_hash,d_n,pool_frac,low_candidate_frac
+chaudhuri_2024_6,chaudhuri_2024,aesthetic_creativity,human,human,Robert Frost,The Freedom of the Moon,0.5447048611111112,"The Freedom of the Moon
+
+I've tried the new moon tilted in the air
+Above a hazy tree-and-farmhouse cluster
+As you might try a jewel in your hair.
+I've tried it fine with little breadth of luster,
+Alone, or in one ornament combining
+With one first-water start almost shining.
+
+I put it shining anywhere I please.
+By walking slowly on some evening later,
+I've pulled it from a crate of crooked trees,
+And brought it over glossy water, greater,
+And dropped it in, and seen the image wallow,
+The color run, all sorts of wonder follow.
+
+--- Robert Frost",4.729166666666667,4.0,4.916666666666667,3.5,3.9583333333333335,3.427083333333333,,,,,,,,,,,,,,,,101,548,14,7.214285714285714,9,0.07142857142857142,0.7128712871287128,4.237623762376238,0.040145985401459854,0.0,0.060701511511640494,0.10420543495838941,-0.043503923446748916,0.07331788790156546,0.10235450343104757,-0.029036615529482113,-0.012616376389924966,0.001850931527341837,-0.014467307917266803,1.765012268668269,1.9221242892610415,1.7043107571566285,1.817918854302652,1.6916943807667035,1.819769785829994,4.0,3.9583333333333335,target__Clarity,target__Felt_Valence,0,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_20,107,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_9|chaudhuri_2024_34|chaudhuri_2024_10|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_5,6b139c4b930edff58368e934be4218e33f89fa8c5abdc1d802b605e4233caf97,8,0.33,0.5
+chaudhuri_2024_11,chaudhuri_2024,aesthetic_creativity,human,human,Emily Dickinson,"Will there really be a ""Morning""?",0.6223958333333334,"Will there really be a ""Morning""?
+
+Will there really be a ""Morning""?
+Is there such a thing as ""Day""?
+Could I see it from the mountains
+If I were as tall as they?
+
+Has it feet like Water lilies?
+Has it feathers like a Bird?
+Is it brought from famous countries
+Of which I have never heard?
+
+Oh some Scholar! Oh some Sailor!
+Oh some Wise Men from the skies!
+Please to tell a little Pilgrim
+Where the place called ""Morning"" lies!
+
+--- Emily Dickinson",4.854166666666667,5.125,5.15625,3.6666666666666665,4.364583333333333,3.8020833333333335,,,,,,,,,,,,,,,,84,446,14,6.0,7,0.07142857142857142,0.6547619047619048,4.0,0.04932735426008968,0.0,0.02524931159777788,0.07405830798694035,-0.04880899638916247,0.056841753230740366,0.09030103291661984,-0.03345927968587947,-0.03159244163296249,-0.016242724929679486,-0.015349716703283,1.7930007205965648,1.9580975510007983,1.767751408998787,1.884039243013858,1.7361589673658244,1.8677965180841785,5.125,4.364583333333333,target__Clarity,target__Felt_Valence,0,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_32,95,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_9|chaudhuri_2024_34|chaudhuri_2024_10|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_5,6b139c4b930edff58368e934be4218e33f89fa8c5abdc1d802b605e4233caf97,8,0.33,0.5
+chaudhuri_2024_19,chaudhuri_2024,aesthetic_creativity,human,human,Christina Rossetti,Remember,0.6375868055555556,"Remember
+Remember me when I am gone away,
+Gone far away into the silent land;
+When you can no more hold me by the hand,
+Nor I half turn to go yet turning stay.
+Remember me when no more day by day
+You tell me of our future that you plann'd:
+Only remember me; you understand
+It will be late to counsel then or pray.
+Yet if you should forget me for a while
+And afterwards remember, do not grieve:
+For if the darkness and corruption leave
+A vestige of the thoughts that once I had,
+Better by far you should forget and smile
+Than that you should remember and be sad.
+--- Christina Rossetti",5.114583333333333,5.302083333333333,5.020833333333333,4.145833333333333,5.09375,3.8645833333333335,,,,,,,,,,,,,,,,114,584,16,7.125,10,0.125,0.5964912280701754,4.0,0.025684931506849314,0.0,0.0552805604441402,0.06652996026812708,-0.011249399823986872,0.06949449909812455,0.10356869446033978,-0.03407419536221523,-0.014213938653984348,-0.03703873419221271,0.02282479553822836,1.6998294083664618,1.9269225213261378,1.6445488479223216,1.8603925610580108,1.6303349092683372,1.823353826865798,5.302083333333333,5.09375,target__Clarity,target__Felt_Valence,0,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_20,107,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_9|chaudhuri_2024_34|chaudhuri_2024_10|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_5,6b139c4b930edff58368e934be4218e33f89fa8c5abdc1d802b605e4233caf97,8,0.33,0.5
+chaudhuri_2024_20,chaudhuri_2024,aesthetic_creativity,human,human,W. B. Yeats,When You Are Old,0.618923611111111,"When You Are Old
+
+WHEN you are old and grey and full of sleep,
+And nodding by the fire, take down this book,
+And slowly read, and dream of the soft look
+Your eyes had once, and of their shadows deep;
+How many loved your moments of glad grace,
+And loved your beauty with love false or true,
+But one man loved the pilgrim Soul in you,
+And loved the sorrows of your changing face;
+And bending down beside the glowing bars,
+Murmur, a little sadly, how Love fled
+And paced upon the mountains overhead
+And hid his face amid a crowd of stars.
+--- William Butler Yeats",5.125,4.989583333333333,5.020833333333333,4.083333333333333,5.020833333333333,3.71875,,,,,,,,,,,,,,,,107,560,14,7.642857142857143,10,0.07142857142857142,0.6635514018691588,4.065420560747664,0.030357142857142857,0.0,0.06907403290521286,0.12159723497488595,-0.05252320206967309,0.05986905802916764,0.11564998949954641,-0.05578093147037877,0.009204974876045213,0.005947245475339535,0.003257729400705678,1.7710225081792794,1.8932242005129456,1.7019484752740666,1.7716269655380597,1.7111534501501118,1.7775742110133992,4.989583333333333,5.020833333333333,target__Clarity,target__Felt_Valence,0,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_6,101,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_9|chaudhuri_2024_34|chaudhuri_2024_10|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_5,6b139c4b930edff58368e934be4218e33f89fa8c5abdc1d802b605e4233caf97,8,0.33,0.5
+chaudhuri_2024_28,chaudhuri_2024,aesthetic_creativity,human,human,P. B. Shelley,A Lament,0.5546875,"A Lament
+
+O World! O Life! O Time!
+On whose last steps I climb,
+Trembling at that where I had stood before;
+When will return the glory of your prime?
+No more -Oh, never more!
+
+Out of the day and night
+A joy has taken flight:
+Fresh spring, and summer, and winter hoar
+Move my faint heart with grief, but with
+delight
+No more -Oh, never more!
+--- P.B. Shelley",4.604166666666667,4.520833333333333,4.625,3.9270833333333335,4.479166666666667,3.5625,,,,,,,,,,,,,,,,70,357,13,5.384615384615385,8,0.23076923076923078,0.7857142857142857,3.7857142857142856,0.058823529411764705,0.0,0.0767228796905477,0.08546516506295765,-0.008742285372409953,0.04110284265295139,0.058961533275111,-0.017858690622159612,0.03562003703759631,0.02650363178784665,0.00911640524974966,1.786997145353264,1.9063135953699526,1.7102742656627163,1.820848430306995,1.7458943027003127,1.8473520620948416,4.520833333333333,4.479166666666667,target__Clarity,target__Felt_Valence,0,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_11,84,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_9|chaudhuri_2024_34|chaudhuri_2024_10|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_5,6b139c4b930edff58368e934be4218e33f89fa8c5abdc1d802b605e4233caf97,8,0.33,0.5
+chaudhuri_2024_32,chaudhuri_2024,aesthetic_creativity,human,human,John Donne,MEDITATION XVII,0.599826388888889,"Meditation XVII: No Man Is An Island
+
+No man is an island,
+Entire of itself,
+Every man is a piece of the continent,
+A part of the main.
+If a clod be washed away by the sea,
+Europe is the less.
+As well as if a promontory were.
+As well as if a manor of thy friend's
+Or of thine own were:
+Any man's death diminishes me,
+Because I am involved in mankind,
+And therefore never send to know for whom the bell tolls;
+It tolls for thee.
+--- John Donne (from ‘Devotions upon Emergent Occasions’)",4.739583333333333,4.791666666666667,4.979166666666667,3.9479166666666665,4.458333333333333,3.8854166666666665,,,,,,,,,,,,,,,,95,485,15,6.333333333333333,11,0.06666666666666667,0.6947368421052632,3.8842105263157896,0.041237113402061855,0.031578947368421054,0.07352847256145001,0.08210005248107999,-0.008571579919629979,0.07631881997627254,0.09363841153275576,-0.017319591556483216,-0.002790347414822536,-0.011538359051675773,0.008748011636853237,1.8271280491571802,1.8835016768375454,1.7535995765957302,1.8014016243564654,1.7508092291809076,1.7898632653047897,4.791666666666667,4.458333333333333,target__Clarity,target__Felt_Valence,0,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_6,101,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_9|chaudhuri_2024_34|chaudhuri_2024_10|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_5,6b139c4b930edff58368e934be4218e33f89fa8c5abdc1d802b605e4233caf97,8,0.33,0.5
+chaudhuri_2024_1,chaudhuri_2024,aesthetic_creativity,human,human,W. H. Auden,Funeral Blues,0.7105034722222222,"Funeral Blues
+Stop all the clocks, cut off the telephone,
+Prevent the dog from barking with a juicy bone,
+Silence the pianos and with muffled drum
+Bring out the coffin, let the mourners come.
+Let aeroplanes circle moaning overhead
+Scribbling on the sky the message ‘He is Dead’.
+Put crepe bows round the white necks of the public doves,
+Let the traffic policemen wear black cotton gloves.
+He was my North, my South, my East and West,
+My working week and my Sunday rest,
+My noon, my midnight, my talk, my song;
+I thought that love would last forever: I was wrong.
+The stars are not wanted now; put out every one,
+Pack up the moon and dismantle the sun,
+Pour away the ocean and sweep up the wood;
+For nothing now can ever come to any good.
+---W. H. Auden",5.552083333333333,5.885416666666667,5.322916666666667,4.427083333333333,5.53125,4.291666666666667,,,,,,,,,,,,,,,,141,752,18,7.833333333333333,11,0.1111111111111111,0.7304964539007093,4.127659574468085,0.03723404255319149,0.0,0.02833869290537483,0.04672542534374413,-0.018386732438369302,0.054305566849793374,0.11505448560954812,-0.060748918759754744,-0.025966873944418545,-0.06832906026580399,0.04236218632138544,1.7528207357103,1.8243945011631817,1.7244820428049252,1.7776690758194376,1.6985151688605067,1.7093400155536336,5.885416666666667,5.53125,target__Clarity,target__Felt_Valence,1,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_35,92,30,6,10,10,chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_23,chaudhuri_2024_9|chaudhuri_2024_6|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_33|chaudhuri_2024_5,20c6dda1ae750521e51f44782830dfc5e3d7842be54b135ddd21a1a309127ea3,8,0.33,0.5
+chaudhuri_2024_13,chaudhuri_2024,aesthetic_creativity,human,human,Emily Dickinson,How happy is the little Stone,0.5681423611111112,"How happy is the little Stone
+
+How happy is the little Stone
+That rambles in the Road alone,
+And doesn't care about Careers
+And Exigencies never fears—
+Whose Coat of elemental Brown
+A passing Universe put on,
+And independent as the Sun
+Associates or glows alone,
+Fulfilling absolute Decree
+In casual simplicity—
+
+--- Emily Dickinson",4.583333333333333,4.677083333333333,4.885416666666667,3.6041666666666665,4.114583333333333,3.489583333333333,,,,,,,,,,,,,,,,54,332,12,4.5,6,0.25,0.7777777777777778,4.962962962962963,0.02108433734939759,0.0,0.04611452992355769,0.07753283877207195,-0.031418308848514265,0.08237160280455003,0.08457928889600463,-0.002207686091454608,-0.036257072880992336,-0.007046450123932679,-0.029210622757059657,1.7013223905477477,1.8548849243065662,1.65520786062419,1.7773520855344942,1.6189507877431977,1.7703056354105615,4.677083333333333,4.114583333333333,target__Clarity,target__Felt_Valence,1,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_36,50,30,6,10,10,chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_23,chaudhuri_2024_9|chaudhuri_2024_6|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_33|chaudhuri_2024_5,20c6dda1ae750521e51f44782830dfc5e3d7842be54b135ddd21a1a309127ea3,8,0.33,0.5
+chaudhuri_2024_27,chaudhuri_2024,aesthetic_creativity,human,human,P. B. Shelley,Good-Night,0.5651041666666666,"Good-Night
+
+Good-night? ah! no; the hour is ill
+Which severs those it should unite;
+Let us remain together still,
+Then it will be good night.
+
+How can I call the lone night good,
+Though thy sweet wishes wing its flight?
+Be it not said, thought, understood -
+Then it will be - good night.
+
+To hearts which near each other move
+From evening close to morning light,
+The night is good; because, my love,
+They never say good-night.
+--- P.B. Shelley",4.46875,4.90625,4.572916666666667,3.8541666666666665,4.447916666666667,3.6145833333333335,,,,,,,,,,,,,,,,82,443,14,5.857142857142857,8,0.14285714285714285,0.7073170731707317,4.073170731707317,0.05869074492099323,0.012195121951219513,0.05829959443934207,0.06079075082380303,-0.0024911563844609574,0.06364752971563137,0.0792864462097902,-0.015638916494158828,-0.005347935276289295,-0.018495695385987165,0.01314776010969787,1.7544687377739376,1.8106250097511878,1.6961691433345956,1.7498342589273848,1.6908212080583063,1.7313385635413976,4.90625,4.447916666666667,target__Clarity,target__Felt_Valence,1,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_35,92,30,6,10,10,chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_23,chaudhuri_2024_9|chaudhuri_2024_6|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_33|chaudhuri_2024_5,20c6dda1ae750521e51f44782830dfc5e3d7842be54b135ddd21a1a309127ea3,8,0.33,0.5
+chaudhuri_2024_34,chaudhuri_2024,aesthetic_creativity,human,human,William Wordsworth,My Heart Leaps Up,0.5555555555555556,"My Heart Leaps Up
+
+My heart leaps up when I behold
+A rainbow in the sky:
+So was it when my life began;
+So is it now I am a man;
+So be it when I shall grow old,
+Or let me die!
+The Child is father of the Man;
+And I could wish my days to be
+Bound each to each by natural piety.
+
+--- William Wordsworth",4.479166666666667,4.677083333333333,4.697916666666667,3.5,4.197916666666667,3.4791666666666665,,,,,,,,,,,,,,,,67,298,11,6.090909090909091,8,0.09090909090909091,0.6567164179104478,3.2686567164179103,0.03355704697986577,0.0,0.05780276500936088,0.07093415948996462,-0.013131394480603742,0.05129163166986128,0.05904773362523241,-0.007756101955371131,0.006511133339499597,0.011886425864732209,-0.005375292525232611,1.7395523057188536,1.8202332390048195,1.6817495407094927,1.7492990795148549,1.6882606740489923,1.761185505379587,4.677083333333333,4.197916666666667,target__Clarity,target__Felt_Valence,1,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_13,54,30,6,10,10,chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_23,chaudhuri_2024_9|chaudhuri_2024_6|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_33|chaudhuri_2024_5,20c6dda1ae750521e51f44782830dfc5e3d7842be54b135ddd21a1a309127ea3,8,0.33,0.5
+chaudhuri_2024_35,chaudhuri_2024,aesthetic_creativity,human,human,Emily Dickinson,I taste a liquor never brewed –,0.4822048611111111,"I taste a liquor never brewed
+
+I taste a liquor never brewed,
+From tankards scooped in pearl;
+Not all the vats upon the Rhine
+Yield such an alcohol!
+
+Inebriate of air am I,
+And debauchee of dew,
+Reeling, through endless summer days,
+From inns of molten blue.
+
+When the landlord turn the drunken bee
+Out of the foxglove's door,
+When butterflies renounce their drams,
+I shall but drink the more!
+
+Till seraphs swing their snowy hats,
+And saints to windows run,
+To see the little tippler
+Leaning against the sun!
+
+--- Emily Dickinson",4.072916666666667,3.3854166666666665,4.666666666666667,3.333333333333333,3.333333333333333,3.4479166666666665,,,,,,,,,,,,,,,,92,530,18,5.111111111111111,7,0.05555555555555555,0.75,4.521739130434782,0.033962264150943396,0.0,0.07215749991040976,0.0764353257640853,-0.004277825853675532,0.05811234834714485,0.059760897346349706,-0.0016485489992048574,0.014045151563264913,0.016674428417735587,-0.0026292768544706746,1.79678382481258,1.7800202921860346,1.7246263249021703,1.7035849664219493,1.7386714764654352,1.720259394839685,3.3854166666666665,3.333333333333333,target__Clarity,target__Felt_Valence,1,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_27,82,30,6,10,10,chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_23,chaudhuri_2024_9|chaudhuri_2024_6|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_33|chaudhuri_2024_5,20c6dda1ae750521e51f44782830dfc5e3d7842be54b135ddd21a1a309127ea3,8,0.33,0.5
+chaudhuri_2024_36,chaudhuri_2024,aesthetic_creativity,human,human,Countee Cullen,If You Should Go,0.6032986111111112,"If You Should Go
+Love, leave me like the light,
+The gently passing day;
+We would not know, but for the night,
+When it has slipped away.
+Go quietly; a dream,
+When done, should leave no trace
+That it has lived, except a gleam
+Across the dreamer's face.
+--- Countee Cullen",5.09375,5.0625,4.885416666666667,3.96875,4.697916666666667,3.4375,,,,,,,,,,,,,,,,50,269,10,5.0,8,0.1,0.8,4.1,0.055762081784386616,0.0,0.09228097512063482,0.0911611087872366,0.0011198663333982228,0.05554943051504302,0.08834889090185927,-0.03279946038681625,0.036731544605591804,0.0028122178853773327,0.03391932672021447,1.7827800553556206,1.7956297245406025,1.6904990802349857,1.704468615753366,1.7272306248405775,1.7072808336387433,5.0625,4.697916666666667,target__Clarity,target__Felt_Valence,1,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_13,54,30,6,10,10,chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_23,chaudhuri_2024_9|chaudhuri_2024_6|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_33|chaudhuri_2024_5,20c6dda1ae750521e51f44782830dfc5e3d7842be54b135ddd21a1a309127ea3,8,0.33,0.5
+chaudhuri_2024_10,chaudhuri_2024,aesthetic_creativity,human,human,Emily Dickinson,Apparently with no Surprise,0.5789930555555556,"Apparently with no Surprise
+
+Apparently with no surprise,
+To any happy flower,
+The frost beheads it at its play,
+In accidental power.
+The blond assassin passes on.
+The sun proceeds unmoved,
+To measure off another day,
+For an approving God.
+
+--- Emily Dickinson",4.666666666666667,4.375,4.875,3.5625,4.114583333333333,3.9791666666666665,,,,,,,,,,,,,,,,42,260,10,4.2,7,0.2,0.8333333333333334,4.880952380952381,0.04230769230769231,0.0,0.0811291447647422,0.08899530084330864,-0.007866156078566444,0.0642540526078974,0.08663784089339899,-0.022383788285501582,0.016875092156844795,0.002357459949909657,0.014517632206935138,1.8200318594993319,1.8882282239109625,1.7389027147345897,1.7992329230676538,1.7557778068914345,1.8015903830175635,4.375,4.114583333333333,target__Clarity,target__Felt_Valence,2,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_12,34,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_5|chaudhuri_2024_6|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33,3af452b2a68f523901685ba3a89ff2730465aeb4d90ef32331af76f78d7d07aa,8,0.33,0.5
+chaudhuri_2024_12,chaudhuri_2024,aesthetic_creativity,human,human,Emily Dickinson,Unable are the Loved to die,0.5677083333333334,"Unable are the Loved to die
+
+Unable are the Loved to die
+For Love is Immortality,
+Nay, it is Deity—
+
+Unable they that love—to die
+For Love reforms Vitality
+Into Divinity.
+
+--- Emily Dickinson",4.697916666666667,4.916666666666667,4.520833333333333,3.8958333333333335,4.458333333333333,3.489583333333333,,,,,,,,,,,,,,,,34,191,8,4.25,6,0.25,0.6176470588235294,4.323529411764706,0.031413612565445025,0.0,0.06516281834300464,0.07454452534740175,-0.00938170700439711,0.08969414877098991,0.09446496363953116,-0.004770814868541251,-0.024531330427985276,-0.019920438292129417,-0.00461089213585586,1.8120574165390062,1.9141267779617128,1.7468945981960016,1.839582252614311,1.7223632677680163,1.8196618143221817,4.916666666666667,4.458333333333333,target__Clarity,target__Felt_Valence,2,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_30,32,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_5|chaudhuri_2024_6|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33,3af452b2a68f523901685ba3a89ff2730465aeb4d90ef32331af76f78d7d07aa,8,0.33,0.5
+chaudhuri_2024_23,chaudhuri_2024,aesthetic_creativity,human,human,Henry Wadsworth Longfellow,The Arrow and the Song,0.6519097222222222,"The Arrow and the Song
+
+I shot an arrow into the air,
+It fell to earth, I knew not where;
+For, so swiftly it flew, the sight
+Could not follow it in its flight.
+
+I breathed a song into the air,
+It fell to earth, I knew not where;
+For who has sight so keen and strong,
+That it can follow the flight of song?
+
+Long, long afterward, in an oak
+I found the arrow, still unbroke;
+And the song, from beginning to end,
+I found again in the heart of a friend.
+
+--- Henry Wadsworth Longfellow",5.072916666666667,5.25,5.083333333333333,3.9166666666666665,4.6875,4.239583333333333,,,,,,,,,,,,,,,,96,481,14,6.857142857142857,9,0.07142857142857142,0.5208333333333334,3.75,0.04365904365904366,0.0,0.07554234714592378,0.08367576036652613,-0.008133413220602348,0.07202306226462829,0.07459689170077932,-0.0025738294361510317,0.0035192848812954924,0.009078868665746809,-0.005559583784451316,1.728415568496407,1.8793155018044554,1.6528732213504833,1.7956397414379293,1.6563925062317788,1.804718610103676,5.25,4.6875,target__Clarity,target__Felt_Valence,2,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_24,99,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_5|chaudhuri_2024_6|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33,3af452b2a68f523901685ba3a89ff2730465aeb4d90ef32331af76f78d7d07aa,8,0.33,0.5
+chaudhuri_2024_24,chaudhuri_2024,aesthetic_creativity,human,human,Sara Teasdale,There Will Come Soft Rains,0.703125,"There Will Come Soft Rains
+
+There will come soft rain and the smell of the ground,
+And swallows circling with their shimmering sound;
+
+And frogs in the pools singing at night,
+And wild plum trees in tremulous white;
+
+Robins will wear their feathery fire,
+Whistling their whims on a low fence-wire;
+
+And not one will know of the war, not one
+Will care at last when it is done.
+
+Not one would mind, neither bird nor tree,
+If mankind perished utterly;
+
+And Spring herself, when she woke at dawn
+Would scarcely know that we were gone.
+
+--- Sara Teasdale",5.5,5.614583333333333,5.270833333333333,4.40625,5.21875,4.489583333333333,,,,,,,,,,,,,,,,99,549,14,7.071428571428571,11,0.07142857142857142,0.7171717171717171,4.313131313131313,0.030965391621129327,0.0,0.08182235702507801,0.055727300501730026,0.02609505652334798,0.08748456607247079,0.07275895841133107,0.014725607661139728,-0.0056622090473927855,-0.01703165790960104,0.011369448862208253,1.8098981652383515,1.8445787424108415,1.7280758082132734,1.7888514419091115,1.7224135991658807,1.7718197839995105,5.614583333333333,5.21875,target__Clarity,target__Felt_Valence,2,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_23,96,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_5|chaudhuri_2024_6|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33,3af452b2a68f523901685ba3a89ff2730465aeb4d90ef32331af76f78d7d07aa,8,0.33,0.5
+chaudhuri_2024_26,chaudhuri_2024,aesthetic_creativity,human,human,P. B. Shelley,Ozymandias,0.540798611111111,"Ozymandias
+
+I met a traveller from an antique land
+Who said: `Two vast and trunkless legs of stone
+Stand in the desert. Near them, on the sand,
+Half sunk, a shattered visage lies, whose frown,
+And wrinkled lip, and sneer of cold command,
+Tell that its sculptor well those passions read
+Which yet survive, stamped on these lifeless things,
+The hand that mocked them and the heart that fed.
+And on the pedestal these words appear -
+'My name is Ozymandias, king of kings:
+Look on my works, ye Mighty, and despair! '
+Nothing beside remains. Round the decay
+Of that colossal wreck, boundless and bare
+The lone and level sands stretch far away.'
+--- P. B. Shelley",4.552083333333333,4.15625,4.75,3.6979166666666665,4.020833333333333,3.520833333333333,,,,,,,,,,,,,,,,117,657,16,7.3125,10,0.125,0.7692307692307693,4.3760683760683765,0.045662100456621,0.008547008547008548,0.05193450452982851,0.05497569171043448,-0.0030411871806059754,0.08589735756304817,0.057414447914121425,0.028482909648926746,-0.033962853033219664,-0.0024387562036869426,-0.03152409682953272,1.811110459922927,1.8353243452063555,1.7591759553930986,1.780348653495921,1.725213102359879,1.777909897292234,4.15625,4.020833333333333,target__Clarity,target__Felt_Valence,2,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_24,99,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_5|chaudhuri_2024_6|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33,3af452b2a68f523901685ba3a89ff2730465aeb4d90ef32331af76f78d7d07aa,8,0.33,0.5
+chaudhuri_2024_30,chaudhuri_2024,aesthetic_creativity,human,human,P. B. Shelley,Fragment: A Wanderer,0.5729166666666667,"Fragment: A Wanderer
+
+He wanders, like a day-appearing dream,
+Through the dim wildernesses of the mind;
+Through desert woods and tracts, which seem
+Like ocean, homeless, boundless, unconfined.
+
+--- Percy Bysshe Shelley",5.010416666666667,4.6875,4.6875,3.71875,4.15625,3.364583333333333,,,,,,,,,,,,,,,,32,218,6,5.333333333333333,7,0.3333333333333333,0.875,5.375,0.05963302752293578,0.0,0.08283900538134303,0.11104181841362304,-0.028202813032280005,0.06293526009864014,0.09155986046389963,-0.02862460036525949,0.01990374528270289,0.019481957949723405,0.0004217873329794841,1.785990847507466,1.8922751916475562,1.703151842126123,1.7812333732339332,1.7230555874088258,1.8007153311836566,4.6875,4.15625,target__Clarity,target__Felt_Valence,2,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_12,34,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_2|chaudhuri_2024_5|chaudhuri_2024_6|chaudhuri_2024_29|chaudhuri_2024_22|chaudhuri_2024_14|chaudhuri_2024_33,3af452b2a68f523901685ba3a89ff2730465aeb4d90ef32331af76f78d7d07aa,8,0.33,0.5
+chaudhuri_2024_4,chaudhuri_2024,aesthetic_creativity,human,human,Langston Hughes,Peace,0.6662326388888888,"Peace
+
+We passed their graves:
+The dead men there,
+Winners or losers,
+Did not care.
+In the dark
+They could not see
+Who had gained
+The victory.
+
+---Langston Hughes",5.0,6.114583333333333,4.927083333333333,4.302083333333333,5.145833333333333,3.9479166666666665,,,,,,,,,,,,,,,,29,162,10,2.9,4,0.7,0.896551724137931,4.275862068965517,0.04938271604938271,0.0,0.021592200838179698,0.048513628800890496,-0.026921427962710798,0.06063223123694783,0.10668023644222724,-0.04604800520527941,-0.03904003039876813,-0.05816660764133674,0.01912657724256861,1.689215452561094,1.8272856366097383,1.6676232517229144,1.7787720078088478,1.6285832213241462,1.720605400167511,6.114583333333333,5.145833333333333,target__Clarity,target__Felt_Valence,3,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_33,46,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_6|chaudhuri_2024_34|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_11,cfd22b1a54fbf8a0bf61e20ae569c4767a54c7737b6ad7695e9ad30054e2e1dc,8,0.33,0.5
+chaudhuri_2024_5,chaudhuri_2024,aesthetic_creativity,human,human,Robert Frost,A Peck of Gold,0.6171875,"A Peck of Gold
+
+Dust always blowing about the town,
+Except when sea-fog laid it down,
+And I was one of the children told
+Some of the blowing dust was gold.
+
+All the dust the wind blew high
+Appeared like god in the sunset sky,
+But I was one of the children told
+Some of the dust was really gold.
+
+Such was life in the Golden Gate:
+Gold dusted all we drank and ate,
+And I was one of the children told,
+'We all must eat our peck of gold.'
+
+--- Robert Frost",5.020833333333333,4.729166666666667,5.0625,3.8645833333333335,4.364583333333333,4.0,,,,,,,,,,,,,,,,94,453,14,6.714285714285714,9,0.07142857142857142,0.5425531914893617,3.6595744680851063,0.033112582781456956,0.0,0.029106539327054648,0.0811209074918624,-0.052014368164807756,0.0637012430995143,0.09526941851686122,-0.03156817541734691,-0.034594703772459656,-0.014148511024998811,-0.020446192747460845,1.7213719134046848,1.8609608305808498,1.6922653740776301,1.7798399230889874,1.6576706703051705,1.7656914120639886,4.729166666666667,4.364583333333333,target__Clarity,target__Felt_Valence,3,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_31,77,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_6|chaudhuri_2024_34|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_11,cfd22b1a54fbf8a0bf61e20ae569c4767a54c7737b6ad7695e9ad30054e2e1dc,8,0.33,0.5
+chaudhuri_2024_8,chaudhuri_2024,aesthetic_creativity,human,human,Maya Angelou,When You Come,0.6111111111111112,"When you Come to me
+
+When you come to me, unbidden,
+Beckoning me
+To long-ago rooms,
+Where memories lie.
+
+Offering me, as to a child, an attic,
+Gatherings of days too few.
+Baubles of stolen kisses.
+Trinkets of borrowed loves.
+Trunks of secret words,
+
+I CRY.
+
+--- Maya Angelou",4.791666666666667,4.958333333333333,4.96875,4.020833333333333,4.770833333333333,3.9479166666666665,,,,,,,,,,,,,,,,49,274,12,4.083333333333333,8,0.3333333333333333,0.7551020408163265,4.204081632653061,0.058394160583941604,0.0,0.044569383961713616,0.06762672685556081,-0.0230573428938472,0.06194092862883216,0.10232853959150612,-0.04038761096267396,-0.017371544667118544,-0.0347018127359453,0.01733026806882676,1.6921970375375248,1.827853791412922,1.6476276535758112,1.7602270645573612,1.6302561089086927,1.725525251821416,4.958333333333333,4.770833333333333,target__Clarity,target__Felt_Valence,3,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_33,46,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_6|chaudhuri_2024_34|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_11,cfd22b1a54fbf8a0bf61e20ae569c4767a54c7737b6ad7695e9ad30054e2e1dc,8,0.33,0.5
+chaudhuri_2024_9,chaudhuri_2024,aesthetic_creativity,human,human,William Shakespeare,Sonnet 116,0.5329861111111112,"Sonnet 116
+
+Let me not to the marriage of true minds
+Admit impediments. Love is not love
+Which alters when it alteration finds,
+Or bends with the remover to remove.
+O no, it is an ever-fixèd mark
+That looks on tempests and is never shaken;
+It is the star to every wand'ring bark,
+Whose worth's unknown, although his height be taken.
+Love's not Time's fool, though rosy lips and cheeks
+Within his bending sickle's compass come;
+Love alters not with his brief hours and weeks,
+But bears it out even to the edge of doom.
+If this be error and upon me proved,
+I never writ, nor no man ever loved.
+
+--- William Shakespeare",4.447916666666667,4.208333333333333,4.84375,3.6979166666666665,4.21875,3.2916666666666665,,,,,,,,,,,,,,,,114,616,16,7.125,10,0.125,0.7368421052631579,4.192982456140351,0.03896103896103896,0.0,0.07743020274909651,0.103864850499088,-0.02643464774999149,0.03687337681360581,0.08405919613340274,-0.04718581931979693,0.040556825935490703,0.019805654365685266,0.020751171569805438,1.703347174513981,1.8641055918412213,1.6259169717648845,1.7602407413421333,1.6664737977003752,1.7800463957078185,4.208333333333333,4.21875,target__Clarity,target__Felt_Valence,3,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_5,94,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_6|chaudhuri_2024_34|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_11,cfd22b1a54fbf8a0bf61e20ae569c4767a54c7737b6ad7695e9ad30054e2e1dc,8,0.33,0.5
+chaudhuri_2024_31,chaudhuri_2024,aesthetic_creativity,human,human,P. B. Shelley,Fragment: Apostrophe to Silence,0.5169270833333334,"Fragment: Apostrophe to Silence
+
+Silence! Oh, well are Death and Sleep and Thou
+Three brethren named, the guardians gloomy-winged
+Of one abyss, where life, and truth, and joy
+Are swallowed up—yet spare me, Spirit, pity me,
+Until the sounds I hear become my soul,
+And it has left these faint and weary limbs,
+To track along the lapses of the air
+
+This wandering melody until it rests
+Among lone mountains in some...
+
+--- Percy Bysshe Shelley",4.166666666666667,3.9375,4.697916666666667,3.53125,4.09375,3.6041666666666665,,,,,,,,,,,,,,,,77,440,11,7.0,9,0.09090909090909091,0.8051948051948052,4.441558441558442,0.04318181818181818,0.012987012987012988,0.07503580825997447,0.10280170516140363,-0.027765896901429166,0.037586204043489335,0.08703997064093394,-0.049453766597444604,0.03744960421648513,0.015761734520469695,0.021687869696015438,1.6931689260876757,1.8256721753723693,1.6181331178277012,1.7228704702109656,1.6555827220441863,1.7386322047314353,3.9375,4.09375,target__Clarity,target__Felt_Valence,3,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_5,94,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_6|chaudhuri_2024_34|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_11,cfd22b1a54fbf8a0bf61e20ae569c4767a54c7737b6ad7695e9ad30054e2e1dc,8,0.33,0.5
+chaudhuri_2024_33,chaudhuri_2024,aesthetic_creativity,human,human,Robert Frost,Nothing Gold Can Stay,0.6189236111111112,"Nothing Gold Can Stay
+
+Nature's first green is gold,
+Her hardest hue to hold.
+Her early leaf's a flower;
+But only so an hour.
+Then leaf subsides to leaf,
+So Eden sank to grief,
+
+So dawn goes down to day
+Nothing gold can stay.
+
+--- Robert Frost",5.020833333333333,5.145833333333333,4.979166666666667,3.71875,4.3125,3.7083333333333335,,,,,,,,,,,,,,,,46,243,10,4.6,6,0.1,0.7391304347826086,4.0,0.04938271604938271,0.0,0.07944361083355722,0.11088180626004496,-0.031438195426487736,0.060106513892626445,0.06296993741683377,-0.0028634235242073203,0.019337096940930776,0.04791186884321119,-0.028574771902280416,1.7141819142225199,1.8924143989440525,1.6347383033889626,1.7815325926840075,1.6540754003298934,1.8294444615272187,5.145833333333333,4.3125,target__Clarity,target__Felt_Valence,3,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_8,49,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_36|chaudhuri_2024_23,chaudhuri_2024_26|chaudhuri_2024_35|chaudhuri_2024_6|chaudhuri_2024_34|chaudhuri_2024_15|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_11,cfd22b1a54fbf8a0bf61e20ae569c4767a54c7737b6ad7695e9ad30054e2e1dc,8,0.33,0.5
+chaudhuri_2024_2,chaudhuri_2024,aesthetic_creativity,human,human,W.S. Merwin,At the Same Time,0.5516493055555556,"At the Same Time
+
+While we talk
+thousands of languages are listening
+saying nothing
+while we close a door
+flocks of birds are flying through winters
+
+of endless light
+
+while we sign our names
+more of us
+lets go
+
+and will never answer
+– W.S. Merwin",4.572916666666667,4.166666666666667,4.65625,3.5729166666666665,4.114583333333333,3.84375,,,,,,,,,,,,,,,,46,247,12,3.8333333333333335,7,0.5,0.8260869565217391,4.239130434782608,0.008097165991902834,0.0,0.00718798841899293,0.020013564592450628,-0.012825576173457698,0.06765404897738647,0.11458439653509234,-0.046930347557705865,-0.06046606055839354,-0.09457083194264171,0.03410477138424817,1.8047582677729057,1.8781083089809711,1.7975702793539128,1.8580947443885205,1.7371042187955192,1.7635239124458788,4.166666666666667,4.114583333333333,target__Clarity,target__Felt_Valence,4,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_14,55,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_30|chaudhuri_2024_15|chaudhuri_2024_6|chaudhuri_2024_5|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_33,6e96adb03a391caf0caad3df8a4e77e827085dd4f4e3b385ce708f318c067eab,8,0.33,0.5
+chaudhuri_2024_3,chaudhuri_2024,aesthetic_creativity,human,human,Charles Simic,The Supreme Moment,0.6046006944444444,"The Supreme Moment
+
+As an ant is powerless
+Against a raised boot,
+And only has an instant
+To have a bright idea or two.
+The black boot so polished,
+He can see himself
+Reflected in it, distorted,
+Perhaps made larger
+Into a huge monster ant
+Shaking his arms and legs
+Threateningly?
+
+The boot may be hesitating,
+Demurring, having misgivings,
+Gathering cobwebs,
+Dew?
+Yes, and apparently no.
+
+---Charles Simic",4.5625,4.96875,4.989583333333333,3.65625,4.135416666666667,3.9895833333333335,,,,,,,,,,,,,,,,68,404,18,3.7777777777777777,7,0.3888888888888889,0.8529411764705882,4.676470588235294,0.039603960396039604,0.0,0.043172625937367926,0.09310130601150912,-0.049928680074141196,0.06779439170417922,0.11194007709145515,-0.044145685387275924,-0.0246217657668113,-0.018838771079946026,-0.005782994686865273,1.7859908475074662,1.845003427119367,1.7428182215700982,1.7519021211078578,1.718196455803287,1.7330633500279118,4.96875,4.135416666666667,target__Clarity,target__Felt_Valence,4,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_14,55,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_30|chaudhuri_2024_15|chaudhuri_2024_6|chaudhuri_2024_5|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_33,6e96adb03a391caf0caad3df8a4e77e827085dd4f4e3b385ce708f318c067eab,8,0.33,0.5
+chaudhuri_2024_7,chaudhuri_2024,aesthetic_creativity,human,human,Robert Frost,Stopping by Woods on a Snowy Evening,0.6380208333333334,"Stopping by Woods on a Snowy Evening
+
+Whose woods these are I think I know.
+His house is in the village, though;
+He will not see me stopping here
+To watch his woods fill up with snow.
+
+My little horse must think it queer
+To stop without a farmhouse near
+Between the woods and frozen lake
+The darkest evening of the year.
+
+He gives his harness bells a shake
+To ask if there is some mistake.
+The only other sound's the sweep
+Of easy wind and downy flake.
+
+The woods are lovely, dark and deep,
+But I have promises to keep,
+And miles to go before I sleep,
+And miles to go before I sleep.
+
+--- Robert Frost",5.239583333333333,5.25,5.072916666666667,4.041666666666667,4.635416666666667,3.75,,,,,,,,,,,,,,,,117,601,18,6.5,8,0.05555555555555555,0.6752136752136753,3.965811965811966,0.026622296173044926,0.0,0.0903399911826448,0.10919553062273968,-0.01885553944009488,0.059984625910743494,0.0518289356117998,0.008155690298943696,0.030355365271901302,0.05736659501093988,-0.027011229739038578,1.820467566878394,1.8218263858892239,1.7301275756957493,1.7126308552664842,1.7604829409676506,1.769997450277424,5.25,4.635416666666667,target__Clarity,target__Felt_Valence,4,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_16,103,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_30|chaudhuri_2024_15|chaudhuri_2024_6|chaudhuri_2024_5|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_33,6e96adb03a391caf0caad3df8a4e77e827085dd4f4e3b385ce708f318c067eab,8,0.33,0.5
+chaudhuri_2024_14,chaudhuri_2024,aesthetic_creativity,human,human,William Blake,Ah! Sun-flower,0.5512152777777778,"Ah! Sun-flower
+
+Ah Sunflower, weary of time,
+Who countest the steps of the sun;
+Seeking after that sweet golden clime
+Where the traveller's journey is done;
+
+Where the Youth pined away with desire,
+And the pale virgin shrouded in snow,
+Arise from their graves, and aspire
+Where my Sunflower wishes to go!
+
+--- William Blake",4.645833333333333,4.291666666666667,4.677083333333333,3.5625,4.239583333333333,3.6145833333333335,,,,,,,,,,,,,,,,55,323,10,5.5,7,0.2,0.8,4.6,0.043343653250773995,0.0,0.07791340555917259,0.11890441396365148,-0.04099100840447889,0.003921268969232949,0.0184889858592987,-0.014567716890065752,0.07399213658993964,0.10041542810435278,-0.02642329151441314,1.7676061799519538,1.873040029410562,1.6896927743927812,1.7541356154469105,1.7636849109827208,1.8545510435512633,4.291666666666667,4.239583333333333,target__Clarity,target__Felt_Valence,4,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_2,46,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_30|chaudhuri_2024_15|chaudhuri_2024_6|chaudhuri_2024_5|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_33,6e96adb03a391caf0caad3df8a4e77e827085dd4f4e3b385ce708f318c067eab,8,0.33,0.5
+chaudhuri_2024_16,chaudhuri_2024,aesthetic_creativity,human,human,Derek Walcott,Love after Love,0.6953125,"Love after Love
+
+The time will come
+when, with elation
+you will greet yourself arriving
+at your own door, in your own mirror
+and each will smile at the other's welcome,
+
+and say, sit here. Eat.
+You will love again the stranger who was your self.
+Give wine. Give bread. Give back your heart
+
+to itself, to the stranger who has loved you
+
+all your life, whom you ignored
+for another, who knows you by heart.
+Take down the love letters from the bookshelf,
+
+the photographs, the desperate notes,
+peel your own image from the mirror.
+Sit. Feast on your life.
+
+--- Derek Walcott",5.322916666666667,5.520833333333333,5.489583333333333,4.572916666666667,5.427083333333333,4.354166666666667,,,,,,,,,,,,,,,,103,572,17,6.0588235294117645,10,0.17647058823529413,0.6213592233009708,4.281553398058253,0.04020979020979021,0.0,0.05198335862850101,0.05961577758199499,-0.00763241895349398,0.08080962998413144,0.12242227459863986,-0.04161264461450842,-0.02882627135563043,-0.06280649701664487,0.03398022566101444,1.8061409317680472,1.8087601178742976,1.7541575731395462,1.7491443402923026,1.7253313017839158,1.6863378432756577,5.520833333333333,5.427083333333333,target__Clarity,target__Felt_Valence,4,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_7,117,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_30|chaudhuri_2024_15|chaudhuri_2024_6|chaudhuri_2024_5|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_33,6e96adb03a391caf0caad3df8a4e77e827085dd4f4e3b385ce708f318c067eab,8,0.33,0.5
+chaudhuri_2024_29,chaudhuri_2024,aesthetic_creativity,human,human,P. B. Shelley,Alas! This Is Not What I Thought Life Was.,0.5625,"Alas! This Is Not What I Thought Life Was
+
+Alas! this is not what I thought life was.
+I knew that there were crimes and evil men,
+Misery and hate; nor did I hope to pass
+Untouched by suffering, through the rugged glen.
+In mine own heart I saw as in a glass
+The hearts of others ... And when
+I went among my kind, with triple brass
+Of calm endurance my weak breast I armed,
+To bear scorn, fear, and hate, a woful mass!
+
+--- Percy Bysshe Shelley",4.489583333333333,4.708333333333333,4.677083333333333,3.84375,4.34375,3.625,,,,,,,,,,,,,,,,87,443,11,7.909090909090909,10,0.09090909090909091,0.7241379310344828,3.839080459770115,0.04288939051918736,0.0,0.07187990731802363,0.08816207976318213,-0.016282172445158505,0.057079929790659456,0.051638650240662054,0.005441279549997402,0.014799977527364172,0.03652342952252008,-0.021723451995155907,1.7966048033128337,1.9064171160838026,1.72472489599481,1.8182550363206205,1.7395248735221742,1.8547784658431405,4.708333333333333,4.34375,target__Clarity,target__Felt_Valence,4,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_16,103,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_24|chaudhuri_2024_25|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_21|chaudhuri_2024_18|chaudhuri_2024_8|chaudhuri_2024_36,chaudhuri_2024_9|chaudhuri_2024_35|chaudhuri_2024_11|chaudhuri_2024_30|chaudhuri_2024_15|chaudhuri_2024_6|chaudhuri_2024_5|chaudhuri_2024_22|chaudhuri_2024_10|chaudhuri_2024_33,6e96adb03a391caf0caad3df8a4e77e827085dd4f4e3b385ce708f318c067eab,8,0.33,0.5
+chaudhuri_2024_15,chaudhuri_2024,aesthetic_creativity,human,human,William Blake,The Smile,0.564236111111111,"The Smile
+
+There is a Smile of Love
+And there is a Smile of Deceit
+And there is a Smile of Smiles
+In which these two Smiles meet
+
+And there is a Frown of Hate
+And there is a Frown of disdain
+And there is a Frown of Frowns
+Which you strive to forget in vain
+
+For it sticks in the Hearts deep Core
+And it sticks in the deep Back bone
+And no Smile that ever was smild
+But only one Smile alone
+
+That betwixt the Cradle & Grave
+It only once Smild can be
+But when it once is Smild
+Theres an end to all Misery
+
+--- William Blake",4.489583333333333,4.614583333333333,4.822916666666667,3.7291666666666665,4.385416666666667,3.6145833333333335,,,,,,,,,,,,,,,,109,521,18,6.055555555555555,8,0.1111111111111111,0.5045871559633027,3.688073394495413,0.007677543186180422,0.0,0.009891717876144401,0.07293214889653044,-0.06304043102038603,0.0365212375245183,0.0798967097910841,-0.043375472266565795,-0.0266295196483739,-0.006964560894553662,-0.01966495875382024,1.7350471595378778,1.9162000503518442,1.7251554416617334,1.8432679014553137,1.6985259220133595,1.83630334056076,4.614583333333333,4.385416666666667,target__Clarity,target__Felt_Valence,5,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_17,104,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23|chaudhuri_2024_7,chaudhuri_2024_26|chaudhuri_2024_11|chaudhuri_2024_6|chaudhuri_2024_10|chaudhuri_2024_9|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_34|chaudhuri_2024_35,89505fe7958624816086a2b410e2239f9058a957e5ced82cea18a5a9c1131149,8,0.33,0.5
+chaudhuri_2024_17,chaudhuri_2024,aesthetic_creativity,human,human,Wilfred Owen,The Last Laugh,0.5967881944444444,"The Last Laugh
+
+'Oh! Jesus Christ! I'm hit,' he said; and died.
+Whether he vainly cursed or prayed indeed,
+The Bullets chirped-In vain, vain, vain!
+Machine-guns chuckled,-Tut-tut! Tut-tut!
+And the Big Gun guffawed.
+
+Another sighed,-'O Mother, -Mother, - Dad!'
+Then smiled at nothing, childlike, being dead.
+And the lofty Shrapnel-cloud
+Leisurely gestured,-Fool!
+And the splinters spat, and tittered.
+
+'My Love!' one moaned. Love-languid seemed his mood,
+Till slowly lowered, his whole faced kissed the mud.
+And the Bayonets' long teeth grinned;
+Rabbles of Shells hooted and groaned;
+And the Gas hissed.
+--- Wilfred Owen",4.364583333333333,4.84375,4.927083333333333,3.8958333333333335,4.59375,4.1875,,,,,,,,,,,,,,,,104,619,17,6.117647058823529,10,0.17647058823529413,0.7596153846153846,4.586538461538462,0.08723747980613894,0.0,0.034490852059043675,0.0749995530240053,-0.04050870096496162,0.010476592225459047,0.06660848454834234,-0.05613189232288329,0.024014259833584628,0.008391068475662955,0.015623191357921673,1.8018987903439543,1.9320632929968036,1.7674079382849106,1.8570637399727983,1.7914221981184952,1.8654548084484612,4.84375,4.59375,target__Clarity,target__Felt_Valence,5,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_15,109,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23|chaudhuri_2024_7,chaudhuri_2024_26|chaudhuri_2024_11|chaudhuri_2024_6|chaudhuri_2024_10|chaudhuri_2024_9|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_34|chaudhuri_2024_35,89505fe7958624816086a2b410e2239f9058a957e5ced82cea18a5a9c1131149,8,0.33,0.5
+chaudhuri_2024_18,chaudhuri_2024,aesthetic_creativity,human,human,Dylan Thomas,Clown in the Moon,0.6176215277777778,"Clown in the Moon
+
+My tears are like the quiet drift
+Of petals from some magic rose;
+And all my grief flows from the rift
+Of unremembered skies and snows.
+
+I think, that if I touched the earth,
+It would crumble;
+It is so sad and beautiful,
+So tremulously like a dream.
+
+--- Dylan Thomas",5.0625,5.041666666666667,4.958333333333333,3.9479166666666665,4.9375,3.7604166666666665,,,,,,,,,,,,,,,,54,286,10,5.4,8,0.2,0.7777777777777778,4.055555555555555,0.03496503496503497,0.0,0.07251085590455575,0.11509690151287177,-0.042586045608316025,0.08000034741207318,0.11880259877824706,-0.03880225136617388,-0.007489491507517432,-0.003705697265375285,-0.0037837942421421467,1.7467032687940252,1.9348152211468639,1.6741924128894694,1.819718319633992,1.666702921381952,1.8160126223686168,5.041666666666667,4.9375,target__Clarity,target__Felt_Valence,5,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_22,37,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23|chaudhuri_2024_7,chaudhuri_2024_26|chaudhuri_2024_11|chaudhuri_2024_6|chaudhuri_2024_10|chaudhuri_2024_9|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_34|chaudhuri_2024_35,89505fe7958624816086a2b410e2239f9058a957e5ced82cea18a5a9c1131149,8,0.33,0.5
+chaudhuri_2024_21,chaudhuri_2024,aesthetic_creativity,human,human,W. B. Yeats,Aedh wishes for the Cloths of Heaven,0.6423611111111112,"Aedh wishes for the Cloths of Heaven
+
+Had I the heavens' embroidered cloths,
+Enwrought with golden and silver light,
+The blue and the dim and the dark cloths
+Of night and light and the half-light,
+I would spread the cloths under your feet:
+But I, being poor, have only my dreams;
+I have spread my dreams under your feet;
+Tread softly because you tread on my dreams.
+
+--- William Butler Yeats",5.125,5.135416666666667,5.208333333333333,4.083333333333333,4.958333333333333,3.9479166666666665,,,,,,,,,,,,,,,,71,391,10,7.1,9,0.1,0.5915492957746479,4.309859154929577,0.03580562659846547,0.0,0.06537062644092839,0.09023889274730257,-0.024868266306374176,0.07672826280714262,0.08622931303833536,-0.009501050231192743,-0.01135763636621423,0.004009579708967204,-0.015367216075181434,1.770261195714598,1.9336767542341728,1.7048905692736696,1.8434378614868703,1.6935329329074553,1.8474474411958375,5.135416666666667,4.958333333333333,target__Clarity,target__Felt_Valence,5,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_25,83,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23|chaudhuri_2024_7,chaudhuri_2024_26|chaudhuri_2024_11|chaudhuri_2024_6|chaudhuri_2024_10|chaudhuri_2024_9|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_34|chaudhuri_2024_35,89505fe7958624816086a2b410e2239f9058a957e5ced82cea18a5a9c1131149,8,0.33,0.5
+chaudhuri_2024_22,chaudhuri_2024,aesthetic_creativity,human,human,W.B. Yeats,Memory,0.5260416666666666,"Memory
+ONE had a lovely face,
+And two or three had charm,
+But charm and face were in vain
+Because the mountain grass
+Cannot but keep the form
+Where the mountain hare has lain.
+
+--- William Butler Yeats",4.541666666666667,3.9583333333333335,4.625,3.395833333333333,3.6770833333333335,3.5,,,,,,,,,,,,,,,,37,201,8,4.625,7,0.25,0.7837837837837838,4.243243243243243,0.029850746268656716,0.0,0.083393871189952,0.1054706624243611,-0.022076791234409088,0.07270884619596885,0.10298099338074373,-0.03027214718477489,0.010685024993983161,0.0024896690436173596,0.008195355950365801,1.740042786515239,1.9162525991057147,1.656648915325287,1.8107819366813536,1.6673339403192702,1.813271605724971,3.9583333333333335,3.6770833333333335,target__Clarity,target__Felt_Valence,5,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_18,54,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23|chaudhuri_2024_7,chaudhuri_2024_26|chaudhuri_2024_11|chaudhuri_2024_6|chaudhuri_2024_10|chaudhuri_2024_9|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_34|chaudhuri_2024_35,89505fe7958624816086a2b410e2239f9058a957e5ced82cea18a5a9c1131149,8,0.33,0.5
+chaudhuri_2024_25,chaudhuri_2024,aesthetic_creativity,human,human,Sara Teasdale,Alone,0.6697048611111112,"Alone
+I am alone, in spite of love,
+In spite of all I take and give—
+In spite of all your tenderness,
+Sometimes I am not glad to live.
+
+I am alone, as though I stood
+On the highest peak of the tired gray world,
+About me only swirling snow,
+
+Above me, endless space unfurled;
+
+With earth hidden and heaven hidden,
+And only my own spirit's pride
+To keep me from the peace of those
+Who are not lonely, having died.
+--- Sara Teasdale",5.15625,5.5625,5.125,4.333333333333333,5.1875,4.229166666666667,,,,,,,,,,,,,,,,83,429,14,5.928571428571429,9,0.14285714285714285,0.6746987951807228,3.9397590361445785,0.037296037296037296,0.0,0.07613731987971817,0.09167980061363368,-0.015542480733915509,0.06877868432660206,0.0921726176283939,-0.023393933301791847,0.007358635553116111,-0.0004928170147602273,0.007851452567876338,1.718263606569065,1.9140415611533719,1.642126286689347,1.8223617605397382,1.649484922242463,1.821868943524978,5.5625,5.1875,target__Clarity,target__Felt_Valence,5,17,123,distilgpt2,heldout_matched_other,chaudhuri_2024_21,71,30,6,10,10,chaudhuri_2024_1|chaudhuri_2024_16|chaudhuri_2024_24|chaudhuri_2024_4|chaudhuri_2024_19|chaudhuri_2024_20|chaudhuri_2024_8|chaudhuri_2024_36|chaudhuri_2024_23|chaudhuri_2024_7,chaudhuri_2024_26|chaudhuri_2024_11|chaudhuri_2024_6|chaudhuri_2024_10|chaudhuri_2024_9|chaudhuri_2024_29|chaudhuri_2024_14|chaudhuri_2024_33|chaudhuri_2024_34|chaudhuri_2024_35,89505fe7958624816086a2b410e2239f9058a957e5ced82cea18a5a9c1131149,8,0.33,0.5

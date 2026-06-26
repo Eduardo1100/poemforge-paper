@@ -1,0 +1,47 @@
+item_id,dataset,tier,authorship,poet,title,human_quality_composite,v_raw,v_ctrl,v_struct,observer,d_hash,control_mode
+porter_s2_1,porter_machery_2024,llm,AI,Sylvia Plath,,0.6656555981268624,-0.6096222888370031,-0.6096218582496324,-4.3058737064782804e-07,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+porter_s2_2,porter_machery_2024,llm,AI,Walt Whitman,,0.7293795232013623,-0.609556758821574,-0.6095568126449953,5.3823421275467354e-08,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+porter_s2_3,porter_machery_2024,llm,AI,Lord Byron,,0.6815932311621967,-0.6112207368026774,-0.6112174266622685,-3.3101404088853315e-06,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+porter_s2_4,porter_machery_2024,llm,AI,Samuel Butler,,0.616698595146871,-0.6102064613400486,-0.6102072686913682,8.073513195760995e-07,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+porter_s2_5,porter_machery_2024,llm,AI,Allen Ginsberg,,0.6524052788420605,-0.6108562984170769,-0.6108561369468131,-1.6147026382640206e-07,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+porter_s2_6,porter_machery_2024,human,human,Shakespeare,,0.552016815666241,-0.609625895006229,-0.6096248992729354,-9.95733293596146e-07,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+porter_s2_7,porter_machery_2024,human,human,Emily Dickinson,,0.5247711792252022,-0.6105811261756964,-0.6105822026441223,1.0764684259534363e-06,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+porter_s2_8,porter_machery_2024,human,human,T.S. Eliot,,0.5049223073648361,-0.6129749228378776,-0.612975084308141,1.6147026338231285e-07,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+porter_s2_9,porter_machery_2024,human,human,Lasky,,0.547041294167731,-0.610497592225844,-0.6104978075195286,2.152936846577802e-07,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+porter_s2_10,porter_machery_2024,human,human,Chaucer,,0.5677681992337165,-0.6108904493778904,-0.6108909068769712,4.574990808414725e-07,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_1,chaudhuri_2024,human,human,W. H. Auden,Funeral Blues,0.7105034722222222,-0.6113221670401123,-0.6113226783626144,5.113225021169399e-07,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_2,chaudhuri_2024,human,human,W.S. Merwin,At the Same Time,0.5516493055555556,-0.6125099423012927,-0.6105816644099096,-0.0019282778913831677,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_3,chaudhuri_2024,human,human,Charles Simic,The Supreme Moment,0.6046006944444444,-0.6106949896234504,-0.6093837703455254,-0.001311219277924991,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_4,chaudhuri_2024,human,human,Langston Hughes,Peace,0.6662326388888888,-0.6101047350737976,-0.6110884388331304,0.0009837037593327658,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_5,chaudhuri_2024,human,human,Robert Frost,A Peck of Gold,0.6171875,-0.6105268721670289,-0.6104811222589261,-4.5749908102799e-05,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_6,chaudhuri_2024,human,human,Robert Frost,The Freedom of the Moon,0.5447048611111112,-0.6114357882824706,-0.6114080153970813,-2.7772885389243385e-05,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_7,chaudhuri_2024,human,human,Robert Frost,Stopping by Woods on a Snowy Evening,0.6380208333333334,-0.6096225041306877,-0.609221708024001,-0.0004007961066867516,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_8,chaudhuri_2024,human,human,Maya Angelou,When You Come,0.6111111111111112,-0.6100973881767899,-0.61152750339236,0.0014301152155700159,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_9,chaudhuri_2024,human,human,William Shakespeare,Sonnet 116,0.5329861111111112,-0.6119469224028165,-0.6116998728990639,-0.00024704950375253887,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_10,chaudhuri_2024,human,human,Emily Dickinson,Apparently with no Surprise,0.5789930555555556,-0.6105842210224215,-0.6096120892986674,-0.0009721317237540994,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_11,chaudhuri_2024,human,human,Emily Dickinson,"Will there really be a ""Morning""?",0.6223958333333334,-0.610702524902432,-0.6093819403492016,-0.001320584553230475,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_12,chaudhuri_2024,human,human,Emily Dickinson,Unable are the Loved to die,0.5677083333333334,-0.6108580745899803,-0.611894955889555,0.0010368812995746879,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_13,chaudhuri_2024,human,human,Emily Dickinson,How happy is the little Stone,0.5681423611111112,-0.6115235473708953,-0.6118089191506106,0.00028537177971532657,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_14,chaudhuri_2024,human,human,William Blake,Ah! Sun-flower,0.5512152777777778,-0.611525754131168,-0.6112276531123153,-0.00029810101885274776,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_15,chaudhuri_2024,human,human,William Blake,The Smile,0.564236111111111,-0.6115656641980598,-0.6096556862699174,-0.0019099779281424034,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_16,chaudhuri_2024,human,human,Derek Walcott,Love after Love,0.6953125,-0.6107119709128699,-0.6096556862699178,-0.0010562846429520434,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_17,chaudhuri_2024,human,human,Wilfred Owen,The Last Laugh,0.5967881944444444,-0.6120272538591025,-0.6110113636938337,-0.001015890165268818,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_18,chaudhuri_2024,human,human,Dylan Thomas,Clown in the Moon,0.6176215277777778,-0.6115138591550617,-0.6097234768690409,-0.0017903822860207974,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_19,chaudhuri_2024,human,human,Christina Rossetti,Remember,0.6375868055555556,-0.6106175915436256,-0.6106168918391486,-6.997044770251648e-07,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_20,chaudhuri_2024,human,human,W. B. Yeats,When You Are Old,0.618923611111111,-0.6108912836409206,-0.6103876040644232,-0.00050367957649744,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_21,chaudhuri_2024,human,human,W. B. Yeats,Aedh wishes for the Cloths of Heaven,0.6423611111111112,-0.610889668938281,-0.6115043862329133,0.0006147172946322499,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_22,chaudhuri_2024,human,human,W.B. Yeats,Memory,0.5260416666666666,-0.6120962285734941,-0.6109073499321775,-0.0011888786413165597,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_23,chaudhuri_2024,human,human,Henry Wadsworth Longfellow,The Arrow and the Song,0.6519097222222222,-0.6114453957631723,-0.6095386741520175,-0.0019067216111547935,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_24,chaudhuri_2024,human,human,Sara Teasdale,There Will Come Soft Rains,0.703125,-0.6104057425574005,-0.6114456110568578,0.0010398684994572527,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_25,chaudhuri_2024,human,human,Sara Teasdale,Alone,0.6697048611111112,-0.6113917876355601,-0.6114640724903624,7.228485480226254e-05,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_26,chaudhuri_2024,human,human,P. B. Shelley,Ozymandias,0.540798611111111,-0.6101513192449297,-0.6105071458831239,0.0003558266381942232,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_27,chaudhuri_2024,human,human,P. B. Shelley,Good-Night,0.5651041666666666,-0.6102125702983665,-0.6113932946913567,0.0011807243929902178,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_28,chaudhuri_2024,human,human,P. B. Shelley,A Lament,0.5546875,-0.6125665107170764,-0.6106784658331121,-0.0018880448839642128,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_29,chaudhuri_2024,human,human,P. B. Shelley,Alas! This Is Not What I Thought Life Was.,0.5625,-0.6104801265256334,-0.611391949105824,0.0009118225801905133,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_30,chaudhuri_2024,human,human,P. B. Shelley,Fragment: A Wanderer,0.5729166666666667,-0.6127932418792899,-0.6095628139564693,-0.003230427922820578,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_31,chaudhuri_2024,human,human,P. B. Shelley,Fragment: Apostrophe to Silence,0.5169270833333334,-0.6101454255802983,-0.6104434727757297,0.0002980471954314723,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_32,chaudhuri_2024,human,human,John Donne,MEDITATION XVII,0.599826388888889,-0.6116524544649011,-0.611429840794417,-0.00022261367048415082,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_33,chaudhuri_2024,human,human,Robert Frost,Nothing Gold Can Stay,0.6189236111111112,-0.6101547639438931,-0.6099788151796735,-0.00017594876421966887,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_34,chaudhuri_2024,human,human,William Wordsworth,My Heart Leaps Up,0.5555555555555556,-0.6111799655610461,-0.610925488425154,-0.0002544771358921061,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_35,chaudhuri_2024,human,human,Emily Dickinson,I taste a liquor never brewed –,0.4822048611111111,-0.6123083197651149,-0.6115628922918637,-0.0007454274732512367,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle
+chaudhuri_2024_36,chaudhuri_2024,human,human,Countee Cullen,If You Should Go,0.6032986111111112,-0.6109827565454142,-0.610980146109481,-2.6104359331924343e-06,sshleifer/tiny-gpt2,1c06388c4f68039d,line_shuffle

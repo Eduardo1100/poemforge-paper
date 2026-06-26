@@ -1,0 +1,12 @@
+{
+  "stage": "30_compute_controls",
+  "surface_source": "/home/eduardo/Projects/poemforge-paper/data/processed/surface_matched_pools.csv",
+  "score_source_dir": "/home/eduardo/Projects/poemforge-paper/results/scores/phase_a_eval_scores",
+  "outputs": {
+    "surface_features": "/home/eduardo/Projects/poemforge-paper/results/controls/surface_features.csv",
+    "nll_features": "/home/eduardo/Projects/poemforge-paper/results/controls/nll_features.csv",
+    "control_feature_inventory": "/home/eduardo/Projects/poemforge-paper/results/controls/control_feature_inventory.csv",
+    "control_summary": "/home/eduardo/Projects/poemforge-paper/results/controls/control_summary.csv"
+  },
+  "important_note": "This stage extracts control features already present in frozen Phase A artifacts. It does not run new language-model NLL computation."
+}

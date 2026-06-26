@@ -1,0 +1,574 @@
+item_id,dataset,authorship,poet,title,text,target_value,preference_score,word_len,observer,seed,d_n,control_mode,high_pool_n,low_pool_n,high_samples_n,low_samples_n,high_hist,low_hist,v_high_raw,v_low_raw,v_pref_raw,v_high_ctrl,v_low_ctrl,v_pref_ctrl,v_high_struct,v_low_struct,v_pref_struct
+chaudhuri_2024_1,chaudhuri_2024,human,W. H. Auden,Funeral Blues,"Funeral Blues
+Stop all the clocks, cut off the telephone,
+Prevent the dog from barking with a juicy bone,
+Silence the pianos and with muffled drum
+Bring out the coffin, let the mourners come.
+Let aeroplanes circle moaning overhead
+Scribbling on the sky the message ‘He is Dead’.
+Put crepe bows round the white necks of the public doves,
+Let the traffic policemen wear black cotton gloves.
+He was my North, my South, my East and West,
+My working week and my Sunday rest,
+My noon, my midnight, my talk, my song;
+I thought that love would last forever: I was wrong.
+The stars are not wanted now; put out every one,
+Pack up the moon and dismantle the sun,
+Pour away the ocean and sweep up the wood;
+For nothing now can ever come to any good.
+---W. H. Auden",4.291666666666667,1.0,141,distilgpt2,17,8,matched_other,12,12,8,8,1.7833512644800837,1.8209033619975188,-0.027272166637107853,-0.010235755298124039,-0.017036411338983815,-0.004077949813183768,0.021484434258408625,-0.025562384071592392,-0.023194216823924085,-0.03172018955653266,0.008525972732608578
+chaudhuri_2024_2,chaudhuri_2024,human,W.S. Merwin,At the Same Time,"At the Same Time
+
+While we talk
+thousands of languages are listening
+saying nothing
+while we close a door
+flocks of birds are flying through winters
+
+of endless light
+
+while we sign our names
+more of us
+lets go
+
+and will never answer
+– W.S. Merwin",3.84375,0.5,46,distilgpt2,17,8,matched_other,12,12,8,8,1.6851068427839566,1.8686443683010445,-0.03887106179578681,-0.03167556582646314,-0.007195495969323673,0.025181657008332303,0.060038257507992965,-0.03485660049966066,-0.06405271880411911,-0.0917138233344561,0.02766110453033699
+chaudhuri_2024_3,chaudhuri_2024,human,Charles Simic,The Supreme Moment,"The Supreme Moment
+
+As an ant is powerless
+Against a raised boot,
+And only has an instant
+To have a bright idea or two.
+The black boot so polished,
+He can see himself
+Reflected in it, distorted,
+Perhaps made larger
+Into a huge monster ant
+Shaking his arms and legs
+Threateningly?
+
+The boot may be hesitating,
+Demurring, having misgivings,
+Gathering cobwebs,
+Dew?
+Yes, and apparently no.
+
+---Charles Simic",3.9895833333333335,1.0,68,distilgpt2,17,8,matched_other,12,12,8,8,1.8007109166141388,1.816563632288224,-0.0012426074510103469,0.013927405384590585,-0.015170012835600932,0.004229316068857347,0.15176769289782643,-0.1475383768289691,-0.005471923519867694,-0.13784028751323585,0.13236836399336815
+chaudhuri_2024_4,chaudhuri_2024,human,Langston Hughes,Peace,"Peace
+
+We passed their graves:
+The dead men there,
+Winners or losers,
+Did not care.
+In the dark
+They could not see
+Who had gained
+The victory.
+
+---Langston Hughes",3.9479166666666665,1.0,29,distilgpt2,17,8,matched_other,12,12,8,8,1.6974700280004227,1.8797271966095248,0.00033385787114692533,0.012356843334807133,-0.012022985463660207,0.02907442933472093,0.0450099762065419,-0.01593554687182097,-0.028740571463574005,-0.03265313287173477,0.003912561408160764
+chaudhuri_2024_5,chaudhuri_2024,human,Robert Frost,A Peck of Gold,"A Peck of Gold
+
+Dust always blowing about the town,
+Except when sea-fog laid it down,
+And I was one of the children told
+Some of the blowing dust was gold.
+
+All the dust the wind blew high
+Appeared like god in the sunset sky,
+But I was one of the children told
+Some of the dust was really gold.
+
+Such was life in the Golden Gate:
+Gold dusted all we drank and ate,
+And I was one of the children told,
+'We all must eat our peck of gold.'
+
+--- Robert Frost",4.0,1.0,93,distilgpt2,17,8,matched_other,12,12,8,8,1.699375251096006,1.9020244564107196,-0.014401292677507893,0.025820486421141986,-0.04022177909864988,0.015005391276023738,0.3410709383126238,-0.32606554703660007,-0.02940668395353163,-0.3152504518914818,0.2858437679379502
+chaudhuri_2024_6,chaudhuri_2024,human,Robert Frost,The Freedom of the Moon,"The Freedom of the Moon
+
+I've tried the new moon tilted in the air
+Above a hazy tree-and-farmhouse cluster
+As you might try a jewel in your hair.
+I've tried it fine with little breadth of luster,
+Alone, or in one ornament combining
+With one first-water start almost shining.
+
+I put it shining anywhere I please.
+By walking slowly on some evening later,
+I've pulled it from a crate of crooked trees,
+And brought it over glossy water, greater,
+And dropped it in, and seen the image wallow,
+The color run, all sorts of wonder follow.
+
+--- Robert Frost",3.427083333333333,0.0,99,distilgpt2,17,8,matched_other,12,12,8,8,1.8085118261790276,1.838753707532588,0.00936325332666077,0.024251963381714203,-0.014888710055053433,0.009156121727507793,0.009339622058939678,-0.00018350033143188504,0.00020713159915297652,0.014912341322774525,-0.014705209723621548
+chaudhuri_2024_7,chaudhuri_2024,human,Robert Frost,Stopping by Woods on a Snowy Evening,"Stopping by Woods on a Snowy Evening
+
+Whose woods these are I think I know.
+His house is in the village, though;
+He will not see me stopping here
+To watch his woods fill up with snow.
+
+My little horse must think it queer
+To stop without a farmhouse near
+Between the woods and frozen lake
+The darkest evening of the year.
+
+He gives his harness bells a shake
+To ask if there is some mistake.
+The only other sound's the sweep
+Of easy wind and downy flake.
+
+The woods are lovely, dark and deep,
+But I have promises to keep,
+And miles to go before I sleep,
+And miles to go before I sleep.
+
+--- Robert Frost",3.75,0.5,118,distilgpt2,17,8,matched_other,12,12,8,8,1.7164262775853736,1.8288984854707433,0.03386263273246004,0.04179229231053849,-0.007929659578078452,0.015208642461501665,0.030680184037026326,-0.015471541575524661,0.018653990270958376,0.011112108273512167,0.007541881997446209
+chaudhuri_2024_8,chaudhuri_2024,human,Maya Angelou,When You Come,"When you Come to me
+
+When you come to me, unbidden,
+Beckoning me
+To long-ago rooms,
+Where memories lie.
+
+Offering me, as to a child, an attic,
+Gatherings of days too few.
+Baubles of stolen kisses.
+Trinkets of borrowed loves.
+Trunks of secret words,
+
+I CRY.
+
+--- Maya Angelou",3.9479166666666665,1.0,49,distilgpt2,17,8,matched_other,12,12,8,8,1.7240393139092927,1.8377086802567724,0.005509989984475494,0.010228898110472784,-0.00471890812599729,0.028865270030907553,0.044389806347697736,-0.015524536316790183,-0.02335528004643206,-0.03416090823722495,0.010805628190792893
+chaudhuri_2024_9,chaudhuri_2024,human,William Shakespeare,Sonnet 116,"Sonnet 116
+
+Let me not to the marriage of true minds
+Admit impediments. Love is not love
+Which alters when it alteration finds,
+Or bends with the remover to remove.
+O no, it is an ever-fixèd mark
+That looks on tempests and is never shaken;
+It is the star to every wand'ring bark,
+Whose worth's unknown, although his height be taken.
+Love's not Time's fool, though rosy lips and cheeks
+Within his bending sickle's compass come;
+Love alters not with his brief hours and weeks,
+But bears it out even to the edge of doom.
+If this be error and upon me proved,
+I never writ, nor no man ever loved.
+
+--- William Shakespeare",3.2916666666666665,0.0,114,distilgpt2,17,8,matched_other,12,12,8,8,1.699775186485496,1.8552287536439784,0.01985638051046923,0.054650233528711345,-0.034793853018242116,0.022357047601396562,0.03444542925645799,-0.012088381655061431,-0.002500667090927333,0.02020480427225335,-0.022705471363180685
+chaudhuri_2024_10,chaudhuri_2024,human,Emily Dickinson,Apparently with no Surprise,"Apparently with no Surprise
+
+Apparently with no surprise,
+To any happy flower,
+The frost beheads it at its play,
+In accidental power.
+The blond assassin passes on.
+The sun proceeds unmoved,
+To measure off another day,
+For an approving God.
+
+--- Emily Dickinson",3.9791666666666665,1.0,43,distilgpt2,17,8,matched_other,12,12,8,8,1.778192121858603,1.8133361943729709,0.012558518136071228,0.03440839722436073,-0.021849879088289503,-0.030490809865148183,-0.03571065722382327,0.005219847358675089,0.04304932800121941,0.070119054448184,-0.027069726446964593
+chaudhuri_2024_11,chaudhuri_2024,human,Emily Dickinson,"Will there really be a ""Morning""?","Will there really be a ""Morning""?
+
+Will there really be a ""Morning""?
+Is there such a thing as ""Day""?
+Could I see it from the mountains
+If I were as tall as they?
+
+Has it feet like Water lilies?
+Has it feathers like a Bird?
+Is it brought from famous countries
+Of which I have never heard?
+
+Oh some Scholar! Oh some Sailor!
+Oh some Wise Men from the skies!
+Please to tell a little Pilgrim
+Where the place called ""Morning"" lies!
+
+--- Emily Dickinson",3.8020833333333335,0.5,85,distilgpt2,17,8,matched_other,12,12,8,8,1.7309185394923219,1.8942821634980538,-0.01236075520413138,0.02513728001346971,-0.03749803521760109,0.22689437431259685,0.03250246160561954,0.1943919127069773,-0.23925512951672823,-0.007365181592149828,-0.2318899479245784
+chaudhuri_2024_12,chaudhuri_2024,human,Emily Dickinson,Unable are the Loved to die,"Unable are the Loved to die
+
+Unable are the Loved to die
+For Love is Immortality,
+Nay, it is Deity—
+
+Unable they that love—to die
+For Love reforms Vitality
+Into Divinity.
+
+--- Emily Dickinson",3.489583333333333,0.5,34,distilgpt2,17,8,matched_other,12,12,8,8,1.7538678826373428,1.8875408686177733,0.005589101108086414,0.040498816140312144,-0.03490971503222573,0.027951801177532154,0.05151856425511814,-0.023566763077585984,-0.02236270006944574,-0.011019748114805994,-0.011342951954639746
+chaudhuri_2024_13,chaudhuri_2024,human,Emily Dickinson,How happy is the little Stone,"How happy is the little Stone
+
+How happy is the little Stone
+That rambles in the Road alone,
+And doesn't care about Careers
+And Exigencies never fears—
+Whose Coat of elemental Brown
+A passing Universe put on,
+And independent as the Sun
+Associates or glows alone,
+Fulfilling absolute Decree
+In casual simplicity—
+
+--- Emily Dickinson",3.489583333333333,0.0,55,distilgpt2,17,8,matched_other,12,12,8,8,1.7743160338365862,1.8508210713527191,0.014562547533909731,0.01780653256570819,-0.0032439850317984575,0.019059674797479165,0.1838198491919203,-0.16476017439444113,-0.004497127263569434,-0.1660133166262121,0.16151618936264267
+chaudhuri_2024_14,chaudhuri_2024,human,William Blake,Ah! Sun-flower,"Ah! Sun-flower
+
+Ah Sunflower, weary of time,
+Who countest the steps of the sun;
+Seeking after that sweet golden clime
+Where the traveller's journey is done;
+
+Where the Youth pined away with desire,
+And the pale virgin shrouded in snow,
+Arise from their graves, and aspire
+Where my Sunflower wishes to go!
+
+--- William Blake",3.6145833333333335,0.0,55,distilgpt2,17,8,matched_other,12,12,8,8,1.7305826087161635,1.7990622898157955,0.004694881207111257,0.03972641259440213,-0.03503153138729087,-0.0030237457192832107,0.011535975270881904,-0.014559720990165115,0.007718626926394467,0.028190437323520223,-0.020471810397125756
+chaudhuri_2024_15,chaudhuri_2024,human,William Blake,The Smile,"The Smile
+
+There is a Smile of Love
+And there is a Smile of Deceit
+And there is a Smile of Smiles
+In which these two Smiles meet
+
+And there is a Frown of Hate
+And there is a Frown of disdain
+And there is a Frown of Frowns
+Which you strive to forget in vain
+
+For it sticks in the Hearts deep Core
+And it sticks in the deep Back bone
+And no Smile that ever was smild
+But only one Smile alone
+
+That betwixt the Cradle & Grave
+It only once Smild can be
+But when it once is Smild
+Theres an end to all Misery
+
+--- William Blake",3.6145833333333335,0.0,111,distilgpt2,17,8,matched_other,12,12,8,8,1.7687056434458657,1.861537116744749,-0.041207192833713435,0.005902130905572012,-0.04710932373928545,0.019262235961438057,0.3176863640210892,-0.29842412805965113,-0.06046942879515149,-0.3117842331155172,0.2513148043203657
+chaudhuri_2024_16,chaudhuri_2024,human,Derek Walcott,Love after Love,"Love after Love
+
+The time will come
+when, with elation
+you will greet yourself arriving
+at your own door, in your own mirror
+and each will smile at the other's welcome,
+
+and say, sit here. Eat.
+You will love again the stranger who was your self.
+Give wine. Give bread. Give back your heart
+
+to itself, to the stranger who has loved you
+
+all your life, whom you ignored
+for another, who knows you by heart.
+Take down the love letters from the bookshelf,
+
+the photographs, the desperate notes,
+peel your own image from the mirror.
+Sit. Feast on your life.
+
+--- Derek Walcott",4.354166666666667,1.0,104,distilgpt2,17,8,matched_other,12,12,8,8,1.828452152567035,1.796570328609253,-0.009010568840398525,0.006112857339327871,-0.015123426179726396,0.025219926499083334,0.3346865441210478,-0.3094666176219645,-0.03423049533948186,-0.32857368678171994,0.2943431914422381
+chaudhuri_2024_17,chaudhuri_2024,human,Wilfred Owen,The Last Laugh,"The Last Laugh
+
+'Oh! Jesus Christ! I'm hit,' he said; and died.
+Whether he vainly cursed or prayed indeed,
+The Bullets chirped-In vain, vain, vain!
+Machine-guns chuckled,-Tut-tut! Tut-tut!
+And the Big Gun guffawed.
+
+Another sighed,-'O Mother, -Mother, - Dad!'
+Then smiled at nothing, childlike, being dead.
+And the lofty Shrapnel-cloud
+Leisurely gestured,-Fool!
+And the splinters spat, and tittered.
+
+'My Love!' one moaned. Love-languid seemed his mood,
+Till slowly lowered, his whole faced kissed the mud.
+And the Bayonets' long teeth grinned;
+Rabbles of Shells hooted and groaned;
+And the Gas hissed.
+--- Wilfred Owen",4.1875,1.0,94,distilgpt2,17,8,matched_other,12,12,8,8,1.7567919855225747,1.8893998950870945,-0.0035182604671031292,0.018829274513419536,-0.022347534980522665,0.03282872609217802,0.3564823279904106,-0.32365360189823256,-0.03634698655928115,-0.33765305347699104,0.3013060669177099
+chaudhuri_2024_18,chaudhuri_2024,human,Dylan Thomas,Clown in the Moon,"Clown in the Moon
+
+My tears are like the quiet drift
+Of petals from some magic rose;
+And all my grief flows from the rift
+Of unremembered skies and snows.
+
+I think, that if I touched the earth,
+It would crumble;
+It is so sad and beautiful,
+So tremulously like a dream.
+
+--- Dylan Thomas",3.7604166666666665,0.5,55,distilgpt2,17,8,matched_other,12,12,8,8,1.7424768296470612,1.8660918944184202,0.03825191673203898,0.042855554611416435,-0.0046036378793774535,0.004910311380539323,0.2116349399852997,-0.20672462860476037,0.03334160535149966,-0.16877938537388326,0.20212099072538292
+chaudhuri_2024_19,chaudhuri_2024,human,Christina Rossetti,Remember,"Remember
+Remember me when I am gone away,
+Gone far away into the silent land;
+When you can no more hold me by the hand,
+Nor I half turn to go yet turning stay.
+Remember me when no more day by day
+You tell me of our future that you plann'd:
+Only remember me; you understand
+It will be late to counsel then or pray.
+Yet if you should forget me for a while
+And afterwards remember, do not grieve:
+For if the darkness and corruption leave
+A vestige of the thoughts that once I had,
+Better by far you should forget and smile
+Than that you should remember and be sad.
+--- Christina Rossetti",3.8645833333333335,0.5,115,distilgpt2,17,8,matched_other,12,12,8,8,1.6870888307722727,1.9045365818175084,0.008362659428056585,0.025694854613627083,-0.017332195185570498,0.020449131376548246,0.45108149873919334,-0.4306323673626451,-0.012086471948491662,-0.42538664412556626,0.4133001721770746
+chaudhuri_2024_20,chaudhuri_2024,human,W. B. Yeats,When You Are Old,"When You Are Old
+
+WHEN you are old and grey and full of sleep,
+And nodding by the fire, take down this book,
+And slowly read, and dream of the soft look
+Your eyes had once, and of their shadows deep;
+How many loved your moments of glad grace,
+And loved your beauty with love false or true,
+But one man loved the pilgrim Soul in you,
+And loved the sorrows of your changing face;
+And bending down beside the glowing bars,
+Murmur, a little sadly, how Love fled
+And paced upon the mountains overhead
+And hid his face amid a crowd of stars.
+--- William Butler Yeats",3.71875,0.0,108,distilgpt2,17,8,matched_other,12,12,8,8,1.756188708373631,1.8911558117827973,0.031055520771660072,0.04585318545312744,-0.01479766468146737,-0.038105188998280415,0.20536222027375395,-0.24346740927203436,0.06916070976994049,-0.1595090348206265,0.228669744590567
+chaudhuri_2024_21,chaudhuri_2024,human,W. B. Yeats,Aedh wishes for the Cloths of Heaven,"Aedh wishes for the Cloths of Heaven
+
+Had I the heavens' embroidered cloths,
+Enwrought with golden and silver light,
+The blue and the dim and the dark cloths
+Of night and light and the half-light,
+I would spread the cloths under your feet:
+But I, being poor, have only my dreams;
+I have spread my dreams under your feet;
+Tread softly because you tread on my dreams.
+
+--- William Butler Yeats",3.9479166666666665,1.0,71,distilgpt2,17,8,matched_other,12,12,8,8,1.7413512261891035,1.813727428269408,0.01857585495049685,0.045238885247656624,-0.026663030297159773,0.006052205434648572,0.19692227376088423,-0.19087006832623565,0.012523649515848279,-0.1516833885132276,0.16420703802907588
+chaudhuri_2024_22,chaudhuri_2024,human,W.B. Yeats,Memory,"Memory
+ONE had a lovely face,
+And two or three had charm,
+But charm and face were in vain
+Because the mountain grass
+Cannot but keep the form
+Where the mountain hare has lain.
+
+--- William Butler Yeats",3.5,0.0,38,distilgpt2,17,8,matched_other,12,12,8,8,1.8244901550366335,1.808594724666105,0.0380897721934903,0.06545402640695941,-0.027364254213469108,0.008959364829747685,0.03467156818358075,-0.025712203353833063,0.029130407363742616,0.03078245822337866,-0.001652050859636045
+chaudhuri_2024_23,chaudhuri_2024,human,Henry Wadsworth Longfellow,The Arrow and the Song,"The Arrow and the Song
+
+I shot an arrow into the air,
+It fell to earth, I knew not where;
+For, so swiftly it flew, the sight
+Could not follow it in its flight.
+
+I breathed a song into the air,
+It fell to earth, I knew not where;
+For who has sight so keen and strong,
+That it can follow the flight of song?
+
+Long, long afterward, in an oak
+I found the arrow, still unbroke;
+And the song, from beginning to end,
+I found again in the heart of a friend.
+
+--- Henry Wadsworth Longfellow",4.239583333333333,1.0,97,distilgpt2,17,8,matched_other,12,12,8,8,1.7840624455218748,1.8505541002233699,0.018861799546033176,0.04537845009986308,-0.0265166505538299,0.0015564134251568884,0.025874727180640766,-0.024318313755483878,0.017305386120876287,0.01950372291922231,-0.0021983367983460234
+chaudhuri_2024_24,chaudhuri_2024,human,Sara Teasdale,There Will Come Soft Rains,"There Will Come Soft Rains
+
+There will come soft rain and the smell of the ground,
+And swallows circling with their shimmering sound;
+
+And frogs in the pools singing at night,
+And wild plum trees in tremulous white;
+
+Robins will wear their feathery fire,
+Whistling their whims on a low fence-wire;
+
+And not one will know of the war, not one
+Will care at last when it is done.
+
+Not one would mind, neither bird nor tree,
+If mankind perished utterly;
+
+And Spring herself, when she woke at dawn
+Would scarcely know that we were gone.
+
+--- Sara Teasdale",4.489583333333333,1.0,99,distilgpt2,17,8,matched_other,12,12,8,8,1.7535490063893884,1.8660918944184202,0.01713597911831055,0.039499564242353014,-0.022363585124042462,0.020983059866294784,0.33079103205553184,-0.30980797218923706,-0.003847080747984233,-0.29129146781317883,0.2874443870651946
+chaudhuri_2024_25,chaudhuri_2024,human,Sara Teasdale,Alone,"Alone
+I am alone, in spite of love,
+In spite of all I take and give—
+In spite of all your tenderness,
+Sometimes I am not glad to live.
+
+I am alone, as though I stood
+On the highest peak of the tired gray world,
+About me only swirling snow,
+
+Above me, endless space unfurled;
+
+With earth hidden and heaven hidden,
+And only my own spirit's pride
+To keep me from the peace of those
+Who are not lonely, having died.
+--- Sara Teasdale",4.229166666666667,1.0,84,distilgpt2,17,8,matched_other,12,12,8,8,1.8522741150678728,1.8611946320623032,0.005136017050363817,0.02958911967857203,-0.024453102628208212,-0.023979191041614945,0.015714387139837083,-0.03969357818145203,0.02911520809197876,0.013874732538734946,0.015240475553243815
+chaudhuri_2024_26,chaudhuri_2024,human,P. B. Shelley,Ozymandias,"Ozymandias
+
+I met a traveller from an antique land
+Who said: `Two vast and trunkless legs of stone
+Stand in the desert. Near them, on the sand,
+Half sunk, a shattered visage lies, whose frown,
+And wrinkled lip, and sneer of cold command,
+Tell that its sculptor well those passions read
+Which yet survive, stamped on these lifeless things,
+The hand that mocked them and the heart that fed.
+And on the pedestal these words appear -
+'My name is Ozymandias, king of kings:
+Look on my works, ye Mighty, and despair! '
+Nothing beside remains. Round the decay
+Of that colossal wreck, boundless and bare
+The lone and level sands stretch far away.'
+--- P. B. Shelley",3.520833333333333,0.5,118,distilgpt2,17,8,matched_other,12,12,8,8,1.765904606791045,1.8659554197836512,0.01067670311855018,0.03369740957677103,-0.023020706458220852,0.028172881412464434,0.053554280725043535,-0.0253813993125791,-0.017496178293914255,-0.019856871148272504,0.0023606928543582484
+chaudhuri_2024_27,chaudhuri_2024,human,P. B. Shelley,Good-Night,"Good-Night
+
+Good-night? ah! no; the hour is ill
+Which severs those it should unite;
+Let us remain together still,
+Then it will be good night.
+
+How can I call the lone night good,
+Though thy sweet wishes wing its flight?
+Be it not said, thought, understood -
+Then it will be - good night.
+
+To hearts which near each other move
+From evening close to morning light,
+The night is good; because, my love,
+They never say good-night.
+--- P.B. Shelley",3.6145833333333335,0.5,81,distilgpt2,17,8,matched_other,12,12,8,8,1.6922472428986086,1.8660918944184202,0.02461241279246984,0.033163991698933026,-0.008551578906463186,0.20816458836483442,0.041241814288332845,0.16692277407650158,-0.18355217557236458,-0.008077822589399819,-0.17547435298296477
+chaudhuri_2024_28,chaudhuri_2024,human,P. B. Shelley,A Lament,"A Lament
+
+O World! O Life! O Time!
+On whose last steps I climb,
+Trembling at that where I had stood before;
+When will return the glory of your prime?
+No more -Oh, never more!
+
+Out of the day and night
+A joy has taken flight:
+Fresh spring, and summer, and winter hoar
+Move my faint heart with grief, but with
+delight
+No more -Oh, never more!
+--- P.B. Shelley",3.5625,0.0,70,distilgpt2,17,8,matched_other,12,12,8,8,1.775838053961592,1.8951147001157274,0.00948429736818368,0.026221414453844405,-0.016737117085660724,0.16612534169991866,0.050134796614783594,0.11599054508513507,-0.15664104433173498,-0.02391338216093919,-0.1327276621707958
+chaudhuri_2024_29,chaudhuri_2024,human,P. B. Shelley,Alas! This Is Not What I Thought Life Was.,"Alas! This Is Not What I Thought Life Was
+
+Alas! this is not what I thought life was.
+I knew that there were crimes and evil men,
+Misery and hate; nor did I hope to pass
+Untouched by suffering, through the rugged glen.
+In mine own heart I saw as in a glass
+The hearts of others ... And when
+I went among my kind, with triple brass
+Of calm endurance my weak breast I armed,
+To bear scorn, fear, and hate, a woful mass!
+
+--- Percy Bysshe Shelley",3.625,0.0,89,distilgpt2,17,8,matched_other,12,12,8,8,1.727038093153607,1.819799393142711,0.004613972806073008,0.03801913083844277,-0.033405158032369764,-0.02298328266872529,0.019612463693037707,-0.042595746361763,0.0275972554747983,0.018406667145405065,0.009190588329393234
+chaudhuri_2024_30,chaudhuri_2024,human,P. B. Shelley,Fragment: A Wanderer,"Fragment: A Wanderer
+
+He wanders, like a day-appearing dream,
+Through the dim wildernesses of the mind;
+Through desert woods and tracts, which seem
+Like ocean, homeless, boundless, unconfined.
+
+--- Percy Bysshe Shelley",3.364583333333333,0.5,32,distilgpt2,17,8,matched_other,12,12,8,8,1.715882288682471,1.8428691436211473,0.02726795866903453,0.0384209713915491,-0.011153012722514566,0.004041097661602766,0.023243255122055606,-0.01920215746045284,0.023226861007431765,0.01517771626949349,0.008049144737938274
+chaudhuri_2024_31,chaudhuri_2024,human,P. B. Shelley,Fragment: Apostrophe to Silence,"Fragment: Apostrophe to Silence
+
+Silence! Oh, well are Death and Sleep and Thou
+Three brethren named, the guardians gloomy-winged
+Of one abyss, where life, and truth, and joy
+Are swallowed up—yet spare me, Spirit, pity me,
+Until the sounds I hear become my soul,
+And it has left these faint and weary limbs,
+To track along the lapses of the air
+
+This wandering melody until it rests
+Among lone mountains in some...
+
+--- Percy Bysshe Shelley",3.6041666666666665,0.5,76,distilgpt2,17,8,matched_other,12,12,8,8,1.8008960392689521,1.8017246474234856,0.022267308438313815,0.060293407067085525,-0.03802609862877171,0.18578675430625857,0.044493949661829735,0.14129280464442884,-0.16351944586794476,0.01579945740525579,-0.17931890327320055
+chaudhuri_2024_32,chaudhuri_2024,human,John Donne,MEDITATION XVII,"Meditation XVII: No Man Is An Island
+
+No man is an island,
+Entire of itself,
+Every man is a piece of the continent,
+A part of the main.
+If a clod be washed away by the sea,
+Europe is the less.
+As well as if a promontory were.
+As well as if a manor of thy friend's
+Or of thine own were:
+Any man's death diminishes me,
+Because I am involved in mankind,
+And therefore never send to know for whom the bell tolls;
+It tolls for thee.
+--- John Donne (from ‘Devotions upon Emergent Occasions’)",3.8854166666666665,0.5,96,distilgpt2,17,8,matched_other,12,12,8,8,1.775838053961592,1.8141241585741488,-0.00238882138856944,0.03177587031993023,-0.03416469170849967,0.18541265131097417,0.05415734923092708,0.1312553020800471,-0.18780147269954361,-0.022381478910996844,-0.16541999378854677
+chaudhuri_2024_33,chaudhuri_2024,human,Robert Frost,Nothing Gold Can Stay,"Nothing Gold Can Stay
+
+Nature's first green is gold,
+Her hardest hue to hold.
+Her early leaf's a flower;
+But only so an hour.
+Then leaf subsides to leaf,
+So Eden sank to grief,
+
+So dawn goes down to day
+Nothing gold can stay.
+
+--- Robert Frost",3.7083333333333335,0.5,47,distilgpt2,17,8,matched_other,12,12,8,8,1.6851068427839566,1.8557127589651425,0.025181657008332303,0.04862146461568839,-0.02343980760735609,-0.03887106179578681,-0.03778616533052115,-0.0010848964652656612,0.06405271880411911,0.08640762994620954,-0.022354911142090428
+chaudhuri_2024_34,chaudhuri_2024,human,William Wordsworth,My Heart Leaps Up,"My Heart Leaps Up
+
+My heart leaps up when I behold
+A rainbow in the sky:
+So was it when my life began;
+So is it now I am a man;
+So be it when I shall grow old,
+Or let me die!
+The Child is father of the Man;
+And I could wish my days to be
+Bound each to each by natural piety.
+
+--- William Wordsworth",3.4791666666666665,0.0,68,distilgpt2,17,8,matched_other,12,12,8,8,1.7483736615425716,1.8652956232249103,0.007533770048852917,0.02121110533637749,-0.013677335287524572,0.18529962982923376,0.018364903281870903,0.16693472654736285,-0.17776585978038084,0.002846202054506586,-0.18061206183488743
+chaudhuri_2024_35,chaudhuri_2024,human,Emily Dickinson,I taste a liquor never brewed –,"I taste a liquor never brewed
+
+I taste a liquor never brewed,
+From tankards scooped in pearl;
+Not all the vats upon the Rhine
+Yield such an alcohol!
+
+Inebriate of air am I,
+And debauchee of dew,
+Reeling, through endless summer days,
+From inns of molten blue.
+
+When the landlord turn the drunken bee
+Out of the foxglove's door,
+When butterflies renounce their drams,
+I shall but drink the more!
+
+Till seraphs swing their snowy hats,
+And saints to windows run,
+To see the little tippler
+Leaning against the sun!
+
+--- Emily Dickinson",3.4479166666666665,0.0,93,distilgpt2,17,8,matched_other,12,12,8,8,1.8041137678108923,1.8133361943729709,0.02167567038712459,0.04705335417999179,-0.0253776837928672,-0.007627423771612962,0.01259271006985796,-0.020220133841470922,0.029303094158737553,0.03446064411013383,-0.005157549951396279
+chaudhuri_2024_36,chaudhuri_2024,human,Countee Cullen,If You Should Go,"If You Should Go
+Love, leave me like the light,
+The gently passing day;
+We would not know, but for the night,
+When it has slipped away.
+Go quietly; a dream,
+When done, should leave no trace
+That it has lived, except a gleam
+Across the dreamer's face.
+--- Countee Cullen",3.4375,0.0,51,distilgpt2,17,8,matched_other,12,12,8,8,1.7557856693478147,1.8458722833023282,0.01147768249313419,0.03403695135621243,-0.02255926886307824,-0.00633404671597293,0.010770803103635318,-0.017104849819608248,0.01781172920910712,0.023266148252577112,-0.0054544190434699935
