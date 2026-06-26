@@ -23,7 +23,7 @@ L(D \mid O_i \oplus H)
 L(D \mid O_i \oplus H \oplus a)
 \right]
 -
-\mathrm{cost}\(a\).
+\mathrm{cost}(a).
 $$
 
 The key invariant is that the score is not the likelihood of the candidate itself. The score is the candidate’s effect on a held-out domain \(D\). This distinction matters. If \(D\) is generic literary text, the system asks whether the candidate improves compression of a broad literary distribution. If \(D\) is constructed from high-rated versus low-rated poems, the system asks whether the candidate is closer to the human preference contrast encoded in that domain.
