@@ -165,7 +165,19 @@ def analyze_one_run(
     sampling_seed: int | None,
     source_file: str,
 ) -> list[dict]:
-    df = run_df.merge(target_controls, on="item_id", how="left")
+    # Some compression score files already contain target/control columns.
+    # If we merge target_controls directly, pandas creates *_x / *_y columns,
+    # and the canonical names disappear. Drop duplicated target/control columns
+    # from the score artifact first so the clean processed target_controls table
+    # is the single source of truth.
+    target_control_cols = [TARGET_COL] + OTHER_HUMAN_CONTROLS + SURFACE_CONTROLS
+    duplicate_cols = [
+        c for c in target_control_cols
+        if c in run_df.columns
+    ]
+    run_df_clean = run_df.drop(columns=duplicate_cols, errors="ignore")
+
+    df = run_df_clean.merge(target_controls, on="item_id", how="left")
 
     feature_sets = {
         "none": [],
