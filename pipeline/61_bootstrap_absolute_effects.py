@@ -45,9 +45,19 @@ FEATURE_SETS = {
     "stacked": HUMAN_CONTROLS + SURFACE_CONTROLS + NLL_CONTROLS,
 }
 
-METRICS = [
+DEFAULT_METRICS = [
+    "score_pref_struct",
+]
+
+ALL_METRICS = [
     "score_pref_struct",
     "score_pref_raw",
+]
+
+DEFAULT_FEATURE_SET_NAMES = [
+    "other_human_targets",
+    "other_human_plus_surface",
+    "stacked",
 ]
 
 BASELINE_FILES = [
@@ -258,8 +268,14 @@ def metric_rho(run: pd.DataFrame, metric_col: str, feature_controls: list[str]) 
     return safe_spearman(m_resid, y_resid)
 
 
-def observed_absolute_effects(all_scores: pd.DataFrame) -> pd.DataFrame:
+def observed_absolute_effects(
+    all_scores: pd.DataFrame,
+    feature_set_names: list[str],
+    metrics: list[str],
+) -> pd.DataFrame:
     rows = []
+
+    selected_feature_sets = {name: FEATURE_SETS[name] for name in feature_set_names}
 
     for method, mdf in all_scores.groupby("method"):
         runs = {
@@ -267,8 +283,8 @@ def observed_absolute_effects(all_scores: pd.DataFrame) -> pd.DataFrame:
             for key, run in mdf.groupby(["fold_seed", "seed"])
         }
 
-        for feature_set, controls in FEATURE_SETS.items():
-            for metric in METRICS:
+        for feature_set, controls in selected_feature_sets.items():
+            for metric in metrics:
                 rhos = []
                 for run in runs.values():
                     rho = metric_rho(run, metric, controls)
@@ -292,6 +308,8 @@ def bootstrap_absolute_effects(
     item_ids: list[str],
     n_boot: int,
     rng: np.random.Generator,
+    feature_set_names: list[str],
+    metrics: list[str],
 ) -> pd.DataFrame:
     records = []
 
@@ -305,13 +323,14 @@ def bootstrap_absolute_effects(
 
     item_ids = list(item_ids)
     n_items = len(item_ids)
+    selected_feature_sets = {name: FEATURE_SETS[name] for name in feature_set_names}
 
     for b in range(n_boot):
         sample_ids = rng.choice(item_ids, size=n_items, replace=True).tolist()
 
         for method, runs in run_maps.items():
-            for feature_set, controls in FEATURE_SETS.items():
-                for metric in METRICS:
+            for feature_set, controls in selected_feature_sets.items():
+                for metric in metrics:
                     rhos = []
 
                     for run in runs.values():
@@ -393,7 +412,22 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--n-boot", type=int, default=5000)
     ap.add_argument("--seed", type=int, default=123)
+    ap.add_argument(
+        "--feature-set",
+        action="append",
+        choices=sorted(FEATURE_SETS),
+        help="Feature set to include. Repeatable. Defaults to critique-primary feature sets.",
+    )
+    ap.add_argument(
+        "--metric",
+        action="append",
+        choices=ALL_METRICS,
+        help="Metric to include. Repeatable. Defaults to score_pref_struct.",
+    )
     args = ap.parse_args()
+
+    feature_set_names = args.feature_set or DEFAULT_FEATURE_SET_NAMES
+    metrics = args.metric or DEFAULT_METRICS
 
     rng = np.random.default_rng(args.seed)
 
@@ -402,6 +436,8 @@ def main() -> None:
 
     print(f"Items: {len(item_ids)}")
     print(f"Bootstraps: {args.n_boot}")
+    print(f"Feature sets: {feature_set_names}")
+    print(f"Metrics: {metrics}")
 
     comp = load_compression(base)
     baselines = load_baselines(base)
@@ -412,10 +448,17 @@ def main() -> None:
     print(f"All score rows: {len(all_scores)}")
 
     print("\nObserved absolute effects...")
-    observed = observed_absolute_effects(all_scores)
+    observed = observed_absolute_effects(all_scores, feature_set_names, metrics)
 
     print("\nBootstrap absolute effects...")
-    boot = bootstrap_absolute_effects(all_scores, item_ids, args.n_boot, rng)
+    boot = bootstrap_absolute_effects(
+        all_scores,
+        item_ids,
+        args.n_boot,
+        rng,
+        feature_set_names,
+        metrics,
+    )
 
     summary = summarize_absolute(observed, boot)
 
@@ -444,8 +487,8 @@ def main() -> None:
             "samples": str(boot_path),
             "summary": str(summary_path),
         },
-        "feature_sets": FEATURE_SETS,
-        "metrics": METRICS,
+        "feature_sets": {name: FEATURE_SETS[name] for name in feature_set_names},
+        "metrics": metrics,
     }
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
