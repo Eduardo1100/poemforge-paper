@@ -46,9 +46,9 @@ def spearman_safe(x: np.ndarray, y: np.ndarray) -> float:
     return float(spearmanr(x, y, nan_policy="omit").statistic)
 
 
-def find_prefcontrast_files(label: str) -> dict[str, list[Path]]:
+def find_prefcontrast_files(observer: str, label: str) -> dict[str, list[Path]]:
     files = sorted(
-        p for p in SCORE_DIR.glob(f"vscore_distilgpt2_prefcontrast_chaudhuri_{label}_*.csv")
+        p for p in SCORE_DIR.glob(f"vscore_{observer}_prefcontrast_chaudhuri_{label}_*.csv")
         if not p.name.endswith(".correlations.csv")
     )
     out: dict[str, list[Path]] = {}
@@ -179,6 +179,7 @@ def write_hashes(paths: list[Path], tag: str) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--observer", default="distilgpt2")
     ap.add_argument("--human-label", default="Surprise")
     ap.add_argument("--null-label", default="Surprise_surfacepool")
     ap.add_argument("--metric", default="v_pref_struct")
@@ -190,8 +191,8 @@ def main() -> None:
     ANALYSES_DIR.mkdir(parents=True, exist_ok=True)
     HASH_DIR.mkdir(parents=True, exist_ok=True)
 
-    human_files_by_control = find_prefcontrast_files(args.human_label)
-    null_files_by_control = find_prefcontrast_files(args.null_label)
+    human_files_by_control = find_prefcontrast_files(args.observer, args.human_label)
+    null_files_by_control = find_prefcontrast_files(args.observer, args.null_label)
 
     common_controls = sorted(set(human_files_by_control) & set(null_files_by_control))
     if not common_controls:
@@ -217,6 +218,8 @@ def main() -> None:
         summary, samples = run_bootstrap(human, null, n_boot=args.n_boot, seed=args.seed)
         summary.update(
             {
+                "observer": args.observer,
+                "observer": args.observer,
                 "human_label": args.human_label,
                 "null_label": args.null_label,
                 "control": control,
@@ -230,6 +233,7 @@ def main() -> None:
 
         observed_rows.append(
             {
+                "observer": args.observer,
                 "human_label": args.human_label,
                 "null_label": args.null_label,
                 "control": control,
@@ -272,6 +276,7 @@ def main() -> None:
 
     manifest = {
         "analysis": "same_form_prefcontrast_item_bootstrap",
+        "observer": args.observer,
         "human_label": args.human_label,
         "null_label": args.null_label,
         "metric": args.metric,
