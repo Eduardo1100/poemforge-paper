@@ -1,0 +1,62 @@
+[
+  {
+    "dataset_name": "SAA-Lab/LitBench-Test",
+    "split": "train",
+    "n_rows": 2381,
+    "n_cols": 2,
+    "columns": [
+      "chosen_comment_id",
+      "rejected_comment_id"
+    ],
+    "text_like_columns": [
+      "chosen_comment_id",
+      "rejected_comment_id"
+    ],
+    "chosen_comment_id__mean_strlen": 7.0,
+    "chosen_comment_id__max_strlen": 7,
+    "chosen_comment_id__example": "jg3touy",
+    "rejected_comment_id__mean_strlen": 7.0,
+    "rejected_comment_id__max_strlen": 7,
+    "rejected_comment_id__example": "jg3l1vy",
+    "status": "loaded"
+  },
+  {
+    "dataset_name": "SAA-Lab/LitBench-Train",
+    "split": "train",
+    "n_rows": 43827,
+    "n_cols": 7,
+    "columns": [
+      "prompt",
+      "chosen_story",
+      "rejected_story",
+      "chosen_timestamp",
+      "rejected_timestamp",
+      "chosen_upvotes",
+      "rejected_upvotes"
+    ],
+    "text_like_columns": [
+      "prompt",
+      "chosen_story",
+      "rejected_story",
+      "chosen_timestamp",
+      "rejected_timestamp",
+      "chosen_upvotes",
+      "rejected_upvotes"
+    ],
+    "prompt__mean_strlen": 231.81570721244896,
+    "prompt__max_strlen": 5803,
+    "prompt__example": "[WP] In this world, soulmates cannot hurt each other in any way or form, intentionally or unintentionally. You are an assassin hired to eliminate a powerful figure. As you close in for the kill, your bullets miss their mark and knives bounce of their skin. Things just got awkward.",
+    "chosen_story__mean_strlen": 2997.0291144728135,
+    "chosen_story__max_strlen": 9995,
+    "chosen_story__example": "He was a stage actor and assassin with a cold heart. \nAnd HE was an American president and theater goer with a heart of gold.\n\nBut when his shot doesn't penetrate the back of HIS head they are going to learn that sic semper doesn't always tyrannis.\nCan a confederate assassin learn to forgive? Can an American president learn to love again? Find out this summer in \"my American assassin\". ",
+    "rejected_story__mean_strlen": 2991.585575102106,
+    "rejected_story__max_strlen": 9429,
+    "rejected_story__example": "I was the best. Emphasis on the was. Let's face it: I got comfortable. I got rusty. I narrowly saw that tripwire and got to cover just in time. Well, not just in time. The blood on my right shoulder is indication enough that I got hit. Scraped actually, but still. I got comfortable. I got rusty.  \n\n&amp;nbsp;\n\n&gt;Years of training. Countless gruelling days and nights honing my skills. You named it, I could do it. Any target, anywhere, anytime. I never asked a single question. Only took the mone",
+    "status": "loaded"
+  },
+  {
+    "dataset_name": "SAA-Lab/LitBench",
+    "status": "failed",
+    "error": "DatasetNotFoundError(\"Dataset 'SAA-Lab/LitBench' doesn't exist on the Hub or cannot be accessed.\")"
+  }
+]
