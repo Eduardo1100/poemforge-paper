@@ -1,10 +1,5 @@
 {
-  "generated_tables": [
-    "results/tables/table_6_domain_contrast_bootstrap.csv",
-    "results/tables/table_6_domain_contrast_bootstrap.md",
-    "results/tables/table_6_domain_contrast_bootstrap.tex"
-  ],
-  "important_note": "This stage formats existing analysis outputs into paper-facing tables. It does not change or recompute empirical values.",
+  "stage": "90_make_tables",
   "outputs": [
     "/home/eduardo/Projects/poemforge-paper/results/tables/table_1_readout_convergence.csv",
     "/home/eduardo/Projects/poemforge-paper/results/tables/table_1_readout_convergence.md",
@@ -20,7 +15,13 @@
     "/home/eduardo/Projects/poemforge-paper/results/tables/table_4_item_nll_correlations.tex",
     "/home/eduardo/Projects/poemforge-paper/results/tables/table_5_absolute_effect_uncertainty.csv",
     "/home/eduardo/Projects/poemforge-paper/results/tables/table_5_absolute_effect_uncertainty.md",
-    "/home/eduardo/Projects/poemforge-paper/results/tables/table_5_absolute_effect_uncertainty.tex"
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_5_absolute_effect_uncertainty.tex",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_7_domain_contrast_target_pair_matrix.csv",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_7_domain_contrast_target_pair_matrix.md",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_7_domain_contrast_target_pair_matrix.tex",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_8_domain_contrast_by_control_family.csv",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_8_domain_contrast_by_control_family.md",
+    "/home/eduardo/Projects/poemforge-paper/results/tables/table_8_domain_contrast_by_control_family.tex"
   ],
-  "stage": "90_make_tables"
+  "important_note": "This stage formats existing analysis outputs into paper-facing tables. It does not change or recompute empirical values."
 }
