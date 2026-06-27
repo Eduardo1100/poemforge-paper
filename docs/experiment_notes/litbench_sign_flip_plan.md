@@ -232,3 +232,63 @@ Next priority:
 3. implement prompt-conditioned V if the data support it;
 4. evaluate V raw and net of formatting;
 5. repeat with GPT-2-family observers if feasible.
+
+## Prompt-conditioned V result
+
+We implemented the framework-relevant quantity:
+
+> V(candidate) = prompt-only domain NLL - candidate-conditioned domain NLL
+
+For each LitBench test pair, the domain D was constructed from other chosen stories for the same prompt, excluding the current pair. This creates a leave-pair-out same-prompt domain.
+
+Configuration:
+
+- dataset: SAA-Lab/LitBench-Test-IDs-Complete
+- observer: DistilGPT-2
+- domain_mode: other_chosen
+- min_domain: 2
+- max_domain: 3
+- max_context_tokens: 512
+- max_target_tokens: 384
+- eligible rows: 1,385 / 2,480
+
+Direct V sign-rule result:
+
+- predict chosen if V(chosen) > V(rejected)
+- accuracy: 63.75%
+- CI [61.23%, 66.35%]
+
+Mean V delta:
+
+- mean_v_delta_gain: +0.203
+- CI [+0.179,+0.228]
+
+This is substantially stronger than the raw average NLL baseline.
+
+## Prompt-conditioned V net of formatting
+
+We then controlled V against surface/formatting features using cross-validated logistic pairwise models on the same eligible subset.
+
+Results:
+
+- surface_format: 60.00%, CI [57.33%, 62.60%]
+- v_only_sign_rule: 63.75%, CI [61.23%, 66.35%]
+- v_only_logistic: 63.90%, CI [61.30%, 66.50%]
+- surface_plus_v: 69.75%, CI [67.36%, 72.13%]
+
+Paired deltas:
+
+- surface_plus_v - surface_format: +9.75 points, CI [+7.51,+11.99], resolved.
+- surface_plus_v - v_only_logistic: +5.85 points, CI [+2.60,+9.10], resolved.
+- v_only_sign_rule - surface_format: +3.75 points, CI [-0.07,+7.73], near-resolved.
+- v_only_logistic - surface_format: +3.90 points, equivalent paired difference resolved in the logistic comparison.
+
+Interpretation:
+
+Unlike raw average NLL, prompt-conditioned V survives the formatting confound. The strongest current LitBench claim is now:
+
+> On the same-prompt eligible subset, preferred stories are better compression-progress exemplars for other preferred stories under the same prompt, and this signal adds a large resolved increment over formatting features.
+
+Caution:
+
+This result is currently limited to the repeated-prompt eligible subset. It should not yet be generalized to all 2,480 LitBench pairs. The next control is to compare other_chosen domains against other_rejected and all_other domains to test whether V specifically tracks the preferred-response domain or merely prompt-consistency / generic response quality.
