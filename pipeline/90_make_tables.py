@@ -20,6 +20,8 @@ BOOTSTRAP_TABLE = ANALYSES_DIR / "bootstrap_manuscript_table.csv"
 GENERIC_D = ANALYSES_DIR / "generic_d_correlation_summaries.csv"
 ITEM_NLL = PHASE_A_RESULTS / "item_nll_target_correlations.csv"
 ABSOLUTE_EFFECTS = ANALYSES_DIR / "bootstrap_absolute_effects_summary.csv"
+DOMAIN_CONTRAST_SURPRISE = ANALYSES_DIR / "bootstrap_domain_contrast_summary.csv"
+GENERIC_ABSOLUTE_SURPRISE = ANALYSES_DIR / "bootstrap_generic_absolute_summary.csv"
 
 
 FEATURE_SET_LABELS = {
@@ -316,6 +318,99 @@ def make_table_5_absolute_effect_uncertainty() -> list[Path]:
 
 
 
+def make_table_6_domain_contrast_bootstrap() -> list[Path]:
+    require(DOMAIN_CONTRAST_SURPRISE)
+    require(GENERIC_ABSOLUTE_SURPRISE)
+
+    contrast = pd.read_csv(DOMAIN_CONTRAST_SURPRISE)
+    generic = pd.read_csv(GENERIC_ABSOLUTE_SURPRISE)
+
+    needed_contrast = {
+        "domain_variant",
+        "control_variant",
+        "observed_mean_supervised_rho",
+        "observed_mean_diff",
+        "ci95_low",
+        "ci95_high",
+        "n_boot",
+        "ci_excludes_zero",
+    }
+    needed_generic = {
+        "domain_variant",
+        "control_variant",
+        "observed_mean_rho",
+        "ci95_low",
+        "ci95_high",
+    }
+    missing_contrast = needed_contrast - set(contrast.columns)
+    missing_generic = needed_generic - set(generic.columns)
+    if missing_contrast:
+        raise ValueError(f"domain contrast table missing columns: {sorted(missing_contrast)}")
+    if missing_generic:
+        raise ValueError(f"generic absolute table missing columns: {sorted(missing_generic)}")
+
+    merged = contrast.merge(
+        generic[
+            [
+                "domain_variant",
+                "control_variant",
+                "observed_mean_rho",
+                "ci95_low",
+                "ci95_high",
+            ]
+        ],
+        on=["domain_variant", "control_variant"],
+        how="left",
+        suffixes=("", "_generic"),
+    )
+
+    domain_labels = {
+        "accessible": "Accessible Gutenberg",
+        "formal": "Formal Gutenberg",
+    }
+    control_labels = {
+        "matchedctrl": "Matched-other",
+        "wordctrl": "Word-shuffle",
+    }
+    order_domain = {"accessible": 0, "formal": 1}
+    order_control = {"matchedctrl": 0, "wordctrl": 1}
+    merged["domain_order"] = merged["domain_variant"].map(order_domain).fillna(99)
+    merged["control_order"] = merged["control_variant"].map(order_control).fillna(99)
+    merged = merged.sort_values(["domain_order", "control_order"])
+
+    out = pd.DataFrame(
+        {
+            "Generic domain": merged["domain_variant"].map(domain_labels).fillna(merged["domain_variant"]),
+            "Control": merged["control_variant"].map(control_labels).fillna(merged["control_variant"]),
+            "Generic ρ": merged["observed_mean_rho"].map(fmt_signed),
+            "Generic 95% CI": [
+                f"[{fmt_signed(lo)}, {fmt_signed(hi)}]"
+                for lo, hi in zip(merged["ci95_low_generic"], merged["ci95_high_generic"])
+            ],
+            "Supervised ρ": merged["observed_mean_supervised_rho"].map(fmt_signed),
+            "Δρ supervised − generic": merged["observed_mean_diff"].map(fmt_signed),
+            "Δρ 95% CI": [
+                f"[{fmt_signed(lo)}, {fmt_signed(hi)}]"
+                for lo, hi in zip(merged["ci95_low"], merged["ci95_high"])
+            ],
+            "Bootstrap n": merged["n_boot"],
+            "Interpretation": [
+                "Resolved paired improvement."
+                if bool(excludes)
+                else "Positive point estimate; CI includes zero."
+                for excludes in merged["ci_excludes_zero"]
+            ],
+        }
+    )
+
+    return write_table_bundle(
+        out,
+        "table_6_domain_contrast_bootstrap",
+        "Paired poem-level bootstrap comparing Surprise-shaped domains against generic Gutenberg domains.",
+    )
+
+
+
 DOMAIN_CONTRAST_SUMMARY_FILES = {
     "surprise_self": "bootstrap_domain_contrast_summary.csv",
     "aesthetic_self": "bootstrap_domain_contrast_summary_aesthetic_self.csv",
@@ -482,6 +577,7 @@ def main() -> None:
     generated.extend(make_table_3_generic_d_summary())
     generated.extend(make_table_4_item_nll_correlations())
     generated.extend(make_table_5_absolute_effect_uncertainty())
+    generated.extend(make_table_6_domain_contrast_bootstrap())
     generated.extend(make_table_7_domain_contrast_target_pair_matrix())
     generated.extend(make_table_8_domain_contrast_by_control_family())
 
