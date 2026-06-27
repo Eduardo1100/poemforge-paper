@@ -11,12 +11,10 @@ import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr
 
-
 ROOT = Path(__file__).resolve().parents[1]
 SCORE_DIR = ROOT / "results" / "scores" / "phase_a_eval_scores"
 ANALYSES_DIR = ROOT / "results" / "analyses"
 HASH_DIR = ROOT / "results" / "hashes"
-
 
 def sha256_file(path: Path) -> str:
     h = hashlib.sha256()
@@ -24,7 +22,6 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: f.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
-
 
 def csv_shape(path: Path) -> tuple[int | None, int | None]:
     if path.suffix.lower() != ".csv":
@@ -37,14 +34,12 @@ def csv_shape(path: Path) -> tuple[int | None, int | None]:
             return 0, 0
         return sum(1 for _ in reader), len(header)
 
-
 def spearman_safe(x: np.ndarray, y: np.ndarray) -> float:
     if len(x) < 3:
         return float("nan")
     if np.nanstd(x) == 0 or np.nanstd(y) == 0:
         return float("nan")
     return float(spearmanr(x, y, nan_policy="omit").statistic)
-
 
 def find_prefcontrast_files(observer: str, label: str) -> dict[str, list[Path]]:
     files = sorted(
@@ -57,7 +52,6 @@ def find_prefcontrast_files(observer: str, label: str) -> dict[str, list[Path]]:
         control = rest.split("_", 1)[0]
         out.setdefault(control, []).append(p)
     return out
-
 
 def load_item_mean(paths: list[Path], metric: str) -> pd.DataFrame:
     frames = []
@@ -93,7 +87,6 @@ def load_item_mean(paths: list[Path], metric: str) -> pd.DataFrame:
     )
 
     return grouped
-
 
 def run_bootstrap(
     human: pd.DataFrame,
@@ -158,7 +151,6 @@ def run_bootstrap(
     }
     return summary, samples
 
-
 def write_hashes(paths: list[Path], tag: str) -> None:
     HASH_DIR.mkdir(parents=True, exist_ok=True)
     out = HASH_DIR / f"bootstrap_same_form_domain_contrast_hashes_{tag}.csv"
@@ -175,7 +167,6 @@ def write_hashes(paths: list[Path], tag: str) -> None:
         )
     pd.DataFrame(rows).to_csv(out, index=False)
     print(f"Wrote {out}")
-
 
 def main() -> None:
     ap = argparse.ArgumentParser()
@@ -219,7 +210,6 @@ def main() -> None:
         summary.update(
             {
                 "observer": args.observer,
-                "observer": args.observer,
                 "human_label": args.human_label,
                 "null_label": args.null_label,
                 "control": control,
@@ -247,6 +237,7 @@ def main() -> None:
             }
         )
 
+        samples["observer"] = args.observer
         samples["human_label"] = args.human_label
         samples["null_label"] = args.null_label
         samples["control"] = control
@@ -300,7 +291,6 @@ def main() -> None:
     print(f"Wrote {summary_path}")
     print(f"Wrote {samples_path}")
     print(f"Wrote {manifest_path}")
-
 
 if __name__ == "__main__":
     main()
