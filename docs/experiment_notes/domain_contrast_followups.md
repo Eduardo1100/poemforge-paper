@@ -120,3 +120,19 @@ Main empirical pattern:
 
 Current best paper claim:
 Human-shaped compression domains produce robust paired improvements over generic literary domains under matched-control item-level bootstrap across multiple human appraisal targets. The effect is strongest for target-matched domains and for Aesthetic_Appeal, with weaker but positive cross-target transfer. Word-shuffle robustness is target-dependent and should be reported as a stricter secondary check.
+
+## Observer-family robustness check: Aesthetic_Appeal
+
+Artifact:
+- results/analyses/bootstrap_observer_family_summary_aesthetic_observer.csv
+
+Question:
+Does the supervised human-shaped Aesthetic_Appeal signal remain positive under GPT-2-family observers?
+
+This is an observer-family absolute-alignment check over existing prefcontrast artifacts. It is not yet the full paired generic-vs-human-domain Stage 62 contrast, because GPT-2 Gutenberg and GPT-2 kfold-surface artifacts are not present.
+
+Results, n_boot=5000:
+- gpt2: observed mean rho = +0.235, CI [-0.078, +0.511], resolved = False
+- gpt2-medium: observed mean rho = +0.283, CI [-0.045, +0.562], resolved = False
+
+Interpretation: The GPT-2-family observers show positive but unresolved alignment. Observer-family robustness is suggestive but underpowered/unresolved in this narrower absolute-alignment check.
