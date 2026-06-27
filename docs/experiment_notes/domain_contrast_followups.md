@@ -71,3 +71,33 @@ Paired supervised-vs-generic domain contrasts:
 
 Interpretation:
 Creativity supports the matched-control version of the domain-construction effect but not the stronger word-shuffle robustness claim. The emerging cross-target result is therefore: human-shaped domains consistently beat generic domains under matched-control paired item bootstrap across Surprise, Aesthetic_Appeal, and Creativity, while word-shuffle robustness varies by target.
+
+## Cross-target specificity: Surprise ↔ Aesthetic_Appeal
+
+Question:
+Does a human-shaped domain need to match the evaluation target, or does it transfer across human appraisal targets?
+
+Full result, n_boot=5000:
+
+### Pool Surprise → Eval Aesthetic_Appeal
+
+Supervised rho = +0.259.
+
+Paired supervised-vs-generic contrasts:
+- Accessible Gutenberg / matched-other: Δrho = +0.331, CI [-0.124, +0.760], unresolved
+- Accessible Gutenberg / word-shuffle: Δrho = +0.349, CI [-0.041, +0.698], unresolved
+- Formal Gutenberg / matched-other: Δrho = +0.506, CI [+0.044, +0.892], resolved
+- Formal Gutenberg / word-shuffle: Δrho = +0.291, CI [-0.107, +0.656], unresolved
+
+### Pool Aesthetic_Appeal → Eval Surprise
+
+Supervised rho = +0.377.
+
+Paired supervised-vs-generic contrasts:
+- Accessible Gutenberg / matched-other: Δrho = +0.671, CI [+0.248, +1.017], resolved
+- Accessible Gutenberg / word-shuffle: Δrho = +0.301, CI [-0.100, +0.703], unresolved
+- Formal Gutenberg / matched-other: Δrho = +0.820, CI [+0.465, +1.096], resolved
+- Formal Gutenberg / word-shuffle: Δrho = +0.361, CI [-0.029, +0.737], unresolved
+
+Interpretation:
+Cross-target transfer exists but is weaker and asymmetric. Aesthetic_Appeal transfers to Surprise better than Surprise transfers to Aesthetic_Appeal. This supports a shared human-appraisal manifold with target-specific sharpening, rather than fully target-specific silos or a completely target-agnostic human-domain effect.
