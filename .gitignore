@@ -12,3 +12,7 @@ results/analyses/bootstrap_observer_family_samples*.csv
 
 # Large same-form contrast bootstrap samples, reproducible from pipeline scripts
 results/analyses/bootstrap_same_form_domain_contrast_samples*.csv
+
+# Large LitBench cached/intermediate artifacts, reproducible from Hugging Face
+results/litbench/litbench_train_cached.csv
+results/litbench/litbench_train_surface_features.csv
