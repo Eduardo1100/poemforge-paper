@@ -136,3 +136,47 @@ Do not claim this is a direct poetry replication. LitBench is a generalization/s
 
 The first checkpoint is not to beat LitBench reward models. The first checkpoint is to determine whether simple predictability/compression has a stable and interpretable directional relationship with LitBench preference.
 
+
+## First held-out LitBench baselines
+
+We scored the complete held-out LitBench test artifact:
+
+- dataset: SAA-Lab/LitBench-Test-IDs-Complete
+- n = 2,480 chosen/rejected pairs
+- full prompt, chosen_story, rejected_story, metadata, comment IDs, and post IDs are available.
+
+### Surface baselines
+
+The strongest non-upvote surface baselines were:
+
+- prefer_more_paragraphs: 58.87%, CI [56.93%, 60.77%]
+- prefer_more_newlines: 58.02%, CI [56.13%, 59.92%]
+- prefer_more_punct: 55.60%, CI [53.67%, 57.50%]
+
+Raw length was near chance:
+
+- prefer_more_words: 50.93%, CI [49.03%, 52.82%]
+- prefer_more_chars: 50.93%, CI [48.99%, 52.78%]
+
+Interpretation:
+LitBench preference is not simply a preference for longer stories. It is more strongly associated with formatting and structural organization: paragraphs, line breaks, and punctuation.
+
+### DistilGPT-2 average NLL baseline
+
+We scored each chosen/rejected story with DistilGPT-2 using sliding-window average token negative log-likelihood.
+
+Results:
+
+- prefer_lower_avg_nll: 54.27%, CI [52.34%, 56.21%]
+- prefer_higher_avg_nll: 45.73%, CI [43.79%, 47.66%]
+- prefer_higher_total_nll: 51.33%, CI [49.35%, 53.23%]
+- prefer_lower_total_nll: 48.67%, CI [46.77%, 50.65%]
+
+Interpretation:
+Preferred LitBench stories are more predictable / fluent under DistilGPT-2 by average token NLL. This signal is modest but resolved, and it is stronger than raw length. The total-NLL direction is not clean because total NLL is heavily entangled with length.
+
+This supports the emerging cross-domain mechanism:
+
+> Compression or predictability does not measure literary value directly. It measures fluency, accessibility, conventionality, or typicality. Whether that signal helps or hurts depends on the evaluative population and task.
+
+For Reddit creative-writing preference, predictability/fluency appears mildly rewarded. In the poetry setting, generic formal compression can anti-align with contemporary appraisal, suggesting that raters may penalize conventionality in that domain.
