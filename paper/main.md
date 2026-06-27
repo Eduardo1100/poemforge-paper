@@ -114,7 +114,7 @@ The paired domain contrast is the main robust result. For target-matched domains
 
 The strongest and most stable version of the effect is the matched-control comparison. In the control-family summary, every target-matched condition resolves under matched controls. Aesthetic Appeal also resolves under word-shuffle controls, and Surprise partially resolves under word-shuffle controls, but word-shuffle robustness does not generalize broadly across cross-target settings. Thus, the robust claim is not that compression beats every possible null. The robust claim is that human-shaped domains beat generic literary domains under paired matched-control item-level bootstrap.
 
-See `results/tables/domain_contrast_target_pair_matrix.*` for the consolidated target-pair matrix, and `results/tables/domain_contrast_by_control_family.*` for the matched-control versus word-shuffle split.
+See Table 7, generated as `results/tables/table_7_domain_contrast_target_pair_matrix.*`, for the consolidated target-pair matrix, and Table 8, generated as `results/tables/table_8_domain_contrast_by_control_family.*`, for the matched-control versus word-shuffle split.
 
 ### 3.3 Cross-target transfer is positive but asymmetric
 
@@ -223,8 +223,8 @@ The main manuscript-facing artifacts are:
 - `results/tables/table_4_item_nll_correlations.*`;
 - `results/tables/table_5_absolute_effect_uncertainty.*`;
 - `results/tables/table_6_domain_contrast_bootstrap.*`;
-- `results/tables/domain_contrast_target_pair_matrix.*`;
-- `results/tables/domain_contrast_by_control_family.*`;
+- `results/tables/table_7_domain_contrast_target_pair_matrix.*`;
+- `results/tables/table_8_domain_contrast_by_control_family.*`;
 - `results/analyses/bootstrap_observer_family_summary_aesthetic_observer.csv`;
 - `results/figures/figure_1_readout_convergence.*`;
 - `results/figures/figure_2_bootstrap_uncertainty.*`;
