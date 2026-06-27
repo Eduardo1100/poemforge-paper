@@ -163,3 +163,31 @@ Candidate nonhuman pool axes:
 
 Interpretation rule:
 Do not strengthen the manuscript's domain-construction mechanism claim unless the same-form contrast resolves, preferably under word-shuffle controls. If the same-form contrast does not resolve, reframe the paper around the stronger boundary result: generic literary compression fails, formal generic compression can anti-align, and human-shaped contrastive construction remains suggestive but not isolated from contrastive form.
+
+## Same-form Surprise vs surface-pool contrast result
+
+Command:
+`python pipeline/64_bootstrap_same_form_domain_contrast.py --human-label Surprise --null-label Surprise_surfacepool --metric v_pref_struct --n-boot 5000 --seed 123 --tag surprise_surfacepool`
+
+Purpose:
+Test the critique that the previous paired domain contrast mixed score forms:
+- human-shaped side used `v_pref_struct`
+- generic side used `v_struct`
+
+This follow-up compares two same-form contrastive artifacts:
+- human-labeled Surprise `v_pref_struct`
+- nonhuman/surface-pool Surprise `v_pref_struct`
+
+Result:
+- human Surprise rho = +0.518
+- surfacepool Surprise rho = +0.481
+- human minus surfacepool diff = +0.037
+- 95% bootstrap CI = [-0.179, +0.254]
+- n_boot = 5000
+- resolved = False
+
+Interpretation:
+The same-form contrast does not resolve. This supports the critique that the previous large paired domain-contrast effects should not be interpreted as a clean isolated domain-construction mechanism. Human-labeled contrastive construction aligns positively, but in this available same-form comparison it does not significantly outperform the surface-pool contrastive construction.
+
+Manuscript implication:
+Downshift the headline. The strongest resolved result is now the generic-domain failure / anti-alignment result. The human-shaped domain result should be framed as positive but not isolated from contrastive construction at n=36.
