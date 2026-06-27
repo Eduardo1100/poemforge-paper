@@ -431,7 +431,14 @@ def main() -> None:
     ap.add_argument("--supervised-metric", default="v_pref_struct")
     ap.add_argument("--n-boot", type=int, default=5000)
     ap.add_argument("--seed", type=int, default=123)
+    ap.add_argument("--tag", default="", help="Optional output tag to avoid overwriting prior runs.")
     args = ap.parse_args()
+
+    def tagged(name: str) -> str:
+        if not args.tag:
+            return name
+        stem, suffix = name.rsplit(".", 1)
+        return f"{stem}_{args.tag}.{suffix}"
 
     ANALYSES.mkdir(parents=True, exist_ok=True)
     HASHES.mkdir(parents=True, exist_ok=True)
@@ -464,12 +471,12 @@ def main() -> None:
     )
 
     outputs = {
-        "bootstrap_generic_absolute_observed.csv": generic_obs,
-        "bootstrap_generic_absolute_samples.csv": generic_samples,
-        "bootstrap_generic_absolute_summary.csv": generic_summary,
-        "bootstrap_domain_contrast_observed.csv": contrast_obs,
-        "bootstrap_domain_contrast_samples.csv": contrast_samples,
-        "bootstrap_domain_contrast_summary.csv": contrast_summary,
+        tagged("bootstrap_generic_absolute_observed.csv"): generic_obs,
+        tagged("bootstrap_generic_absolute_samples.csv"): generic_samples,
+        tagged("bootstrap_generic_absolute_summary.csv"): generic_summary,
+        tagged("bootstrap_domain_contrast_observed.csv"): contrast_obs,
+        tagged("bootstrap_domain_contrast_samples.csv"): contrast_samples,
+        tagged("bootstrap_domain_contrast_summary.csv"): contrast_summary,
     }
 
     for name, df in outputs.items():
@@ -487,12 +494,12 @@ def main() -> None:
         "seed": args.seed,
         "outputs": sorted(outputs),
     }
-    manifest_path = ANALYSES / "bootstrap_domain_contrast_manifest.json"
+    manifest_path = ANALYSES / tagged("bootstrap_domain_contrast_manifest.json")
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     print(f"Wrote {manifest_path}")
 
     hash_rows = []
-    for name in list(outputs) + ["bootstrap_domain_contrast_manifest.json"]:
+    for name in list(outputs) + [manifest_path.name]:
         path = ANALYSES / name
         hash_rows.append({
             "path": str(path.relative_to(ROOT)),
@@ -500,7 +507,7 @@ def main() -> None:
             "bytes": path.stat().st_size,
         })
     hash_df = pd.DataFrame(hash_rows)
-    hash_path = HASHES / "bootstrap_domain_contrast_hashes.csv"
+    hash_path = HASHES / tagged("bootstrap_domain_contrast_hashes.csv")
     hash_df.to_csv(hash_path, index=False)
     print(f"Wrote {hash_path}")
 
