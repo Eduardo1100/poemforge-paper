@@ -315,6 +315,131 @@ def make_table_5_absolute_effect_uncertainty() -> list[Path]:
     )
 
 
+
+DOMAIN_CONTRAST_SUMMARY_FILES = {
+    "surprise_self": "bootstrap_domain_contrast_summary.csv",
+    "aesthetic_self": "bootstrap_domain_contrast_summary_aesthetic_self.csv",
+    "creativity_self": "bootstrap_domain_contrast_summary_creativity_self.csv",
+    "pool_surprise_eval_aesthetic": "bootstrap_domain_contrast_summary_pool_surprise_eval_aesthetic.csv",
+    "pool_aesthetic_eval_surprise": "bootstrap_domain_contrast_summary_pool_aesthetic_eval_surprise.csv",
+    "pool_aesthetic_eval_creativity": "bootstrap_domain_contrast_summary_pool_aesthetic_eval_creativity.csv",
+    "pool_creativity_eval_aesthetic": "bootstrap_domain_contrast_summary_pool_creativity_eval_aesthetic.csv",
+    "pool_surprise_eval_creativity": "bootstrap_domain_contrast_summary_pool_surprise_eval_creativity.csv",
+    "pool_creativity_eval_surprise": "bootstrap_domain_contrast_summary_pool_creativity_eval_surprise.csv",
+}
+
+
+def load_domain_contrast_all_controls() -> pd.DataFrame:
+    frames = []
+    for run_tag, filename in DOMAIN_CONTRAST_SUMMARY_FILES.items():
+        source = ANALYSES_DIR / filename
+        require(source)
+        df = pd.read_csv(source)
+        df["run_tag"] = run_tag
+        frames.append(df)
+
+    df = pd.concat(frames, ignore_index=True)
+    needed = {
+        "pool_target",
+        "target",
+        "domain_variant",
+        "control_variant",
+        "observed_mean_supervised_rho",
+        "observed_mean_generic_rho",
+        "observed_mean_diff",
+        "ci95_low",
+        "ci95_high",
+        "ci_excludes_zero",
+    }
+    missing = needed - set(df.columns)
+    if missing:
+        raise ValueError(f"domain contrast summaries missing columns: {sorted(missing)}")
+    return df
+
+
+def make_table_7_domain_contrast_target_pair_matrix() -> list[Path]:
+    df = load_domain_contrast_all_controls()
+
+    counts = (
+        df.groupby(["pool_target", "target"], dropna=False)
+        .agg(
+            n_controls=("control_variant", "count"),
+            n_resolved=("ci_excludes_zero", "sum"),
+            mean_delta=("observed_mean_diff", "mean"),
+            min_ci_low=("ci95_low", "min"),
+            max_ci_high=("ci95_high", "max"),
+            supervised_rho=("observed_mean_supervised_rho", "mean"),
+        )
+        .reset_index()
+        .sort_values(["pool_target", "target"])
+    )
+
+    out = pd.DataFrame(
+        {
+            "Pool": counts["pool_target"],
+            "Eval": counts["target"],
+            "Supervised ρ": counts["supervised_rho"].map(fmt_signed),
+            "Mean Δρ": counts["mean_delta"].map(fmt_signed),
+            "Resolved": counts["n_resolved"].astype(int).astype(str) + "/" + counts["n_controls"].astype(int).astype(str),
+            "CI range": [
+                f"[{fmt_signed(lo)}, {fmt_signed(hi)}]"
+                for lo, hi in zip(counts["min_ci_low"], counts["max_ci_high"])
+            ],
+        }
+    )
+
+    return write_table_bundle(
+        out,
+        "table_7_domain_contrast_target_pair_matrix",
+        "Consolidated paired domain-contrast matrix across pool and evaluation targets.",
+    )
+
+
+def make_table_8_domain_contrast_by_control_family() -> list[Path]:
+    df = load_domain_contrast_all_controls()
+
+    df["control_family"] = df["control_variant"].map(
+        lambda x: "word-shuffle" if str(x) == "wordctrl" else "matched-control"
+    )
+
+    summary = (
+        df.groupby(["pool_target", "target", "control_family"], dropna=False)
+        .agg(
+            n_controls=("control_variant", "count"),
+            n_resolved=("ci_excludes_zero", "sum"),
+            mean_delta=("observed_mean_diff", "mean"),
+            min_ci_low=("ci95_low", "min"),
+            max_ci_high=("ci95_high", "max"),
+            mean_supervised_rho=("observed_mean_supervised_rho", "mean"),
+            mean_generic_rho=("observed_mean_generic_rho", "mean"),
+        )
+        .reset_index()
+        .sort_values(["pool_target", "target", "control_family"])
+    )
+
+    out = pd.DataFrame(
+        {
+            "Pool": summary["pool_target"],
+            "Eval": summary["target"],
+            "Control": summary["control_family"],
+            "Supervised ρ": summary["mean_supervised_rho"].map(fmt_signed),
+            "Generic ρ": summary["mean_generic_rho"].map(fmt_signed),
+            "Mean Δρ": summary["mean_delta"].map(fmt_signed),
+            "Resolved": summary["n_resolved"].astype(int).astype(str) + "/" + summary["n_controls"].astype(int).astype(str),
+            "CI range": [
+                f"[{fmt_signed(lo)}, {fmt_signed(hi)}]"
+                for lo, hi in zip(summary["min_ci_low"], summary["max_ci_high"])
+            ],
+        }
+    )
+
+    return write_table_bundle(
+        out,
+        "table_8_domain_contrast_by_control_family",
+        "Domain-contrast results split by matched-control and word-shuffle control families.",
+    )
+
+
 def hash_entry(path: Path, note: str) -> dict:
     rows, cols = csv_shape(path)
     return {
@@ -357,6 +482,8 @@ def main() -> None:
     generated.extend(make_table_3_generic_d_summary())
     generated.extend(make_table_4_item_nll_correlations())
     generated.extend(make_table_5_absolute_effect_uncertainty())
+    generated.extend(make_table_7_domain_contrast_target_pair_matrix())
+    generated.extend(make_table_8_domain_contrast_by_control_family())
 
     manifest = {
         "stage": "90_make_tables",
