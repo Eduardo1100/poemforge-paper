@@ -121,7 +121,7 @@ Cross-target transfer tests whether human-shaped domains are target-specific sil
 
 Aesthetic Appeal behaves like the broadest appraisal domain among the tested targets. Aesthetic-shaped domains transfer to Surprise and Creativity under matched controls. In the reverse direction, Surprise-shaped and Creativity-shaped domains transfer into Aesthetic Appeal less cleanly, resolving only in the formal matched-control condition. Surprise and Creativity transfer to each other symmetrically under matched controls, but not under word-shuffle controls.
 
-This pattern suggests a shared appraisal manifold with target-specific sharpening. Human-shaped domains are not interchangeable, but neither are they fully isolated. Aesthetic Appeal appears to capture broader quality/appraisal structure, while Surprise and Creativity behave more like narrower appraisal directions.
+This exploratory pattern is consistent with shared appraisal structure and target-specific sharpening, but it should not be treated as resolved evidence for a shared appraisal manifold. Human-shaped domains are not interchangeable, but neither are they fully isolated by point estimate. Aesthetic Appeal appears to capture broader quality/appraisal structure, while Surprise and Creativity behave more like narrower appraisal directions.
 
 ### 3.4 Preference-shaped domains recover held-out Surprise structure, but not as a compression-specific claim
 
