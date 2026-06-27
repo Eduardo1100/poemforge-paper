@@ -63,3 +63,15 @@ If human-labeled `v_pref_struct` does outperform nonhuman `v_pref_struct`, espec
 ## Publication decision
 
 For the current 36-poem corpus, this should be treated as an extension experiment. The existing manuscript should remain a negative-boundary paper unless this same-form analysis resolves.
+
+## Same-form Surprise vs surfacepool across observers
+
+We extended the same-form Surprise comparison across all available GPT-2-family observer artifacts.
+
+Results:
+- DistilGPT-2: human rho +0.518, surfacepool rho +0.481, diff +0.037, CI [-0.179,+0.254], unresolved.
+- GPT-2: human rho +0.537, surfacepool rho +0.476, diff +0.061, CI [-0.159,+0.290], unresolved.
+- GPT-2-medium: human rho +0.497, surfacepool rho +0.455, diff +0.042, CI [-0.155,+0.243], unresolved.
+
+Interpretation:
+The same-form human-labeled Surprise contrast is consistently positive by point estimate, but it does not significantly outperform the available surface-pool contrast for any observer. This reinforces the negative-boundary manuscript framing. The current evidence does not isolate human labels in D from contrastive construction. Further progress requires generating new same-form nonhuman controls such as randompool, lengthpool, or nllpool, ideally with both matched-control and word-shuffle variants.
