@@ -200,3 +200,35 @@ Paired bootstrap deltas:
 
 Interpretation:
 Average NLL predicts held-out LitBench preference above chance, but its incremental value beyond formatting/surface organization is not resolved. Formatting and surface organization are the stronger predictors. The sign-flip hypothesis should therefore be softened: LitBench preference rewards readable organization and modestly rewards LM fluency/predictability, rather than being primarily explained by predictability.
+
+## Interpretation correction after critic review
+
+The first LitBench results should be interpreted more conservatively.
+
+The held-out test result confirms a sign-flip for raw average predictability:
+
+- preferred stories have lower DistilGPT-2 average NLL than rejected stories;
+- prefer_lower_avg_nll reaches 54.27%, CI [52.34%, 56.21%].
+
+However, this is not yet a test of the paper's central compression-progress quantity V. It is a test of unconditional fluency / typicality.
+
+The combined model also shows that NLL does not add a resolved increment beyond surface formatting:
+
+- surface_format: 60.60%, CI [58.67%, 62.46%]
+- surface_plus_avg_nll: 61.29%, CI [59.31%, 63.23%]
+- delta: +0.69 points, CI [-0.65,+2.02], unresolved.
+
+Therefore, the honest current LitBench claim is:
+
+> LitBench preference is primarily captured by readable formatting / surface organization among the simple features tested. Raw average predictability is above chance, but its incremental value beyond formatting is unresolved.
+
+The framework-relevant test remains to be run:
+
+> Does compression-progress V predict LitBench preference, especially after residualizing or controlling for formatting?
+
+Next priority:
+1. inventory repeated prompts / post IDs / possible domain construction;
+2. implement global compression-progress V;
+3. implement prompt-conditioned V if the data support it;
+4. evaluate V raw and net of formatting;
+5. repeat with GPT-2-family observers if feasible.
