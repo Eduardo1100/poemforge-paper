@@ -101,3 +101,22 @@ Paired supervised-vs-generic contrasts:
 
 Interpretation:
 Cross-target transfer exists but is weaker and asymmetric. Aesthetic_Appeal transfers to Surprise better than Surprise transfers to Aesthetic_Appeal. This supports a shared human-appraisal manifold with target-specific sharpening, rather than fully target-specific silos or a completely target-agnostic human-domain effect.
+
+## Consolidated domain-contrast matrix
+
+Artifacts:
+- results/tables/domain_contrast_all_controls.csv
+- results/tables/domain_contrast_target_pair_matrix.csv
+- results/tables/domain_contrast_target_pair_matrix.md
+- results/tables/domain_contrast_by_control_family.csv
+- results/tables/domain_contrast_by_control_family.md
+
+Main empirical pattern:
+1. The matched-control paired domain contrast is the robust result. Across self-domain and cross-target settings, human-shaped domains consistently outperform generic Gutenberg domains under matched-control paired item bootstrap.
+2. Word-shuffle controls are stricter and much less stable. They resolve primarily in the cleanest self-domain settings, especially Aesthetic_Appeal.
+3. Aesthetic_Appeal behaves like the broadest appraisal target: Aesthetic_Appeal-domain readouts transfer to Surprise and Creativity under matched controls, while Surprise-domain and Creativity-domain readouts transfer less cleanly into Aesthetic_Appeal.
+4. Generic absolute effects remain weak, unresolved, or negative. The paper should therefore avoid claiming that generic compression has a resolved positive appraisal signal.
+5. The final framing should emphasize domain construction: the human signal enters through the construction of D, not through generic compression alone.
+
+Current best paper claim:
+Human-shaped compression domains produce robust paired improvements over generic literary domains under matched-control item-level bootstrap across multiple human appraisal targets. The effect is strongest for target-matched domains and for Aesthetic_Appeal, with weaker but positive cross-target transfer. Word-shuffle robustness is target-dependent and should be reported as a stricter secondary check.
