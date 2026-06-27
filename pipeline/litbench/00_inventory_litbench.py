@@ -13,7 +13,9 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 DATASETS_TO_TRY = [
     "SAA-Lab/LitBench-Test",
+    "SAA-Lab/LitBench-Test-IDs-Complete",
     "SAA-Lab/LitBench-Train",
+    "SAA-Lab/LitBench-Rationales",
     "SAA-Lab/LitBench",
 ]
 
