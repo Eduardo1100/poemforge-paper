@@ -136,3 +136,30 @@ Results, n_boot=5000:
 - gpt2-medium: observed mean rho = +0.283, CI [-0.045, +0.562], resolved = False
 
 Interpretation: The GPT-2-family observers show positive but unresolved alignment. Observer-family robustness is suggestive but underpowered/unresolved in this narrower absolute-alignment check.
+
+## Same-form domain contrast follow-up
+
+Motivation:
+A follow-up critique identified that the current paired domain contrast compares different score forms:
+- human-shaped supervised side: `v_pref_struct`, a high-minus-low contrastive score
+- generic side: `v_struct`, a single-domain structural score
+
+Therefore the existing paired contrast should be interpreted as human-shaped contrastive construction versus generic single-domain construction, not as a clean isolated test of human-labeled domain construction alone.
+
+Decisive next analysis:
+Run a same-form contrast where both sides use `v_pref_struct`:
+- human-labeled high/low pools versus nonhuman high/low pools
+- same observer
+- same metric
+- same items
+- same bootstrap resamples
+- report matched-control and word-shuffle separately
+
+Candidate nonhuman pool axes:
+- random high/low splits
+- length-based high/low splits
+- surface-feature high/low splits
+- period/style/canon-derived splits if artifacts exist
+
+Interpretation rule:
+Do not strengthen the manuscript's domain-construction mechanism claim unless the same-form contrast resolves, preferably under word-shuffle controls. If the same-form contrast does not resolve, reframe the paper around the stronger boundary result: generic literary compression fails, formal generic compression can anti-align, and human-shaped contrastive construction remains suggestive but not isolated from contrastive form.
