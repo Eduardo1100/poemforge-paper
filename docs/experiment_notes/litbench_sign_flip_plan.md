@@ -180,3 +180,23 @@ This supports the emerging cross-domain mechanism:
 > Compression or predictability does not measure literary value directly. It measures fluency, accessibility, conventionality, or typicality. Whether that signal helps or hurts depends on the evaluative population and task.
 
 For Reddit creative-writing preference, predictability/fluency appears mildly rewarded. In the poetry setting, generic formal compression can anti-align with contemporary appraisal, suggesting that raters may penalize conventionality in that domain.
+
+## Combined surface + NLL model
+
+We trained simple cross-validated logistic pairwise models on the held-out complete LitBench test set using pairwise feature differences.
+
+Results:
+
+- surface_format: 60.60%, CI [58.67%, 62.46%]
+- nll_avg_only: 55.12%, CI [53.15%, 57.06%]
+- surface_plus_avg_nll: 61.29%, CI [59.31%, 63.23%]
+- surface_plus_avg_and_total_nll: 61.37%, CI [59.44%, 63.27%]
+
+Paired bootstrap deltas:
+
+- surface_plus_avg_nll - surface_format: +0.69 points, CI [-0.65,+2.02], unresolved.
+- surface_plus_avg_and_total_nll - surface_format: +0.77 points, CI [-0.52,+2.10], unresolved.
+- surface_format - nll_avg_only: +5.48 points, CI [+3.06,+7.94], resolved.
+
+Interpretation:
+Average NLL predicts held-out LitBench preference above chance, but its incremental value beyond formatting/surface organization is not resolved. Formatting and surface organization are the stronger predictors. The sign-flip hypothesis should therefore be softened: LitBench preference rewards readable organization and modestly rewards LM fluency/predictability, rather than being primarily explained by predictability.
