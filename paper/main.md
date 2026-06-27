@@ -37,7 +37,7 @@ This reframes PoemForge. The project is not evidence for an unsupervised aesthet
 
 ### 2.1 Items and human targets
 
-The evaluation set contains human-rated poems from the Chaudhuri-style poem evaluation substrate. Each poem has target ratings for dimensions including Aesthetic Appeal, Clarity, Creativity, Felt Valence, and Surprise. The primary target in the final controlled experiments is Surprise, because it is central to the original compression-progress hypothesis and because it provides a test of whether the readout captures something beyond simple predictability.
+The evaluation set contains human-rated poems from the Chaudhuri-style poem evaluation substrate. Each poem has target ratings for dimensions including Aesthetic Appeal, Clarity, Creativity, Felt Valence, and Surprise. Surprise is the primary target in the original readout-convergence and compression-vs-baseline analyses, because it is central to the compression-progress hypothesis and tests whether the readout captures something beyond simple predictability. The final paired domain-contrast analyses extend beyond Surprise to Aesthetic Appeal and Creativity.
 
 The normalized data stage freezes item text, target ratings, surface features, and matched-control pools. These artifacts define the item universe for the rest of the pipeline.
 
