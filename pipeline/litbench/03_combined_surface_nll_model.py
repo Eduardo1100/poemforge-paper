@@ -87,7 +87,7 @@ def make_pairwise_examples(df: pd.DataFrame, feature_cols: list[str], seed: int)
     return np.vstack(rows), np.asarray(labels, dtype=int)
 
 
-def crossval_accuracy(X: np.ndarray, y: np.ndarray, n_splits: int, seed: int) -> np.ndarray:
+def crossval_predictions(X: np.ndarray, y: np.ndarray, n_splits: int, seed: int) -> np.ndarray:
     skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=seed)
     preds = np.zeros_like(y)
 
@@ -99,7 +99,35 @@ def crossval_accuracy(X: np.ndarray, y: np.ndarray, n_splits: int, seed: int) ->
         clf.fit(X[train_idx], y[train_idx])
         preds[test_idx] = clf.predict(X[test_idx])
 
-    return preds == y
+    return preds
+
+
+def paired_bootstrap_delta(
+    correct_a: np.ndarray,
+    correct_b: np.ndarray,
+    n_boot: int,
+    seed: int,
+) -> dict[str, float]:
+    rng = np.random.default_rng(seed)
+    a = np.asarray(correct_a, dtype=float)
+    b = np.asarray(correct_b, dtype=float)
+    if len(a) != len(b):
+        raise ValueError("Paired arrays must have same length.")
+
+    diff = a - b
+    n = len(diff)
+    boots = np.empty(n_boot, dtype=float)
+    for i in range(n_boot):
+        idx = rng.integers(0, n, size=n)
+        boots[i] = float(np.mean(diff[idx]))
+
+    return {
+        "delta_accuracy": float(np.mean(diff)),
+        "delta_ci95_low": float(np.quantile(boots, 0.025)),
+        "delta_ci95_high": float(np.quantile(boots, 0.975)),
+        "p_delta_le_zero": float(np.mean(boots <= 0.0)),
+        "p_delta_ge_zero": float(np.mean(boots >= 0.0)),
+    }
 
 
 def main() -> None:
@@ -152,7 +180,8 @@ def main() -> None:
     }
 
     rows = []
-    pred_cols = {"row_id": df["row_id"].to_numpy()}
+    prediction_rows = []
+    correctness_by_model = {}
 
     for name, features in feature_sets.items():
         X, y = make_pairwise_examples(df, features, seed=args.seed)
@@ -160,7 +189,10 @@ def main() -> None:
         X = X[valid]
         y = y[valid]
 
-        correct = crossval_accuracy(X, y, n_splits=args.n_splits, seed=args.seed)
+        preds = crossval_predictions(X, y, n_splits=args.n_splits, seed=args.seed)
+        correct = preds == y
+        correctness_by_model[name] = correct
+
         stat = bootstrap_accuracy(correct, n_boot=args.n_boot, seed=args.seed)
         rows.append(
             {
@@ -171,12 +203,54 @@ def main() -> None:
             }
         )
 
+        for j, (pred, label, ok) in enumerate(zip(preds, y, correct)):
+            prediction_rows.append(
+                {
+                    "example_id": j,
+                    "model": name,
+                    "pred": int(pred),
+                    "label": int(label),
+                    "correct": bool(ok),
+                }
+            )
+
     summary = pd.DataFrame(rows).sort_values("accuracy", ascending=False)
 
+    delta_rows = []
+    comparisons = [
+        ("surface_plus_avg_nll", "surface_format"),
+        ("surface_plus_avg_and_total_nll", "surface_format"),
+        ("surface_plus_avg_and_total_nll", "surface_plus_avg_nll"),
+        ("surface_format", "nll_avg_only"),
+        ("surface_plus_avg_nll", "nll_avg_only"),
+    ]
+
+    for a, b in comparisons:
+        if a in correctness_by_model and b in correctness_by_model:
+            delta_rows.append(
+                {
+                    "tag": args.tag,
+                    "model_a": a,
+                    "model_b": b,
+                    **paired_bootstrap_delta(
+                        correctness_by_model[a],
+                        correctness_by_model[b],
+                        n_boot=args.n_boot,
+                        seed=args.seed,
+                    ),
+                }
+            )
+
+    deltas = pd.DataFrame(delta_rows)
+
     summary_path = OUT_DIR / f"litbench_combined_models_{args.tag}.csv"
+    deltas_path = OUT_DIR / f"litbench_combined_model_deltas_{args.tag}.csv"
+    predictions_path = OUT_DIR / f"litbench_combined_model_predictions_{args.tag}.csv"
     manifest_path = OUT_DIR / f"litbench_combined_models_{args.tag}_manifest.json"
 
     summary.to_csv(summary_path, index=False)
+    deltas.to_csv(deltas_path, index=False)
+    pd.DataFrame(prediction_rows).to_csv(predictions_path, index=False)
     manifest_path.write_text(
         json.dumps(
             {
@@ -189,6 +263,8 @@ def main() -> None:
                 "seed": args.seed,
                 "outputs": {
                     "summary": str(summary_path),
+                    "deltas": str(deltas_path),
+                    "predictions": str(predictions_path),
                 },
             },
             indent=2,
@@ -197,7 +273,11 @@ def main() -> None:
     )
 
     print(summary.to_string(index=False))
+    print()
+    print(deltas.to_string(index=False))
     print(f"Wrote {summary_path}")
+    print(f"Wrote {deltas_path}")
+    print(f"Wrote {predictions_path}")
     print(f"Wrote {manifest_path}")
 
 
