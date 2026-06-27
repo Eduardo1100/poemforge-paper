@@ -32,14 +32,18 @@ def parse_prefcontrast_name(path: Path) -> dict:
         "metrics_available": None,
     }
 
-    m = re.match(r"vscore_(?P<observer>.+?)_prefcontrast_chaudhuri_(?P<label>.+?)_(?P<rest>.+)\.csv$", name)
+    m = re.match(
+        r"vscore_(?P<observer>.+?)_prefcontrast_chaudhuri_"
+        r"(?P<label>.+?)_(?P<control>matchedctrl|wordctrl)_(?P<rest>.+)\.csv$",
+        name,
+    )
     if not m:
         return info
 
     info["observer"] = m.group("observer")
     info["label"] = m.group("label")
+    info["control_from_filename"] = m.group("control")
     rest = m.group("rest")
-    info["control_from_filename"] = rest.split("_", 1)[0]
 
     sm = re.search(r"_seed(?P<seed>\d+)_", rest)
     dm = re.search(r"_dn(?P<dn>\d+)", rest)
