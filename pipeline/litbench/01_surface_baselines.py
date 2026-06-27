@@ -1,7 +1,7 @@
 from __future__ import annotations
 
+import argparse
 import json
-import math
 import re
 from pathlib import Path
 
@@ -13,10 +13,6 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT_DIR = ROOT / "results" / "litbench"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-TRAIN_SAMPLE = OUT_DIR / "SAA-Lab__LitBench-Train__train__sample.csv"
-TRAIN_CACHE = OUT_DIR / "litbench_train_cached.csv"
-
-
 WORD_RE = re.compile(r"\b\w+\b", flags=re.UNICODE)
 
 
@@ -24,23 +20,43 @@ def tokenize(text: str) -> list[str]:
     return WORD_RE.findall(str(text).lower())
 
 
-def features(text: str) -> dict:
+def text_features(text: str) -> dict[str, float]:
     s = str(text)
     toks = tokenize(s)
     n_words = len(toks)
-    n_chars = len(s)
-    uniq = len(set(toks))
+    unique_words = len(set(toks))
+
     return {
-        "chars": n_chars,
-        "words": n_words,
-        "type_token_ratio": uniq / n_words if n_words else np.nan,
+        "chars": float(len(s)),
+        "words": float(n_words),
+        "type_token_ratio": float(unique_words / n_words) if n_words else np.nan,
         "avg_word_len": float(np.mean([len(t) for t in toks])) if toks else np.nan,
-        "punct_count": sum(1 for ch in s if not ch.isalnum() and not ch.isspace()),
-        "newline_count": s.count("\n"),
+        "punct_count": float(sum(1 for ch in s if not ch.isalnum() and not ch.isspace())),
+        "newline_count": float(s.count("\n")),
+        "paragraph_count": float(max(1, s.count("\n\n") + 1)),
     }
 
 
-def load_train() -> pd.DataFrame:
+def bootstrap_accuracy(correct: np.ndarray, n_boot: int, seed: int) -> dict[str, float]:
+    rng = np.random.default_rng(seed)
+    correct = np.asarray(correct, dtype=float)
+    n = len(correct)
+
+    boots = np.empty(n_boot, dtype=float)
+    for b in range(n_boot):
+        idx = rng.integers(0, n, size=n)
+        boots[b] = float(np.mean(correct[idx]))
+
+    return {
+        "accuracy": float(np.mean(correct)),
+        "ci95_low": float(np.quantile(boots, 0.025)),
+        "ci95_high": float(np.quantile(boots, 0.975)),
+        "n": int(n),
+        "n_boot": int(n_boot),
+    }
+
+
+def load_hf_dataset(dataset_name: str) -> pd.DataFrame:
     try:
         from datasets import load_dataset
     except ImportError as exc:
@@ -49,59 +65,49 @@ def load_train() -> pd.DataFrame:
             "  python -m pip install datasets pyarrow\n"
         ) from exc
 
-    if TRAIN_CACHE.exists():
-        return pd.read_csv(TRAIN_CACHE)
-
-    ds = load_dataset("SAA-Lab/LitBench-Train")
+    ds = load_dataset(dataset_name)
     split = next(iter(ds.keys()))
-    df = ds[split].to_pandas()
-    df.to_csv(TRAIN_CACHE, index=False)
-    return df
-
-
-def bootstrap_acc(correct: np.ndarray, n_boot: int = 5000, seed: int = 123) -> dict:
-    rng = np.random.default_rng(seed)
-    correct = np.asarray(correct, dtype=float)
-    n = len(correct)
-    samples = []
-    for _ in range(n_boot):
-        idx = rng.integers(0, n, size=n)
-        samples.append(float(np.mean(correct[idx])))
-    arr = np.asarray(samples)
-    return {
-        "accuracy": float(np.mean(correct)),
-        "ci95_low": float(np.quantile(arr, 0.025)),
-        "ci95_high": float(np.quantile(arr, 0.975)),
-        "n": int(n),
-        "n_boot": n_boot,
-    }
+    return ds[split].to_pandas()
 
 
 def main() -> None:
-    df = load_train()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--dataset", default="SAA-Lab/LitBench-Test-IDs-Complete")
+    ap.add_argument("--tag", default="test_ids_complete")
+    ap.add_argument("--n-boot", type=int, default=5000)
+    ap.add_argument("--seed", type=int, default=123)
+    args = ap.parse_args()
+
+    df = load_hf_dataset(args.dataset)
 
     required = {"chosen_story", "rejected_story"}
     missing = required - set(df.columns)
     if missing:
-        raise ValueError(f"Missing required columns: {sorted(missing)}")
+        raise ValueError(f"Dataset lacks required columns: {sorted(missing)}")
 
-    rows = []
     feature_rows = []
-
     for i, row in df.iterrows():
-        ch = features(row["chosen_story"])
-        rj = features(row["rejected_story"])
+        chosen = text_features(row["chosen_story"])
+        rejected = text_features(row["rejected_story"])
 
-        record = {"row_id": i}
-        for k, v in ch.items():
-            record[f"chosen_{k}"] = v
-        for k, v in rj.items():
-            record[f"rejected_{k}"] = v
-        if "chosen_upvotes" in df.columns:
-            record["chosen_upvotes"] = row["chosen_upvotes"]
-        if "rejected_upvotes" in df.columns:
-            record["rejected_upvotes"] = row["rejected_upvotes"]
-        feature_rows.append(record)
+        out = {"row_id": i}
+        for k, v in chosen.items():
+            out[f"chosen_{k}"] = v
+        for k, v in rejected.items():
+            out[f"rejected_{k}"] = v
+
+        for optional in [
+            "chosen_upvotes",
+            "rejected_upvotes",
+            "chosen_comment_id",
+            "rejected_comment_id",
+            "chosen_reddit_post_id",
+            "rejected_reddit_post_id",
+        ]:
+            if optional in df.columns:
+                out[optional] = row[optional]
+
+        feature_rows.append(out)
 
     feat = pd.DataFrame(feature_rows)
 
@@ -118,39 +124,56 @@ def main() -> None:
         "prefer_less_punct": feat["chosen_punct_count"] < feat["rejected_punct_count"],
         "prefer_more_newlines": feat["chosen_newline_count"] > feat["rejected_newline_count"],
         "prefer_fewer_newlines": feat["chosen_newline_count"] < feat["rejected_newline_count"],
+        "prefer_more_paragraphs": feat["chosen_paragraph_count"] > feat["rejected_paragraph_count"],
+        "prefer_fewer_paragraphs": feat["chosen_paragraph_count"] < feat["rejected_paragraph_count"],
     }
 
     if {"chosen_upvotes", "rejected_upvotes"} <= set(feat.columns):
         tests["prefer_more_upvotes_sanity"] = feat["chosen_upvotes"] > feat["rejected_upvotes"]
 
+    rows = []
     for name, pred in tests.items():
-        valid = pred.notna().to_numpy()
-        correct = pred.to_numpy(dtype=bool)[valid]
-        stat = bootstrap_acc(correct)
-        rows.append({"baseline": name, **stat})
+        correct = pred.to_numpy(dtype=bool)
+        stat = bootstrap_accuracy(correct, n_boot=args.n_boot, seed=args.seed)
+        rows.append(
+            {
+                "dataset": args.dataset,
+                "tag": args.tag,
+                "baseline": name,
+                **stat,
+            }
+        )
 
-    out = pd.DataFrame(rows).sort_values("accuracy", ascending=False)
-    feat_path = OUT_DIR / "litbench_train_surface_features.csv"
-    out_path = OUT_DIR / "litbench_train_surface_baselines.csv"
-    manifest_path = OUT_DIR / "litbench_train_surface_baselines_manifest.json"
+    summary = pd.DataFrame(rows).sort_values("accuracy", ascending=False)
 
-    feat.to_csv(feat_path, index=False)
-    out.to_csv(out_path, index=False)
+    summary_path = OUT_DIR / f"litbench_surface_baselines_{args.tag}.csv"
+    features_path = OUT_DIR / f"litbench_surface_features_{args.tag}.csv"
+    manifest_path = OUT_DIR / f"litbench_surface_baselines_{args.tag}_manifest.json"
+
+    summary.to_csv(summary_path, index=False)
+    feat.to_csv(features_path, index=False)
     manifest_path.write_text(
         json.dumps(
             {
-                "dataset": "SAA-Lab/LitBench-Train",
-                "analysis": "surface baselines for chosen-vs-rejected pair prediction",
-                "outputs": [str(feat_path), str(out_path)],
+                "dataset": args.dataset,
+                "tag": args.tag,
+                "analysis": "surface-only pairwise baselines",
+                "n_rows": int(len(df)),
+                "outputs": {
+                    "summary": str(summary_path),
+                    "features": str(features_path),
+                },
+                "n_boot": args.n_boot,
+                "seed": args.seed,
             },
             indent=2,
         ),
         encoding="utf-8",
     )
 
-    print(out.to_string(index=False))
-    print(f"Wrote {feat_path}")
-    print(f"Wrote {out_path}")
+    print(summary.to_string(index=False))
+    print(f"Wrote {summary_path}")
+    print(f"Wrote {features_path}")
     print(f"Wrote {manifest_path}")
 
 

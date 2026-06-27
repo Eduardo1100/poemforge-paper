@@ -16,3 +16,8 @@ results/analyses/bootstrap_same_form_domain_contrast_samples*.csv
 # Large LitBench cached/intermediate artifacts, reproducible from Hugging Face
 results/litbench/litbench_train_cached.csv
 results/litbench/litbench_train_surface_features.csv
+
+# Large/reproducible LitBench intermediates
+results/litbench/litbench_surface_features_*.csv
+results/litbench/litbench_train_cached.csv
+results/litbench/litbench_train_surface_features.csv
