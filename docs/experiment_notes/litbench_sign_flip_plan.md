@@ -292,3 +292,58 @@ Unlike raw average NLL, prompt-conditioned V survives the formatting confound. T
 Caution:
 
 This result is currently limited to the repeated-prompt eligible subset. It should not yet be generalized to all 2,480 LitBench pairs. The next control is to compare other_chosen domains against other_rejected and all_other domains to test whether V specifically tracks the preferred-response domain or merely prompt-consistency / generic response quality.
+
+## Preferred-minus-rejected domain contrast
+
+We combined the other_chosen and other_rejected prompt-conditioned V runs into a direct domain contrast.
+
+Definitions:
+
+- V_chosen_domain(candidate): compression-progress of candidate for other chosen stories under the same prompt.
+- V_rejected_domain(candidate): compression-progress of candidate for other rejected stories under the same prompt.
+- domain_specificity(candidate) = V_chosen_domain(candidate) - V_rejected_domain(candidate).
+- domain_contrast_delta =
+    domain_specificity(chosen_story) - domain_specificity(rejected_story).
+
+The direct sign rule predicts the chosen story when:
+
+> domain_specificity(chosen_story) > domain_specificity(rejected_story)
+
+Configuration:
+
+- dataset: SAA-Lab/LitBench-Test-IDs-Complete
+- observer: DistilGPT-2
+- domain construction: same-prompt, leave-pair-out
+- chosen-domain source: other chosen stories for same prompt
+- rejected-domain source: other rejected stories for same prompt
+- eligible rows with both domains: 1,155
+
+Results:
+
+- domain_contrast_sign_rule: 75.58%, CI [73.16%, 78.01%]
+- domain_specificity_logistic: 76.19%, CI [73.77%, 78.70%]
+- surface_format: 60.26%, CI [57.32%, 63.03%]
+
+Paired deltas over formatting:
+
+- domain_contrast_sign_rule - surface_format:
+  +15.32 points, CI [+11.52,+19.13], resolved.
+- domain_specificity_logistic - surface_format:
+  +15.93 points, CI [+12.21,+19.65], resolved.
+
+Continuous effects:
+
+- domain_contrast_delta:
+  mean +0.420, CI [+0.377,+0.464]
+- delta_chosen_domain:
+  mean +0.203, CI [+0.177,+0.231]
+- delta_rejected_domain:
+  mean -0.216, CI [-0.248,-0.185]
+
+Interpretation:
+
+This is the strongest LitBench result so far. Prompt-conditioned compression-progress separates preferred and rejected response domains within the same prompt. Chosen stories move toward the chosen-response domain; rejected stories move toward the rejected-response domain. The preferred-minus-rejected domain contrast predicts preference at about 76% accuracy and beats formatting by about 15 points.
+
+Caution:
+
+This result is currently limited to the repeated-prompt subset where both chosen and rejected same-prompt domains are available. It is also a label-shaped domain contrast rather than a label-free selector. The next robustness test is observer-family replication with GPT-2 and GPT-2-medium, budget permitting.
