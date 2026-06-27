@@ -4,9 +4,9 @@
 
 We test whether compression-progress scores over held-out poetic domains recover human poetic appraisal. The label-free version of the hypothesis fails: generic Gutenberg-derived domains do not show resolved positive alignment with human ratings, and matched-control generic-domain effects often trend negative. Generic literary compression appears to track typicality more than human-rated poetic value in this setting.
 
-The surviving result is domain-relative. When the held-out domain $D$ is constructed from human-labeled contrasts, structural compression readouts align more strongly with human appraisal targets. A paired poem-level bootstrap comparing human-shaped domains against generic Gutenberg domains on the same $n=36$ poems resolves a robust domain-construction effect under matched controls across Surprise, Aesthetic Appeal, and Creativity. The effect is strongest for target-matched domains and for Aesthetic Appeal, with positive but weaker cross-target transfer.
+The surviving result is domain-relative but more bounded. When the held-out domain $D$ is constructed from human-labeled contrasts, structural compression readouts show positive alignment with human appraisal targets. A paired poem-level bootstrap comparing human-shaped contrastive domains against generic single-domain Gutenberg scores resolves under matched controls across Surprise, Aesthetic Appeal, and Creativity. However, this contrast mixes score form as well as domain source: the human-shaped side uses a high-minus-low contrastive score, while the generic side uses a single-domain structural score. A same-form Surprise follow-up comparing human-labeled `v_pref_struct` against a surface-pool `v_pref_struct` contrast does not resolve.
 
-This does not establish a label-free aesthetic evaluator or a compression-specific advantage over TF-IDF and embedding baselines. Absolute supervised effects remain underresolved at item level, and word-shuffle controls resolve only in the cleanest self-domain cases. A bounded observer-family check using existing GPT-2 and GPT-2-medium artifacts shows positive but unresolved Aesthetic Appeal alignment, leaving full observer-family paired domain-contrast replication as future work. The result is a boundary claim: generic compression alone does not recover human poetic appraisal, but human-shaped domain construction induces measurable appraisal structure.
+This does not establish a label-free aesthetic evaluator, a compression-specific advantage over TF-IDF and embedding baselines, or a fully isolated human-domain-construction mechanism. Absolute supervised effects remain underresolved at item level, word-shuffle controls resolve only in the cleanest self-domain cases, and the available same-form Surprise comparison against a surface-pool contrast is positive but unresolved. A bounded observer-family check using existing GPT-2 and GPT-2-medium artifacts also shows positive but unresolved Aesthetic Appeal alignment. The result is a boundary claim: generic compression alone does not recover human poetic appraisal, while human-shaped contrastive construction is suggestive but not yet isolated from contrastive form at $n=36$.
 
 ## 1. Introduction
 
@@ -109,9 +109,9 @@ See Table 3, generated as `results/tables/table_3_generic_d_summary.*`, for the 
 
 The critic-relevant comparison is not only whether a supervised readout is absolutely resolved, but whether human-shaped domains align better than generic domains when the readout and item set are held fixed. We therefore computed paired poem-level bootstraps over the same $n=36$ Chaudhuri poems, comparing structural compression scores from human-shaped domains against structural compression scores from generic Gutenberg domains.
 
-The paired domain contrast is the main robust result. For target-matched domains, Aesthetic Appeal resolves in all four generic-control comparisons, Surprise resolves in three of four, and Creativity resolves in the two matched-control comparisons. In the consolidated target-pair matrix, every pool-target and evaluation-target pairing has a positive mean contrast, indicating that human-shaped domains consistently improve over generic literary domains by point estimate.
+The paired domain contrast is informative but should be interpreted as a mixed-form comparison. For target-matched domains, Aesthetic Appeal resolves in all four generic-control comparisons, Surprise resolves in three of four, and Creativity resolves in the two matched-control comparisons. In the consolidated target-pair matrix, every pool-target and evaluation-target pairing has a positive mean contrast. However, the contrast compares human-shaped `v_pref_struct` scores against generic `v_struct` scores, so it combines domain source with contrastive scoring form.
 
-The strongest and most stable version of the effect is the matched-control comparison. In the control-family summary, every target-matched condition resolves under matched controls. Aesthetic Appeal also resolves under word-shuffle controls, and Surprise partially resolves under word-shuffle controls, but word-shuffle robustness does not generalize broadly across cross-target settings. Thus, the robust claim is not that compression beats every possible null. The robust claim is that human-shaped domains beat generic literary domains under paired matched-control item-level bootstrap.
+The strongest and most stable version of this mixed-form effect is the matched-control comparison. In the control-family summary, every target-matched condition resolves under matched controls. Aesthetic Appeal also resolves under word-shuffle controls, and Surprise partially resolves under word-shuffle controls, but word-shuffle robustness does not generalize broadly across cross-target settings. Thus, the robust claim is not that compression beats every possible null, nor that human labels have been isolated from contrastive scoring. The defensible claim is narrower: generic literary compression fails as a label-free signal, while human-shaped contrastive construction is positive and often stronger than generic single-domain scoring under matched controls.
 
 See Table 7, generated as `results/tables/table_7_domain_contrast_target_pair_matrix.*`, for the consolidated target-pair matrix, and Table 8, generated as `results/tables/table_8_domain_contrast_by_control_family.*`, for the matched-control versus word-shuffle split.
 
@@ -133,7 +133,15 @@ This pattern supports the domain-relative interpretation. Human-shaped domains i
 
 See Table 1, generated as `results/tables/table_1_readout_convergence.*`, Table 2, generated as `results/tables/table_2_bootstrap_uncertainty.*`, Table 5, generated as `results/tables/table_5_absolute_effect_uncertainty.*`, Figure 1, generated as `results/figures/figure_1_readout_convergence.*`, and Figure 2, generated as `results/figures/figure_2_bootstrap_uncertainty.*`.
 
-### 3.5 Observer-family check is positive but unresolved
+### 3.5 Same-form Surprise contrast is positive but unresolved
+
+To address whether the paired domain contrast isolates domain construction from scoring form, we ran a same-form follow-up comparing human-labeled Surprise `v_pref_struct` against the available nonhuman `Surprise_surfacepool` `v_pref_struct` artifact. Both sides use the same contrastive score form and the same item-level bootstrap procedure.
+
+The same-form contrast is not resolved. Human-labeled Surprise has observed $\rho=+0.518$, while the surface-pool contrast has observed $\rho=+0.481$. The observed difference is $+0.037$ with 95% bootstrap interval $[-0.179,+0.254]$. This result supports the stricter interpretation: the previous large mixed-form contrasts should not be treated as an isolated human-domain-construction mechanism. At $n=36$, human-labeled contrastive construction is positive, but it does not significantly outperform this available surface-pool contrastive construction.
+
+See `results/analyses/bootstrap_same_form_domain_contrast_summary_surprise_surfacepool.csv`.
+
+### 3.6 Observer-family check is positive but unresolved
 
 As a bounded observer-family check, we used existing GPT-2 and GPT-2-medium prefcontrast artifacts for Aesthetic Appeal. This analysis tests absolute supervised alignment for the human-shaped Aesthetic Appeal readout under alternate GPT-2-family observers. It is not the full paired generic-vs-human-domain Stage 62 contrast, because GPT-2 Gutenberg and GPT-2 kfold-surface artifacts are not currently available.
 
@@ -141,7 +149,7 @@ Both alternate observers show positive point estimates, but neither 95% bootstra
 
 See `results/analyses/bootstrap_observer_family_summary_aesthetic_observer.csv`.
 
-### 3.6 Higher-rated poems are often more predictable
+### 3.7 Higher-rated poems are often more predictable
 
 A separate item-level predictability diagnostic shows that higher-rated poems are often more predictable under the language model, not less. This is a useful boundary condition. Human-rated Surprise is not equivalent to language-model confusion. In this dataset, better or more surprising poems are not simply harder for a language model to predict. This weakens naive novelty-only interpretations and reinforces the need for domain-relative contrastive structure.
 
@@ -157,9 +165,9 @@ A compression score can only be interpreted relative to the domain being compres
 
 ### 4.2 What survived
 
-The domain-relative probing framework survived. When $D$ is built from human preference structure, structural compression readouts align substantially better with human appraisal targets than generic Gutenberg-domain readouts. This paired domain-construction effect resolves under matched-control item-level bootstrap across multiple self-domain and cross-target conditions.
+The domain-relative probing framework survives in a bounded form. When $D$ is built from human preference structure, structural compression readouts are positive and often align better than generic Gutenberg-domain readouts. However, the paired generic-vs-human contrast is mixed-form, because it compares contrastive human-shaped scores against single-domain generic scores. The same-form Surprise follow-up against a surface-pool contrast does not resolve, so the current evidence does not fully isolate human labels in $D$ from contrastive construction.
 
-The convergence across targets is important. The result is not merely a Surprise artifact. Aesthetic Appeal, Surprise, and Creativity all show positive human-domain advantages over generic domains, with the strongest evidence in target-matched conditions and in matched-control comparisons.
+The convergence across targets is still useful, but mainly as an exploratory map. The result is not merely a Surprise artifact: Aesthetic Appeal, Surprise, and Creativity all show positive human-shaped contrastive scores relative to generic single-domain scores. But the strongest confirmatory statement remains the negative boundary result for generic compression and the matched-control mixed-form advantage, not a fully isolated multi-target domain-construction mechanism.
 
 ### 4.3 What the cross-target pattern suggests
 
@@ -193,18 +201,20 @@ The primary limitation is sample size. The final item-level analysis has $n=36$ 
 
 A second limitation is domain specificity. The positive results depend on human-shaped contrastive domains. This is appropriate for supervised probing, but it means the results should not be generalized to unsupervised aesthetic discovery.
 
-A third limitation is observer-family robustness. The strongest paired domain-contrast results use DistilGPT-2 score artifacts. A bounded GPT-2/GPT-2-medium check shows positive but unresolved Aesthetic Appeal alignment, but it does not reproduce the full paired generic-vs-human-domain contrast. A full observer-family replication would require generating GPT-2-family Gutenberg-domain and kfold-surface score artifacts.
+A third limitation is score-form confounding in the paired domain contrast. The main generic-vs-human contrast compares human-shaped `v_pref_struct` scores against generic `v_struct` scores. This is useful as a comparison between the full supervised contrastive construction and generic single-domain compression, but it does not isolate human labels in $D$ from contrastive scoring form. A same-form Surprise follow-up comparing human-labeled `v_pref_struct` against a surface-pool `v_pref_struct` contrast is positive but unresolved.
 
-A fourth limitation is control interpretation. Matched-control contrasts are robust across targets, while word-shuffle controls are stricter and less stable. We therefore treat word-shuffle resolution as stronger evidence when present, but do not require it for the main matched-control domain-construction claim.
+A fourth limitation is observer-family robustness. The strongest paired domain-contrast results use DistilGPT-2 score artifacts. A bounded GPT-2/GPT-2-medium check shows positive but unresolved Aesthetic Appeal alignment, but it does not reproduce the full paired generic-vs-human-domain contrast. A full observer-family replication would require generating GPT-2-family Gutenberg-domain and kfold-surface score artifacts.
 
-A fifth limitation is reproducibility depth. The current pipeline freezes and promotes several archived inferential artifacts rather than fully recomputing every expensive analysis from scratch. This is acceptable for a reproducibility bridge, but a final archival version should progressively replace frozen-result promotion with direct regeneration.
+A fifth limitation is control interpretation. Matched-control contrasts are robust across targets, while word-shuffle controls are stricter and less stable. We therefore treat word-shuffle resolution as stronger evidence when present, and we do not treat matched-control resolution alone as establishing structure beyond lexical or contrastive-form effects.
+
+A sixth limitation is reproducibility depth. The current pipeline freezes and promotes several archived inferential artifacts rather than fully recomputing every expensive analysis from scratch. This is acceptable for a reproducibility bridge, but a final archival version should progressively replace frozen-result promotion with direct regeneration.
 
 
 ## 6. Conclusion
 
 PoemForge began with a strong hypothesis: compression-progress over a held-out literary domain might provide a label-free proxy for poetic value. The evidence does not support that claim. Generic domains fail as resolved positive predictors of human poetic appraisal.
 
-The surviving result is sharper but narrower. Human-shaped domains induce measurable appraisal structure, and structural compression readouts from those domains align substantially better with human ratings than generic Gutenberg-domain readouts under paired poem-level resampling. This domain-construction effect is robust under matched controls across Surprise, Aesthetic Appeal, and Creativity, strongest in target-matched settings, and positive but weaker in cross-target transfer.
+The surviving result is sharper but narrower. Generic literary compression fails as a resolved positive predictor of human poetic appraisal, and formal generic compression can anti-align with ratings. Human-shaped contrastive readouts are positive and outperform generic single-domain Gutenberg readouts under matched-control paired resampling, but this mixed-form contrast should not be treated as a fully isolated human-domain-construction mechanism. In the available same-form Surprise comparison, human-labeled contrastive scoring does not significantly outperform a surface-pool contrastive score.
 
 The final claim is therefore domain-relative supervised probing, not label-free compression aesthetics. The decisive object is not the readout metric alone, but the held-out domain $D$. Compression remains a useful readout over that domain, but the human signal enters through domain construction.
 
@@ -222,6 +232,7 @@ The main manuscript-facing artifacts are:
 - `results/tables/table_6_domain_contrast_bootstrap.*`;
 - `results/tables/table_7_domain_contrast_target_pair_matrix.*`;
 - `results/tables/table_8_domain_contrast_by_control_family.*`;
+- `results/analyses/bootstrap_same_form_domain_contrast_summary_surprise_surfacepool.csv`;
 - `results/analyses/bootstrap_observer_family_summary_aesthetic_observer.csv`;
 - `results/figures/figure_1_readout_convergence.*`;
 - `results/figures/figure_2_bootstrap_uncertainty.*`;
