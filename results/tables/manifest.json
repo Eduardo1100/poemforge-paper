@@ -1,5 +1,10 @@
 {
-  "stage": "90_make_tables",
+  "generated_tables": [
+    "results/tables/table_6_domain_contrast_bootstrap.csv",
+    "results/tables/table_6_domain_contrast_bootstrap.md",
+    "results/tables/table_6_domain_contrast_bootstrap.tex"
+  ],
+  "important_note": "This stage formats existing analysis outputs into paper-facing tables. It does not change or recompute empirical values.",
   "outputs": [
     "/home/eduardo/Projects/poemforge-paper/results/tables/table_1_readout_convergence.csv",
     "/home/eduardo/Projects/poemforge-paper/results/tables/table_1_readout_convergence.md",
@@ -17,5 +22,5 @@
     "/home/eduardo/Projects/poemforge-paper/results/tables/table_5_absolute_effect_uncertainty.md",
     "/home/eduardo/Projects/poemforge-paper/results/tables/table_5_absolute_effect_uncertainty.tex"
   ],
-  "important_note": "This stage formats existing analysis outputs into paper-facing tables. It does not change or recompute empirical values."
+  "stage": "90_make_tables"
 }
