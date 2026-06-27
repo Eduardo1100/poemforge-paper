@@ -29,7 +29,7 @@ L(D \mid O_i \oplus H \oplus a)
 
 The key invariant is that the score is not the likelihood of the candidate itself. The score is the candidate’s effect on a held-out domain $D$. This distinction matters. If $D$ is generic literary text, the system asks whether the candidate improves compression of a broad literary distribution. If $D$ is constructed from high-rated versus low-rated poems, the system asks whether the candidate is closer to the human preference contrast encoded in that domain.
 
-This evaluation shows that the distinction is decisive. The original label-free version of the hypothesis fails. Generic Gutenberg-derived domains do not recover human poetic preference. But preference-shaped domains recover held-out Surprise structure across compression, TF-IDF, and embedding readouts. The value signal lives less in compression as such than in the construction of $D$.
+This evaluation shows that the distinction is decisive. The original label-free version of the hypothesis does not yield resolved positive alignment. Generic Gutenberg-derived domains do not show resolved positive alignment with human poetic preference. But preference-shaped domains produce stronger held-out Surprise alignment, and the paired domain contrast resolves under matched-control settings. The value signal lives less in compression as such than in the construction of $D$.
 
 This reframes PoemForge. The project is not evidence for an unsupervised aesthetic evaluator. It is evidence for a domain-relative probing framework in which human-labeled contrastive domains induce measurable label-contrast landscapes.
 
