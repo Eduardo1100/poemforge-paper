@@ -74,6 +74,14 @@ Scaffold diff complete:
 * `results/tables/table_2_bootstrap_uncertainty.*`
 * `results/tables/table_3_generic_d_summary.*`
 * `results/tables/table_4_item_nll_correlations.*`
+* `results/tables/table_5_absolute_effect_uncertainty.*`
+* `results/tables/table_6_domain_contrast_bootstrap.*`
+* `results/tables/table_7_domain_contrast_target_pair_matrix.*`
+* `results/tables/table_8_domain_contrast_by_control_family.*`
+
+### Additional Analysis Artifacts
+
+* `results/analyses/bootstrap_observer_family_summary_aesthetic_observer.csv`
 
 ### Figures
 
