@@ -1129,3 +1129,89 @@ Updated conclusion:
 This supports the negative-with-relocation interpretation:
 
 > The human label signal is carried by D. The selector frontier remains human; the engineering leverage is in constructing useful domains, not removing human judgment.
+
+## Exact-overlap train-domain leakage-reduced probe
+
+We reran the train-domain leakage-reduced probe on the exact 1,155 rows from the strongest same-test domain contrast run:
+
+- row filter: test_prompt_v_distilgpt2_domaincontrast_mindomain2_maxdomain10
+- train pairs: 43,827
+- test rows: 1,155
+- domain source: nearest training prompts by MiniLM prompt embedding
+- D_preferred: chosen stories from retrieved training pairs
+- D_rejected: rejected stories from retrieved training pairs
+- embedding model: sentence-transformers/all-MiniLM-L6-v2
+- top_train_pairs = 50
+- max_domain = 10
+- min_domain = 2
+- n_boot = 5,000
+- seed = 123
+
+### Main comparison
+
+Same-test MiniLM top-k domain probe on exact 1,155:
+
+- top3 domain_contrast_sign_rule:
+  87.71%, CI [85.80%, 89.61%]
+- top5 domain_contrast_sign_rule:
+  87.45%, CI [85.54%, 89.35%]
+- mean domain_contrast_sign_rule:
+  87.36%, CI [85.37%, 89.26%]
+
+Train-domain leakage-reduced probe on exact 1,155:
+
+- top5_train_domain_sign_rule/logistic:
+  53.07%, CI [50.22%, 55.93%]
+- mean_train_domain_sign_rule/logistic:
+  52.55%, CI [49.70%, 55.41%]
+- top2_train_domain_sign_rule/logistic:
+  51.77%, CI [48.83%, 54.63%]
+- top3_train_domain_sign_rule/logistic:
+  51.52%, CI [48.66%, 54.37%]
+- max_train_domain_sign_rule/logistic:
+  50.65%, CI [47.79%, 53.59%]
+
+Surface baseline on exact 1,155:
+
+- surface_format:
+  60.78%, CI [57.92%, 63.55%]
+
+Surface + train-domain:
+
+- top3_surface_plus_train_domain:
+  61.30%, CI [58.53%, 64.07%]
+- top5_surface_plus_train_domain:
+  61.13%, CI [58.35%, 63.90%]
+- top2_surface_plus_train_domain:
+  61.04%, CI [58.27%, 63.81%]
+- max_surface_plus_train_domain:
+  60.95%, CI [58.10%, 63.72%]
+- mean_surface_plus_train_domain:
+  60.61%, CI [57.75%, 63.38%]
+
+Paired deltas over surface:
+
+- top3_surface_plus_train_domain - surface:
+  +0.52 points, CI [-0.87, +1.90]
+- top5_surface_plus_train_domain - surface:
+  +0.35 points, CI [-1.04, +1.73]
+- top2_surface_plus_train_domain - surface:
+  +0.26 points, CI [-1.04, +1.47]
+- max_surface_plus_train_domain - surface:
+  +0.17 points, CI [-1.21, +1.47]
+- mean_surface_plus_train_domain - surface:
+  -0.17 points, CI [-1.90, +1.47]
+
+### Interpretation
+
+The exact-overlap result confirms that the full-set train-domain collapse was not merely population dilution.
+
+On the same 1,155 rows where same-test MiniLM top-k domains reached roughly 87–88%, train-built domains reach only roughly 50.6–53.1% alone and add no resolved value beyond surface formatting.
+
+Conclusion:
+
+> The large same-test result is best interpreted as supervised label-domain probing. Directional operators detect class structure when D is built from the same test-label ecology, but train-built domains do not transfer that structure meaningfully to held-out test labels.
+
+Updated paper-level framing:
+
+> The human signal is carried by domain construction. The selector frontier remains human; the engineering leverage is in constructing useful D, not eliminating human judgment.
