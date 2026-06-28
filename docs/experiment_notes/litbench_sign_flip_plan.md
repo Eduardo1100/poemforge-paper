@@ -481,3 +481,72 @@ Updated cautious claim:
 Remaining caveat:
 
 This still does not rule out semantic embedding kernels. The next kernel control should use sentence embeddings on the identical pools.
+
+## Embedding kernel control on identical preferred/rejected pools
+
+We next tested whether a semantic embedding kernel could recover the same preferred-minus-rejected domain contrast.
+
+We used the identical same-prompt preferred/rejected pools as the compression V and TF-IDF runs:
+
+- D_preferred = other chosen stories for the same prompt
+- D_rejected = other rejected stories for the same prompt
+- min_domain = 2
+- max_domain = 3
+- eligible rows = 1,155
+
+Kernel:
+
+- sentence-transformers/all-MiniLM-L6-v2
+- normalized story embeddings
+- centroid cosine similarity to D_preferred and D_rejected
+
+Definitions:
+
+- embedding_domain_specificity(candidate) =
+    cosine(candidate, D_preferred_centroid)
+    -
+    cosine(candidate, D_rejected_centroid)
+
+- embedding_domain_contrast_delta =
+    embedding_domain_specificity(chosen_story)
+    -
+    embedding_domain_specificity(rejected_story)
+
+Results:
+
+- embedding domain_specificity_logistic:
+  48.92%, CI [46.15%, 51.77%]
+- embedding surface_plus_domain_specificity:
+  60.00%, CI [57.14%, 62.77%]
+- surface_format:
+  60.26%, CI [57.32%, 63.03%]
+- embedding domain_contrast_sign_rule:
+  12.03%, CI [10.13%, 14.03%]
+
+Paired deltas:
+
+- embedding domain_specificity_logistic - surface_format:
+  -11.34 points, CI [-15.32,-7.36]
+- embedding surface_plus_domain_specificity - surface_format:
+  -0.26 points, CI [-1.04,+0.52], unresolved.
+
+Continuous effects:
+
+- embedding domain_contrast_delta:
+  mean -0.000040, CI [-0.001302,+0.001220]
+- chosen_domain_specificity:
+  mean +0.003804, CI [+0.001371,+0.006246]
+- rejected_domain_specificity:
+  mean +0.003845, CI [+0.001469,+0.006217]
+
+Interpretation:
+
+The MiniLM embedding centroid kernel does not reproduce the compression V domain-contrast result. Like TF-IDF, embedding domain specificity is near chance and adds no improvement over formatting. This weakens the "any similarity kernel recovers the contrast" objection for both lexical and sentence-embedding centroid kernels.
+
+Updated cautious claim:
+
+> On the repeated-prompt LitBench subset, preferred/rejected compression-progress V predicts preference strongly, while random same-prompt pool splits, TF-IDF centroid similarity, and MiniLM embedding centroid similarity do not reproduce the effect.
+
+Remaining caveats:
+
+This still uses label-shaped domains, small same-prompt pools, and a repeated-prompt subset. The next methodological checks are max_domain sweeps and subset-matched baselines.
