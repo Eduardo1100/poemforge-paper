@@ -416,3 +416,68 @@ Updated cautious claim:
 Remaining caveat:
 
 This does not yet establish compression-specificity. The next decisive test is to run TF-IDF and embedding kernels on the identical preferred/rejected pools. If those kernels match compression V, the honest claim becomes domain construction rather than compression-specificity.
+
+## TF-IDF kernel control on identical preferred/rejected pools
+
+After the random pool-split control, we tested whether a non-compression similarity kernel could recover the same preferred-minus-rejected domain contrast.
+
+We used the identical same-prompt preferred/rejected pools as the compression V run:
+
+- D_preferred = other chosen stories for the same prompt
+- D_rejected = other rejected stories for the same prompt
+- min_domain = 2
+- max_domain = 3
+- eligible rows = 1,155
+
+But instead of candidate-conditioned NLL reduction, we computed TF-IDF cosine similarity to preferred and rejected pool centroids.
+
+Definitions:
+
+- tfidf_domain_specificity(candidate) =
+    cosine(candidate, D_preferred_centroid)
+    -
+    cosine(candidate, D_rejected_centroid)
+
+- tfidf_domain_contrast_delta =
+    tfidf_domain_specificity(chosen_story)
+    -
+    tfidf_domain_specificity(rejected_story)
+
+Results:
+
+- TF-IDF domain_specificity_logistic:
+  51.08%, CI [48.22%, 53.85%]
+- TF-IDF surface_plus_domain_specificity:
+  60.69%, CI [57.75%, 63.55%]
+- surface_format:
+  60.26%, CI [57.32%, 63.03%]
+- TF-IDF domain_contrast_sign_rule:
+  11.95%, CI [10.13%, 13.85%]
+
+Paired deltas:
+
+- TF-IDF domain_specificity_logistic - surface_format:
+  -9.18 points, CI [-13.16,-5.19]
+- TF-IDF surface_plus_domain_specificity - surface_format:
+  +0.43 points, CI [-0.52,+1.39], unresolved.
+
+Continuous effects:
+
+- TF-IDF domain_contrast_delta:
+  mean +0.000122, CI [-0.000078,+0.000334]
+- chosen_domain_specificity:
+  mean +0.000460, CI [+0.000123,+0.000835]
+- rejected_domain_specificity:
+  mean +0.000338, CI [+0.000037,+0.000674]
+
+Interpretation:
+
+TF-IDF does not reproduce the compression V domain-contrast result. The TF-IDF logistic domain-specificity control is near chance, and adding TF-IDF domain specificity to formatting adds no resolved improvement. This weakens the "any kernel recovers the same contrast" objection, at least for lexical TF-IDF.
+
+Updated cautious claim:
+
+> The preferred/rejected domain contrast is not reproduced by arbitrary random pools or by a TF-IDF centroid kernel. Compression V remains substantially stronger than these controls on the same repeated-prompt subset.
+
+Remaining caveat:
+
+This still does not rule out semantic embedding kernels. The next kernel control should use sentence embeddings on the identical pools.
