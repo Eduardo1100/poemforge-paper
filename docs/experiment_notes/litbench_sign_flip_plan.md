@@ -825,3 +825,100 @@ This strongly supports the critic's operator-confound diagnosis. MiniLM embeddin
 Important comparability caveat:
 
 This first full embedding-operator run reports n=1,626, whereas the strongest compression V overlap reports n=1,155. We therefore need an exact-overlap rerun restricted to the row_ids from test_prompt_v_distilgpt2_domaincontrast_mindomain2_maxdomain10 before making an apples-to-apples comparison.
+
+## Exact-overlap crossed embedding operator control
+
+We reran the crossed embedding operator control restricted to the exact row_ids from the strongest compression V run:
+
+- row filter: test_prompt_v_distilgpt2_domaincontrast_mindomain2_maxdomain10
+- n = 1,155 pairs
+- embedding model: sentence-transformers/all-MiniLM-L6-v2
+- min_domain = 2
+- max_domain = 10
+- bootstrap = 5,000
+- seed = 123
+
+This directly tests the critic's concern that previous TF-IDF/MiniLM controls confounded representation with comparison operator. The earlier centroid controls used symmetric centroid cosine, whereas the compression-style probe used directional candidate-to-domain comparison.
+
+### Main exact-overlap results
+
+Compression V / conditional cross-predictability, max_domain=10:
+
+- domain_contrast_sign_rule:
+  79.74%, CI [77.40%, 82.08%]
+- domain_specificity_logistic:
+  79.57%, CI [77.23%, 81.90%]
+
+MiniLM per-story/top-k operators on the same n=1,155 overlap:
+
+- top3 + surface:
+  88.66%, CI [86.84%, 90.39%]
+- top2 + surface:
+  88.48%, CI [86.58%, 90.30%]
+- top5 + surface:
+  88.40%, CI [86.49%, 90.22%]
+- top3 domain_contrast_sign_rule:
+  87.71%, CI [85.80%, 89.61%]
+- top3 domain_specificity_logistic:
+  87.71%, CI [85.80%, 89.61%]
+- top5 domain_contrast_sign_rule:
+  87.45%, CI [85.54%, 89.35%]
+- mean domain_contrast_sign_rule:
+  87.36%, CI [85.37%, 89.26%]
+- top2 domain_contrast_sign_rule:
+  87.10%, CI [85.11%, 89.00%]
+- max domain_contrast_sign_rule:
+  84.50%, CI [82.42%, 86.58%]
+
+Surface baseline on same row set:
+
+- surface_format:
+  60.78%, CI [57.92%, 63.55%]
+
+### Paired deltas over surface
+
+- top3 sign/logistic - surface:
+  +26.93 points, CI [+23.55,+30.30]
+- top5 sign/logistic - surface:
+  +26.67 points, CI [+23.29,+30.13]
+- mean sign/logistic - surface:
+  +26.58 points, CI [+23.20,+30.04]
+- top2 sign/logistic - surface:
+  +26.32 points, CI [+22.94,+29.70]
+- max sign rule - surface:
+  +23.72 points, CI [+20.26,+27.19]
+
+### Continuous effects
+
+MiniLM per-story/top-k operators show clean directional structure:
+
+- top3 domain_contrast_delta:
+  +0.3532, CI [+0.3356,+0.3705]
+- top2 domain_contrast_delta:
+  +0.4249, CI [+0.4045,+0.4452]
+- top5 domain_contrast_delta:
+  +0.2685, CI [+0.2545,+0.2824]
+- mean domain_contrast_delta:
+  +0.2110, CI [+0.1996,+0.2223]
+- max domain_contrast_delta:
+  +0.5167, CI [+0.4912,+0.5422]
+
+For each operator, chosen_domain_specificity is positive and rejected_domain_specificity is negative, with bootstrap CIs excluding zero.
+
+### Interpretation
+
+The exact-overlap crossed operator control supports the critic's diagnosis.
+
+The earlier MiniLM centroid null does not show that embeddings cannot recover the signal. It shows that centroid pooling destroys the signal. When MiniLM uses a directional per-story/top-k candidate-to-domain comparison, it recovers a very strong chosen/rejected class-separation signal and exceeds the conditional LM cross-predictability result on the exact same row set.
+
+Updated conclusion:
+
+> The durable finding is not compression-specificity. It is directional supervised class separability. Preference-labeled chosen/rejected domains form a strong same-prompt class boundary, and directional candidate-to-domain comparison detects that boundary. Centroid pooling obscures it.
+
+Updated terminology:
+
+Use "conditional cross-predictability" for the LM operational score. Avoid implying that the current evidence establishes compression-progress V as uniquely mechanizing human value.
+
+Remaining decisive open problem:
+
+The domains are still label-defined. The next key test is label-leakage-reduced domain construction.
