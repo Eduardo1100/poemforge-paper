@@ -755,3 +755,27 @@ Next priority:
 
 4. Rationale mining:
    useful after the core phenomenon is identified.
+
+## Next experiment: crossed embedding operator control
+
+The critic argued that the TF-IDF and MiniLM kernel controls are not clean compression-specificity tests because they changed both representation and comparison operator:
+
+- conditional cross-predictability uses directional/asymmetric candidate-to-pool prediction;
+- TF-IDF/MiniLM controls used symmetric centroid cosine.
+
+To test the operator confound, we next run MiniLM embedding controls with non-centroid, per-story comparison operators on the identical preference-labeled pools:
+
+- mean per-story cosine
+- max per-story cosine
+- top-2 mean cosine
+- top-3 mean cosine
+- top-5 mean cosine
+- kNN vote with k=3
+- kNN vote with k=5
+
+This tests whether the prior embedding null was due to centroid pooling rather than the embedding representation itself.
+
+Decision rule:
+
+- If per-story/top-k/kNN embedding operators recover most of the 79–80% compression result, then compression-specificity weakens and the durable finding is directional operator/class-separation.
+- If these operators remain near surface/chance, conditional LM cross-predictability becomes more credible as special relative to tested embedding operators.
