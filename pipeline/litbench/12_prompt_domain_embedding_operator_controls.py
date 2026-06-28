@@ -270,6 +270,7 @@ def build_scores(
     min_domain: int,
     max_domain: int,
     limit: int | None,
+    row_filter_ids: set[int] | None,
 ) -> pd.DataFrame:
     prompt_col = pick_col(df, ["prompt", "instruction", "question"], "prompt")
     rows = []
@@ -282,6 +283,8 @@ def build_scores(
     n_rows = len(df) if limit is None else min(limit, len(df))
 
     for row_id in tqdm(range(n_rows), desc="embedding operator scores"):
+        if row_filter_ids is not None and row_id not in row_filter_ids:
+            continue
         prompt_hash = md5_text(str(df.iloc[row_id][prompt_col]))
 
         chosen_pool = grouped.get((prompt_hash, "chosen"), pd.DataFrame())
@@ -368,6 +371,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dataset", default="SAA-Lab/LitBench-Test-IDs-Complete")
     ap.add_argument("--surface-tag", default="test_ids_complete")
+    ap.add_argument("--row-filter-domain-tag", default=None, help="Optional domain-contrast tag whose score rows define the row_id subset to score.")
     ap.add_argument("--tag", default="test_prompt_domain_embedding_operators_mindomain2_maxdomain10")
     ap.add_argument("--embedding-model", default="sentence-transformers/all-MiniLM-L6-v2")
     ap.add_argument("--embedding-batch-size", type=int, default=32)
@@ -381,6 +385,14 @@ def main() -> None:
 
     print("Loading dataset")
     df = load_hf_dataset(args.dataset)
+
+    row_filter_ids = None
+    if args.row_filter_domain_tag:
+        filter_path = OUT_DIR / f"litbench_prompt_v_domain_contrast_scores_{args.row_filter_domain_tag}.csv"
+        if not filter_path.exists():
+            raise FileNotFoundError(filter_path)
+        row_filter_ids = set(pd.read_csv(filter_path)["row_id"].astype(int).tolist())
+        print(f"Restricting to {len(row_filter_ids)} row_ids from {filter_path.name}")
 
     print("Building story table")
     story_table = make_story_table(df)
@@ -400,6 +412,7 @@ def main() -> None:
         min_domain=args.min_domain,
         max_domain=args.max_domain,
         limit=args.limit,
+        row_filter_ids=row_filter_ids,
     )
 
     if scores.empty:
@@ -550,6 +563,7 @@ def main() -> None:
                 "min_domain": args.min_domain,
                 "max_domain": args.max_domain,
                 "limit": args.limit,
+                "row_filter_domain_tag": args.row_filter_domain_tag,
                 "n_eligible_rows": int(scores["row_id"].nunique()),
                 "operators": sorted(scores["operator"].unique().tolist()),
                 "n_splits": args.n_splits,
