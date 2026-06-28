@@ -710,3 +710,48 @@ The model downloaded successfully, but the local CPU process was killed while lo
 Interpretation:
 
 The released reward model is likely not feasible on this local CPU setup. We should either run it on a GPU/HPC machine or report this as an attempted but infeasible subset-matched baseline and use local subset-matched baselines in the meantime.
+
+## Critic response after subset-matched local baseline table
+
+The critic argued that the new subset-matched local baseline table did not add independent scientific evidence; it mostly re-tabulated the prior random-pool, centroid-kernel, surface, and compression-V results on the max_domain=10 overlap. The one genuinely new event was negative: the released 8B LitBench verifier failed locally on CPU.
+
+The critic agreed with the cautious framing:
+
+> The current result is a supervised, label-shaped directional class-separation probe, not label-free value discovery and not evidence that compression uniquely predicts human value.
+
+Main corrections:
+
+1. The reward-model baseline is not the immediate scientific bottleneck.
+   It answers whether the current score is competitive, but not what the score means.
+
+2. The crossed-kernel control is more urgent.
+   Existing TF-IDF and MiniLM controls confound representation with comparison operator:
+   - compression V uses directional conditional next-token prediction;
+   - TF-IDF/MiniLM controls use symmetric centroid cosine.
+   Therefore, the centroid-kernel nulls do not yet establish compression-specificity.
+
+3. The label-leakage caveat remains central.
+   D_preferred and D_rejected are constructed from the same preference labels being predicted.
+   Random-split controls rule out arbitrary pool geometry, but they do not make the probe label-free.
+
+4. The more neutral name for the current metric is conditional cross-predictability:
+   "Does this candidate make pool stories more predictable?"
+   Calling it compression-progress V imports extra theoretical loading.
+
+Updated internal framing:
+
+> Upvoted and downvoted same-prompt stories occupy detectably different regions of conditional-prediction space. This structure is directional, non-arbitrary, stable across domain sizes, and not recovered by centroid controls. However, the probe remains supervised because the domains are label-defined.
+
+Next priority:
+
+1. Crossed-kernel operator control:
+   embeddings with per-story max similarity, mean top-k similarity, and kNN vote using the identical preference-labeled pools.
+
+2. Label-leakage-reduced domains:
+   construct domains from a signal not identical to the held-out test labels being predicted.
+
+3. Hosted/GPU reward-model scoring:
+   useful later for calibration, but not the next scientific bottleneck.
+
+4. Rationale mining:
+   useful after the core phenomenon is identified.
