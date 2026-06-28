@@ -203,6 +203,7 @@ def main() -> None:
     ap.add_argument("--test-dataset", default="SAA-Lab/LitBench-Test-IDs-Complete")
     ap.add_argument("--test-cache", default=None)
     ap.add_argument("--surface-tag", default="test_ids_complete")
+    ap.add_argument("--row-filter-domain-tag", default=None, help="Optional domain-contrast tag whose score rows define the original test row_id subset to evaluate.")
     ap.add_argument("--tag", default="train_domain_embedding_probe_min2_max10_top50")
     ap.add_argument("--embedding-model", default="sentence-transformers/all-MiniLM-L6-v2")
     ap.add_argument("--embedding-batch-size", type=int, default=32)
@@ -220,6 +221,18 @@ def main() -> None:
 
     train_df = load_table(args.train_dataset, args.train_cache, "train")
     test_df = load_table(args.test_dataset, args.test_cache, "test")
+
+    test_df = test_df.copy()
+    test_df["__row_id"] = np.arange(len(test_df), dtype=int)
+
+    if args.row_filter_domain_tag:
+        filter_path = OUT_DIR / f"litbench_prompt_v_domain_contrast_scores_{args.row_filter_domain_tag}.csv"
+        if not filter_path.exists():
+            raise FileNotFoundError(filter_path)
+        row_filter_ids = set(pd.read_csv(filter_path)["row_id"].astype(int).tolist())
+        before = len(test_df)
+        test_df = test_df[test_df["__row_id"].isin(row_filter_ids)].copy().reset_index(drop=True)
+        print(f"Restricting test rows to {len(test_df)} / {before} row_ids from {filter_path.name}")
 
     if args.max_train_pairs is not None and len(train_df) > args.max_train_pairs:
         print(f"Subsampling train pairs: {args.max_train_pairs} / {len(train_df)}")
@@ -273,8 +286,9 @@ def main() -> None:
 
     top_pool = max(args.top_train_pairs, args.max_domain)
 
-    for row_id in tqdm(range(len(test_df)), desc="train-domain probe"):
-        sims = train_prompt_emb @ test_prompt_emb[row_id]
+    for test_pos in tqdm(range(len(test_df)), desc="train-domain probe"):
+        original_row_id = int(test_df.iloc[test_pos]["__row_id"])
+        sims = train_prompt_emb @ test_prompt_emb[test_pos]
         kk = min(top_pool, len(sims))
         near_idx_unsorted = np.argpartition(sims, -kk)[-kk:]
         near_idx = near_idx_unsorted[np.argsort(sims[near_idx_unsorted])[::-1]]
@@ -287,11 +301,11 @@ def main() -> None:
         preferred_vecs = train_chosen_emb[domain_idx]
         rejected_vecs = train_rejected_emb[domain_idx]
 
-        chosen_vec = test_chosen_emb[row_id]
-        rejected_vec = test_rejected_emb[row_id]
+        chosen_vec = test_chosen_emb[test_pos]
+        rejected_vec = test_rejected_emb[test_pos]
 
         base = {
-            "row_id": int(row_id),
+            "row_id": original_row_id,
             "n_preferred_domain": int(len(preferred_vecs)),
             "n_rejected_domain": int(len(rejected_vecs)),
             "mean_prompt_sim": float(np.mean(sims[domain_idx])),
@@ -466,6 +480,7 @@ def main() -> None:
                 "embedding_model": args.embedding_model,
                 "max_train_pairs": args.max_train_pairs,
                 "limit_test": args.limit_test,
+                "row_filter_domain_tag": args.row_filter_domain_tag,
                 "top_train_pairs": args.top_train_pairs,
                 "min_domain": args.min_domain,
                 "max_domain": args.max_domain,
