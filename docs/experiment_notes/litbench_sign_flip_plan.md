@@ -779,3 +779,49 @@ Decision rule:
 
 - If per-story/top-k/kNN embedding operators recover most of the 79–80% compression result, then compression-specificity weakens and the durable finding is directional operator/class-separation.
 - If these operators remain near surface/chance, conditional LM cross-predictability becomes more credible as special relative to tested embedding operators.
+
+## Crossed embedding operator control: first full run
+
+We tested the critic's operator-confound objection by replacing centroid cosine with per-story MiniLM embedding operators on the same preference-labeled domain construction.
+
+Operators:
+
+- mean per-story cosine
+- max per-story cosine
+- top-2 mean cosine
+- top-3 mean cosine
+- top-5 mean cosine
+- kNN vote, k=3
+- kNN vote, k=5
+
+Configuration:
+
+- embedding model: sentence-transformers/all-MiniLM-L6-v2
+- min_domain = 2
+- max_domain = 10
+- bootstrap = 5,000
+- seed = 123
+
+First full run result:
+
+- eligible rows = 1,626
+- surface_format:
+  60.21%, CI [57.81%, 62.61%]
+- top3 domain_contrast_sign_rule:
+  88.07%, CI [86.47%, 89.61%]
+- top5 domain_contrast_sign_rule:
+  87.88%, CI [86.29%, 89.48%]
+- mean domain_contrast_sign_rule:
+  87.76%, CI [86.16%, 89.36%]
+- top2 domain_contrast_sign_rule:
+  87.52%, CI [85.92%, 89.11%]
+- max domain_contrast_sign_rule:
+  85.24%, CI [83.52%, 86.90%]
+
+Interpretation:
+
+This strongly supports the critic's operator-confound diagnosis. MiniLM embeddings can recover a strong chosen/rejected class-separation signal when the comparison operator is per-story/top-k rather than centroid cosine. Therefore, the earlier centroid-kernel null should not be interpreted as evidence for compression-specificity.
+
+Important comparability caveat:
+
+This first full embedding-operator run reports n=1,626, whereas the strongest compression V overlap reports n=1,155. We therefore need an exact-overlap rerun restricted to the row_ids from test_prompt_v_distilgpt2_domaincontrast_mindomain2_maxdomain10 before making an apples-to-apples comparison.
