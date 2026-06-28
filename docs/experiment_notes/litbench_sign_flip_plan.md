@@ -660,3 +660,32 @@ Updated cautious claim:
 Remaining caveats:
 
 The result still uses label-shaped domains and a repeated-prompt subset. The next useful check is subset-matched baselines, especially surface/readability and any available LitBench reward-model baseline on the exact 1,155-pair overlap.
+
+## Critic response after random-split, kernel, and max-domain controls
+
+The critic agreed that the random split control is a real win: arbitrary same-prompt pool geometry collapsed to chance, so the preferred/rejected V result is not merely any within-prompt split. The critic also agreed that the max_domain sweep addresses the tiny-pool objection: the effect strengthens from max_domain=3 to 6 and remains stable at 10.
+
+However, the critic argued that the kernel controls should not be interpreted as proving compression-specificity. The reason is that the TF-IDF and MiniLM controls changed both representation and comparison operator:
+
+- Compression V uses directional, asymmetric, conditional next-token prediction over concatenated domains.
+- TF-IDF and MiniLM controls used symmetric centroid cosine similarity.
+
+Therefore, the clean conclusion is not "compression is uniquely special." The cleaner conclusion is that conditional comparison preserves chosen/rejected class structure that centroid cosine does not.
+
+The critic's recommended framing:
+
+> Upvoted and downvoted stories for the same prompt occupy detectably different regions of next-token-predictable structure, and that difference is real, non-arbitrary, and directional.
+
+The critic emphasized that this is still supervised class-separation because D_preferred and D_rejected are constructed from preference labels. The random-split null rules out arbitrary pool geometry, but not label-defined supervised probing.
+
+Next priority:
+
+1. Run subset-matched baselines on the exact 1,155-pair overlap, especially the released LitBench reward model if feasible.
+2. Then fix kernel controls with a crossed design:
+   - embeddings with non-centroid comparison, such as per-story max or top-k similarity;
+   - possibly LM-style centroid/pooled comparison if feasible.
+3. Later: label-leakage-free domains, rationale mining, and observer-family replication.
+
+Updated cautious claim:
+
+> On the repeated-prompt LitBench subset, preference-labeled chosen/rejected classes are strongly separable by a directional conditional-prediction probe. The effect is not reproduced by random same-prompt pool splits and is stable across domain caps, but it remains a supervised label-shaped probe rather than label-free value discovery.
