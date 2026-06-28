@@ -689,3 +689,24 @@ Next priority:
 Updated cautious claim:
 
 > On the repeated-prompt LitBench subset, preference-labeled chosen/rejected classes are strongly separable by a directional conditional-prediction probe. The effect is not reproduced by random same-prompt pool splits and is stable across domain caps, but it remains a supervised label-shaped probe rather than label-free value discovery.
+
+## Attempted subset-matched LitBench reward-model baseline
+
+We attempted to run the released LitBench verifier on the exact 1,155-pair domain-contrast overlap.
+
+Configuration:
+
+- reward model: SAA-Lab/Llama8B-CreativeWritingVerifier
+- subset: rows from test_prompt_v_distilgpt2_domaincontrast_mindomain2_maxdomain10
+- n = 1,155 pairs
+- device: CPU
+- max_length: 2048
+- batch_size: 1
+
+Outcome:
+
+The model downloaded successfully, but the local CPU process was killed while loading/running the 15GB model. No reward scores were written.
+
+Interpretation:
+
+The released reward model is likely not feasible on this local CPU setup. We should either run it on a GPU/HPC machine or report this as an attempted but infeasible subset-matched baseline and use local subset-matched baselines in the meantime.
