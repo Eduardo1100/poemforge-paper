@@ -1019,3 +1019,32 @@ Use "conditional cross-predictability" for the LM operational score. Avoid imply
 Remaining decisive open problem:
 
 The domains are still label-defined. The next key test is label-leakage-reduced domain construction.
+
+## Next experiment: label-leakage-reduced training-domain probe
+
+The exact-overlap crossed embedding operator control showed that MiniLM embeddings recover a strong chosen/rejected class-separation signal when using directional per-story/top-k comparison rather than centroid cosine. This weakens compression-specificity and supports the critic's operator-confound diagnosis.
+
+The remaining decisive issue is label leakage:
+
+- Previous same-prompt domains used test labels to construct D_preferred and D_rejected.
+- That is supervised class probing, not label-free value discovery.
+
+Next experiment:
+
+Build preferred/rejected domains from the LitBench training split, retrieved by prompt similarity, then evaluate on held-out test pairs.
+
+For each test prompt:
+
+1. Embed the test prompt.
+2. Retrieve nearest training prompts.
+3. Build D_preferred from chosen stories in the retrieved training pairs.
+4. Build D_rejected from rejected stories in the retrieved training pairs.
+5. Score the held-out test chosen/rejected pair using MiniLM directional per-story/top-k operators.
+6. Evaluate only at the end against test labels.
+
+This removes direct test-label domain construction. It remains supervised because training labels define the domains, but it is label-leakage-reduced relative to same-test-prompt leave-pair-out domains.
+
+Decision rule:
+
+- If performance remains high, the result becomes a supervised train-to-test selector/prototype probe rather than a test-label leakage artifact.
+- If performance collapses toward surface/chance, the previous 87–88% result mainly reflected test-set label-defined domain construction.
