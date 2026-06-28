@@ -1048,3 +1048,84 @@ Decision rule:
 
 - If performance remains high, the result becomes a supervised train-to-test selector/prototype probe rather than a test-label leakage artifact.
 - If performance collapses toward surface/chance, the previous 87–88% result mainly reflected test-set label-defined domain construction.
+
+## Label-leakage-reduced train-domain probe
+
+We tested whether the strong same-test label-defined domain result transfers when domains are built from training labels rather than test labels.
+
+Setup:
+
+- train cache: results/litbench/litbench_train_cached.csv
+- train pairs: 43,827
+- test dataset: SAA-Lab/LitBench-Test-IDs-Complete
+- test pairs: 2,480
+- embedding model: sentence-transformers/all-MiniLM-L6-v2
+- retrieval: nearest training prompts by MiniLM prompt embedding
+- D_preferred: chosen stories from retrieved training pairs
+- D_rejected: rejected stories from retrieved training pairs
+- top_train_pairs = 50
+- max_domain = 10
+- min_domain = 2
+- n_boot = 5,000
+- seed = 123
+
+This is label-leakage-reduced relative to the previous same-test leave-pair-out domains because test labels are not used to build D_preferred or D_rejected.
+
+### Main results
+
+Surface baseline:
+
+- surface_format:
+  60.16%, CI [58.15%, 62.14%]
+
+Best train-domain-only results:
+
+- top5_train_domain_sign_rule/logistic:
+  53.55%, CI [51.61%, 55.52%]
+- mean_train_domain_sign_rule/logistic:
+  53.47%, CI [51.45%, 55.36%]
+- top2_train_domain_sign_rule/logistic:
+  53.19%, CI [51.17%, 55.12%]
+- top3_train_domain_sign_rule/logistic:
+  52.98%, CI [51.05%, 54.96%]
+- max_train_domain_sign_rule/logistic:
+  52.02%, CI [50.04%, 53.99%]
+
+Surface + train-domain:
+
+- top5_surface_plus_train_domain:
+  60.28%, CI [58.27%, 62.22%]
+- top2_surface_plus_train_domain:
+  60.28%, CI [58.31%, 62.22%]
+- mean_surface_plus_train_domain:
+  60.20%, CI [58.23%, 62.18%]
+- top3_surface_plus_train_domain:
+  60.12%, CI [58.15%, 62.06%]
+- max_surface_plus_train_domain:
+  60.04%, CI [58.06%, 61.98%]
+
+Paired interpretation:
+
+The train-domain feature adds essentially no resolved value over surface. Surface + train-domain is within roughly ±1 point of surface, with CIs crossing zero.
+
+Continuous effects:
+
+The train-domain directional effect is technically positive but tiny:
+
+- mean domain_contrast_delta: +0.0039
+- max domain_contrast_delta: +0.0054
+- top2 domain_contrast_delta: +0.0052
+- top3 domain_contrast_delta: +0.0053
+- top5 domain_contrast_delta: +0.0047
+
+Interpretation:
+
+The leakage-reduced train-domain probe mostly collapses. This indicates that the very large same-test domain result depends heavily on label-defined test-domain construction. The same-test top-k MiniLM result should therefore be framed as supervised label-class probing, not as label-free value discovery or transferable value selection.
+
+Updated conclusion:
+
+> The durable finding is that preference-labeled domains create strong same-test class boundaries that directional candidate-to-domain operators can detect. But when domains are built from training labels and transferred to held-out test examples, the signal is weak and adds no resolved value beyond formatting.
+
+This supports the negative-with-relocation interpretation:
+
+> The human label signal is carried by D. The selector frontier remains human; the engineering leverage is in constructing useful domains, not removing human judgment.
