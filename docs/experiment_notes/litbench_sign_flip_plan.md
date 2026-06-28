@@ -550,3 +550,113 @@ Updated cautious claim:
 Remaining caveats:
 
 This still uses label-shaped domains, small same-prompt pools, and a repeated-prompt subset. The next methodological checks are max_domain sweeps and subset-matched baselines.
+
+## Max-domain sweep
+
+We tested whether the preferred/rejected compression-progress V contrast depends on very small same-prompt pools.
+
+Prior configuration:
+
+- min_domain = 2
+- max_domain = 3
+- eligible overlap = 1,155 pairs
+- domain_contrast_sign_rule:
+  75.58%, CI [73.16%, 78.01%]
+- surface_format:
+  60.26%, CI [57.32%, 63.03%]
+
+We then increased the domain cap.
+
+### max_domain = 6
+
+Chosen-domain run:
+
+- other_chosen sign rule:
+  65.70%, CI [63.25%, 68.16%]
+- mean_v_delta_gain:
+  +0.1915, CI [+0.1692,+0.2146]
+
+Rejected-domain run:
+
+- other_rejected direct sign rule:
+  30.73%, CI [28.26%, 33.28%]
+- mean_v_delta_gain:
+  -0.2353, CI [-0.2633,-0.2069]
+
+Preferred-minus-rejected domain contrast:
+
+- domain_contrast_sign_rule:
+  79.83%, CI [77.49%, 82.08%]
+- domain_specificity_logistic:
+  79.31%, CI [76.97%, 81.65%]
+- surface_format:
+  60.26%, CI [57.32%, 63.03%]
+
+Paired deltas:
+
+- domain_contrast_sign_rule - surface_format:
+  +19.57 points, CI [+15.93,+23.29]
+- domain_specificity_logistic - surface_format:
+  +19.05 points, CI [+15.41,+22.77]
+
+Continuous effects:
+
+- domain_contrast_delta:
+  +0.4288, CI [+0.3892,+0.4697]
+- delta_chosen_domain:
+  +0.1896, CI [+0.1652,+0.2136]
+- delta_rejected_domain:
+  -0.2393, CI [-0.2694,-0.2106]
+
+### max_domain = 10
+
+Chosen-domain run:
+
+- other_chosen sign rule:
+  65.92%, CI [63.47%, 68.45%]
+- mean_v_delta_gain:
+  +0.1908, CI [+0.1686,+0.2137]
+
+Rejected-domain run:
+
+- other_rejected direct sign rule:
+  30.42%, CI [27.95%, 32.97%]
+- mean_v_delta_gain:
+  -0.2360, CI [-0.2642,-0.2078]
+
+Preferred-minus-rejected domain contrast:
+
+- domain_contrast_sign_rule:
+  79.74%, CI [77.40%, 82.08%]
+- domain_specificity_logistic:
+  79.57%, CI [77.23%, 81.90%]
+- surface_format:
+  60.26%, CI [57.32%, 63.03%]
+
+Paired deltas:
+
+- domain_contrast_sign_rule - surface_format:
+  +19.48 points, CI [+15.84,+23.12]
+- domain_specificity_logistic - surface_format:
+  +19.31 points, CI [+15.76,+23.03]
+
+Continuous effects:
+
+- domain_contrast_delta:
+  +0.4287, CI [+0.3892,+0.4692]
+- delta_chosen_domain:
+  +0.1887, CI [+0.1646,+0.2125]
+- delta_rejected_domain:
+  -0.2400, CI [-0.2704,-0.2111]
+
+Interpretation:
+
+The preferred/rejected compression-progress V contrast does not depend on the smallest 2–3 story pools. Increasing max_domain from 3 to 6 strengthens the effect, and max_domain = 10 remains essentially stable. This weakens the small-domain/idiosyncratic-pool objection.
+
+Updated cautious claim:
+
+> On the repeated-prompt LitBench subset, preferred/rejected compression-progress V predicts preference strongly. The effect survives random same-prompt pool controls, is not reproduced by TF-IDF or MiniLM centroid kernels, and remains stable as the same-prompt domain cap increases from 3 to 6 to 10 stories.
+
+Remaining caveats:
+
+The result still uses label-shaped domains and a repeated-prompt subset. The next useful check is subset-matched baselines, especially surface/readability and any available LitBench reward-model baseline on the exact 1,155-pair overlap.
