@@ -347,3 +347,72 @@ This is the strongest LitBench result so far. Prompt-conditioned compression-pro
 Caution:
 
 This result is currently limited to the repeated-prompt subset where both chosen and rejected same-prompt domains are available. It is also a label-shaped domain contrast rather than a label-free selector. The next robustness test is observer-family replication with GPT-2 and GPT-2-medium, budget permitting.
+
+## Random same-prompt pool split control
+
+After the critic raised the circularity concern, we ran a same-form nonhuman pool-split control.
+
+Instead of defining domains using preference labels:
+
+- D_preferred = other chosen stories
+- D_rejected = other rejected stories
+
+we randomly split same-prompt stories into arbitrary pools A/B and recomputed the same domain-contrast machinery.
+
+Configuration:
+
+- dataset: SAA-Lab/LitBench-Test-IDs-Complete
+- observer: DistilGPT-2
+- same-prompt random A/B pools
+- min_domain: 2
+- max_domain: 3
+- max_context_tokens: 512
+- max_target_tokens: 384
+- seed: 123
+- eligible rows: 1,161
+- bootstrap: 5,000 pair resamples
+
+Random split results:
+
+- random_domain_contrast_sign_rule:
+  48.92%, CI [46.08%, 51.85%]
+- random_domain_specificity_logistic:
+  48.49%, CI [45.56%, 51.25%]
+- surface_format:
+  59.52%, CI [56.67%, 62.36%]
+- surface_plus_random_domain_specificity:
+  59.52%, CI [56.68%, 62.36%]
+
+Paired deltas:
+
+- random_domain_contrast_sign_rule - surface_format:
+  -10.59 points, CI [-14.56,-6.55]
+- random_domain_specificity_logistic - surface_format:
+  -11.02 points, CI [-14.99,-7.06]
+- surface_plus_random_domain_specificity - surface_format:
+  +0.00 points, CI [-0.95,+0.95]
+
+Continuous effects:
+
+- domain_contrast_delta:
+  mean +0.0053, CI [-0.0418,+0.0515]
+- delta_a:
+  mean -0.0057, CI [-0.0351,+0.0227]
+- delta_b:
+  mean -0.0110, CI [-0.0410,+0.0190]
+- chosen_domain_specificity:
+  mean +0.0083, CI [-0.0213,+0.0385]
+- rejected_domain_specificity:
+  mean +0.0030, CI [-0.0299,+0.0368]
+
+Interpretation:
+
+The random same-prompt pool split does not reproduce the preferred-minus-rejected domain contrast. Both the direct random-domain sign rule and the logistic random-domain specificity model are near chance, and random-domain features add nothing to formatting. This suggests that the earlier ~76% preferred/rejected contrast is not merely arbitrary same-prompt pool geometry.
+
+Updated cautious claim:
+
+> Preference-labeled domain construction carries signal beyond generic within-prompt similarity geometry.
+
+Remaining caveat:
+
+This does not yet establish compression-specificity. The next decisive test is to run TF-IDF and embedding kernels on the identical preferred/rejected pools. If those kernels match compression V, the honest claim becomes domain construction rather than compression-specificity.
